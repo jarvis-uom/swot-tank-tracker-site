@@ -1,6 +1,6 @@
 # SWOT Tank Water Tracker: website
 
-**Live site: https://swot-tank-tracker.netlify.app**
+**Live site: https://swot.mehara.work** (also at https://swot-tank-tracker.netlify.app)
 
 A small website for our IS4990 project "SWOT Tank Water Tracker for Sri Lanka" (Group 6, JARVIS, University of Moratuwa). It explains the project and shows real SWOT data for our five study reservoirs.
 
