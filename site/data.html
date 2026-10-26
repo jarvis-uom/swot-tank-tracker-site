@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Real SWOT data · SWOT Tank Water Tracker</title>
+<meta name="description" content="Three years of SWOT water levels and stored water for five reservoirs near Anuradhapura, Sri Lanka.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<style>.plotwrap { position: relative; }</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3987e5" d="M12 2.5c3.7 4.7 6.7 8.3 6.7 11.7a6.7 6.7 0 0 1-13.4 0C5.3 10.8 8.3 7.2 12 2.5z"/></svg>SWOT Tank Water Tracker</a>
+  <nav class="nav" aria-label="Main">
+    <a href="./">Home</a>
+    <a href="explainer.html">How volume works</a>
+    <a href="data.html" aria-current="page">Real SWOT data</a>
+    <a href="costs.html">Cost of more data</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<div class="band"><div class="wrap">
+  <p class="eyebrow" style="color:#8fc1f2">Real data</p>
+  <h1>SWOT readings for our five reservoirs</h1>
+  <p>Every best-quality SWOT reading from July 2023 to October 2026, straight from NASA's Hydrocron service. Pick a reservoir to see its water level and how much water it stored.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="picker" id="picker" role="tablist" aria-label="Reservoir"></div>
+  <h2 id="res-name" style="margin-bottom:.1em"></h2>
+  <p class="small" id="res-id"></p>
+  <div class="tiles" id="kpis"></div>
+  <ul class="notes" id="notes"></ul>
+
+  <figure class="chart" style="margin-top:26px">
+    <figcaption><h3>Water level</h3><p class="small" style="margin:0">Metres above sea level. Each dot is one best-quality SWOT reading.</p></figcaption>
+    <div class="plotwrap"><div class="plot" id="plot-level" role="img"></div><div class="tip" id="tip-level" hidden></div></div>
+  </figure>
+  <figure class="chart">
+    <figcaption><h3>Water stored above the lowest reading</h3><p class="small" style="margin:0">Million m³, from SWOT's own storage-change numbers. This is the water above the lowest level SWOT has seen, not the whole tank.</p></figcaption>
+    <div class="plotwrap"><div class="plot" id="plot-stored" role="img"></div><div class="tip" id="tip-stored" hidden></div></div>
+  </figure>
+  <p class="sr" id="live" aria-live="polite"></p>
+
+  <details class="tablewrap">
+    <summary id="table-title">All readings as a table</summary>
+    <div class="scrollx">
+      <table class="data">
+        <thead><tr><th scope="col">Date</th><th scope="col">Water level (m)</th><th scope="col">SWOT water area (km²)</th><th scope="col">Stored above lowest (million m³)</th></tr></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </details>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">How to read this</p>
+    <h2>What these numbers can and cannot tell</h2>
+  </div>
+  <div class="cards">
+    <div class="card"><h3>Best quality only</h3><p>We keep a reading only if SWOT's quality flag is 0, its crossover flag is 0 or 1, and at most 10% of the lake is "dark water" (Köhn and Nielsen, 2026).</p></div>
+    <div class="card"><h3>Change, not the whole tank</h3><p>SWOT's storage numbers show how much water came and went. How full a tank is also needs the water below SWOT's lowest reading, from the Irrigation Department's capacity tables.</p></div>
+    <div class="card"><h3>Not yet checked</h3><p>Nobody has checked SWOT's storage numbers against Sri Lankan gauges. Doing that, and building our own curves, is the core of our project.</p></div>
+  </div>
+  <p class="small" style="margin-top:18px">Data made on <span id="made"></span> from NASA PO.DAAC's <a href="https://podaac.github.io/hydrocron/">Hydrocron</a> (SWOT Lake Single-Pass product, version D). Official capacities: Irrigation Department, Reservoir Status, 25 Oct 2026. You can also see SWOT readings for any lake on the public <a href="https://mibrechb.github.io/swot-data-explorer/">SWOT Lake and River Explorer</a>.</p>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <h2>Data and credits</h2>
+  <ul>
+    <li>SWOT: NASA/JPL and CNES, Lake Single-Pass product version D, through NASA PO.DAAC's <a href="https://podaac.github.io/hydrocron/">Hydrocron</a> service.</li>
+    <li>Reservoir capacities: Irrigation Department of Sri Lanka, <a href="https://irrigation.gov.lk/web/index.php?option=com_content&amp;view=article&amp;id=84&amp;Itemid=201&amp;lang=en">Reservoir Status</a>.</li>
+  </ul>
+  <p>A student project for the IS4990 Comprehensive Group Project, University of Moratuwa. Group 6, JARVIS, October 2026.</p>
+</div></footer>
+<script src="data/reservoirs.js"></script>
+<script src="assets/data.js"></script>
+</body>
+</html>

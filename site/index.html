@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SWOT Tank Water Tracker for Sri Lanka</title>
+<meta name="description" content="An AI system that estimates how much water each Sri Lankan tank holds, using free satellite data. A student project at the University of Moratuwa.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3987e5" d="M12 2.5c3.7 4.7 6.7 8.3 6.7 11.7a6.7 6.7 0 0 1-13.4 0C5.3 10.8 8.3 7.2 12 2.5z"/></svg>SWOT Tank Water Tracker</a>
+  <nav class="nav" aria-label="Main">
+    <a href="./" aria-current="page">Home</a>
+    <a href="explainer.html">How volume works</a>
+    <a href="data.html">Real SWOT data</a>
+    <a href="costs.html">Cost of more data</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow" style="color:#8fc1f2">IS4990 Comprehensive Group Project · University of Moratuwa</p>
+    <h1>SWOT Tank Water Tracker for Sri Lanka</h1>
+    <p>An AI system that estimates how much water each tank holds, using free satellite data.</p>
+    <div class="btns">
+      <a class="btn primary" href="explainer.html">See how it works</a>
+      <a class="btn ghost" href="data.html">Explore real SWOT data</a>
+    </div>
+    <p class="meta">Group 6 · JARVIS · Project proposal, October 2026</p>
+  </div>
+  <p class="credit">Tanks around Mahakanadarawa, Sentinel-2, 28 Feb 2026. Contains modified Copernicus Sentinel data 2026.</p>
+</div>
+
+<section id="why"><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Why</p>
+    <h2>Dry-zone farming depends on tank water</h2>
+  </div>
+  <div class="tiles">
+    <div class="tile">
+      <div class="value">~23,000</div>
+      <p class="label">small tanks of 80 ha or less in Sri Lanka, the base of dry-zone farming</p>
+      <p class="src">National Tanks Survey, in Lopane et al., 2025</p>
+    </div>
+    <div class="tile">
+      <div class="value">2<span class="unit">seasons a year</span></div>
+      <p class="label">Maha and Yala. Before each one, farmers plan the crop by the water in their tank.</p>
+      <p class="src">Cultivation meetings at village tanks, Oka et al., 2015</p>
+    </div>
+    <div class="tile">
+      <div class="value">1,160</div>
+      <p class="label">small tanks damaged by Cyclone Ditwah in November 2025</p>
+      <p class="src">Department of Agrarian Development, December 2025</p>
+    </div>
+  </div>
+  <p class="callout">But today, nobody can say how much water most tanks hold.</p>
+</div></section>
+
+<section id="problem"><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">The problem we solve</p>
+    <h2>Satellites see the tanks, but not the water in them</h2>
+  </div>
+  <div class="statement">
+    <p class="eyebrow">The problem</p>
+    <p>For most Sri Lankan tanks, nobody can say how much water they hold right now, and there is no low-cost way to measure it often.</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <h3><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-5"/></svg></span>No gauges on village tanks</h3>
+      <p>Only 118 reservoirs publish daily water levels. Village tanks publish none.</p>
+      <p class="small">Irrigation Department, Reservoir Status, 25 Oct 2026</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg></span>Maps show area, not volume</h3>
+      <p>IFAD maps over 10,650 water bodies, but by area only. A shallow tank and a deep tank of the same size hold very different amounts.</p>
+      <p class="small">IFAD, 2026</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></svg></span>Clouds and plants hide the water</h3>
+      <p>Only 17–22% of Sentinel-2 dates were clear over our test tanks, and water plants cover 3 of our 8 village tanks.</p>
+      <p class="small">Our data check, October 2026</p>
+    </div>
+    <div class="card">
+      <h3><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="9" width="6" height="6" rx="1"/><rect x="16" y="9" width="6" height="6" rx="1"/><rect x="9.5" y="8.5" width="5" height="7" rx="1.2"/><path d="M8 12h1.5M14.5 12H16M12 15.5V20"/></svg></span>SWOT gives height, not volume</h3>
+      <p>The NASA and CNES satellite, launched in December 2022, measures water height. It does not give volume, and no one has checked it on Sri Lankan tanks yet.</p>
+      <p class="small">NASA and CNES; our literature search, October 2026</p>
+    </div>
+  </div>
+  <div class="gallery" style="margin-top:22px">
+    <figure class="shot">
+      <img src="assets/img/hurulu-cloud.jpg" alt="Sentinel-2 photo of Hurulu Wewa on 30 November 2025, almost fully hidden by monsoon cloud" width="640" height="675" loading="lazy">
+      <figcaption><div class="big">Monsoon cloud</div><div class="sub">Sentinel-2, 30 Nov 2025: Hurulu Wewa is hidden.</div></figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/img/hurulu-radar.jpg" alt="Sentinel-1 radar image of Hurulu Wewa on 2 December 2025, with the water showing dark" width="640" height="675" loading="lazy">
+      <figcaption><div class="big">Radar sees through</div><div class="sub">Sentinel-1, 2 Dec 2025: the water shows dark.</div></figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Our answer</p>
+    <h2>From water height to water in the tank</h2>
+    <p class="lead">SWOT is the ruler. We turn its readings into the water in each tank, and check the results against official gauges.</p>
+  </div>
+  <ol class="steps">
+    <li><h3>SWOT measures the height</h3><p>Each tank's water height, about twice every 21 days, from NASA's Hydrocron service.</p></li>
+    <li><h3>AI maps the water area</h3><p>Our model maps open water, water under plants and land from Sentinel-1 radar and Sentinel-2 photos, even under cloud.</p></li>
+    <li><h3>A curve for each tank</h3><p>Each SWOT height, paired with the water area of the same day, adds a point to the tank's height–area–volume curve.</p></li>
+    <li><h3>Storage every 5–12 days</h3><p>Every new water map then becomes a volume in m³ and % full, checked against Irrigation Department gauges.</p></li>
+  </ol>
+  <p style="margin-top:22px"><a class="btn line" href="explainer.html">Try the interactive explainer</a></p>
+</div></section>
+
+<section id="evidence"><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Real data</p>
+    <h2>Hurulu Wewa, seen by SWOT and Sentinel-2</h2>
+    <p class="lead">Each picture pairs a Sentinel-2 photo with a SWOT height taken at about the same time. Each pair is one point on Hurulu Wewa's curve.</p>
+  </div>
+  <div class="gallery">
+    <figure class="shot">
+      <img src="assets/img/hurulu-low.jpg" alt="Hurulu Wewa when low, Sentinel-2, 29 July 2023" width="640" height="675" loading="lazy">
+      <figcaption><div class="big">127.59 m</div><div class="sub">about 6.1 km² of water</div><div class="small">Sentinel-2 29 Jul 2023 · SWOT 30 Jul 2023</div></figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/img/hurulu-half.jpg" alt="Hurulu Wewa when half full, Sentinel-2, 30 July 2025" width="640" height="675" loading="lazy">
+      <figcaption><div class="big">129.50 m</div><div class="sub">about 8.3 km² of water</div><div class="small">Sentinel-2 and SWOT, 30 Jul 2025</div></figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="assets/img/hurulu-full.jpg" alt="Hurulu Wewa when full, Sentinel-2, 28 February 2026" width="640" height="675" loading="lazy">
+      <figcaption><div class="big">132.35 m</div><div class="sub">about 10.8 km² of water</div><div class="small">Sentinel-2 28 Feb 2026 · SWOT 10 Mar 2026</div></figcaption>
+    </figure>
+  </div>
+  <p class="small" style="margin-top:10px">Areas here come from a simple water index, which works only on clear days. That is why we are building the AI water model.</p>
+  <p class="callout">In Cyclone Ditwah, Hurulu Wewa rose 4.6 m and gained about 44 million m³ in four weeks (25 Nov to 23 Dec 2025), by SWOT's own storage numbers. <a href="data.html">See all five reservoirs</a></p>
+</div></section>
+
+<section id="area"><div class="wrap split">
+  <figure class="map"><img src="assets/img/study-map.png" alt="Map of the study area east of Anuradhapura: five major reservoirs in blue and eight numbered village tanks in orange" width="1200" height="997" loading="lazy"></figure>
+  <div>
+    <p class="eyebrow">Study area</p>
+    <h2>5 reservoirs and 8 village tanks near Anuradhapura</h2>
+    <ul class="facts">
+      <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.6 4.6 6.5 8.1 6.5 11.4a6.5 6.5 0 0 1-13 0C5.5 11.1 8.4 7.6 12 3z"/></svg></span>
+        <div><b>5 major reservoirs</b><span>Hurulu Wewa, Mahakanadarawa, Manankattiya, Nachchaduwa and Nuwara Wewa, all with daily gauge readings</span></div></li>
+      <li><span class="icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg></span>
+        <div><b>8 village tanks</b><span>0.4–5 km from Mahakanadarawa: 2 with open water, 3 mixed and 3 mostly covered by water plants</span></div></li>
+      <li><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"/></svg></span>
+        <div><b>Seen by SWOT passes 273 and 092</b><span>All 13 tanks, about twice every 21 days, with 47–90 usable readings each since July 2023</span></div></li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="team"><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Team</p>
+    <h2>Who does what: one research question each</h2>
+    <p class="lead">Each of us owns one core research question from start to finish.</p>
+  </div>
+  <div class="members">
+    <div class="member" style="--c:var(--blue)">
+      <div class="who">Member A</div>
+      <h3>AI water maps</h3>
+      <span class="pill">RQ1</span>
+      <ul><li>Labelled water masks of Sri Lankan tanks</li><li>Sentinel-1 and Sentinel-2 deep-learning model</li><li>A water-plant class for covered tanks</li></ul>
+      <p class="out"><b>Output:</b> water maps for all tanks</p>
+    </div>
+    <div class="member" style="--c:var(--aqua)">
+      <div class="who">Member B</div>
+      <h3>SWOT and gauges</h3>
+      <span class="pill">RQ2</span>
+      <ul><li>SWOT heights from Hydrocron, poor readings removed</li><li>Gauge data: daily records, history and field photos</li><li>Tests whether "suspect" readings can be trusted</li></ul>
+      <p class="out"><b>Output:</b> SWOT accuracy report</p>
+    </div>
+    <div class="member" style="--c:var(--orange)">
+      <div class="who">Member C</div>
+      <h3>Storage and dashboard</h3>
+      <span class="pill">RQ3</span><span class="pill stretch">RQ4 stretch</span>
+      <ul><li>Height–area–volume curve for each tank</li><li>Storage every 5–12 days, checked against official figures</li><li>Dashboard, and the forecast if time allows</li></ul>
+      <p class="out"><b>Output:</b> storage series and dashboard</p>
+    </div>
+  </div>
+  <p class="shared"><b>All three:</b> field visits on SWOT pass dates, labelling water masks, the thesis and the research paper.</p>
+</div></section>
+
+<section id="explore"><div class="wrap">
+  <div class="section-head"><p class="eyebrow">Explore</p><h2>See it for yourself</h2></div>
+  <div class="explore">
+    <a href="explainer.html"><b>How volume works</b><span>Drag the water up and down in a model tank, and play a year of satellite updates.</span></a>
+    <a href="data.html"><b>Real SWOT data</b><span>Three years of SWOT water levels and stored water for our five reservoirs.</span></a>
+    <a href="costs.html"><b>Cost of more data</b><span>What loggers, a sonar or paid images would cost to check each tank more often.</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <h2>Data and credits</h2>
+  <ul>
+    <li>SWOT: NASA/JPL and CNES, Lake Single-Pass product version D, through NASA PO.DAAC's <a href="https://podaac.github.io/hydrocron/">Hydrocron</a> service.</li>
+    <li>Sentinel-1 and Sentinel-2: contains modified Copernicus Sentinel data 2023–2026.</li>
+    <li>Reservoir capacities and daily levels: Irrigation Department of Sri Lanka, <a href="https://irrigation.gov.lk/web/index.php?option=com_content&amp;view=article&amp;id=84&amp;Itemid=201&amp;lang=en">Reservoir Status</a>.</li>
+    <li>Tank outlines © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.</li>
+  </ul>
+  <p>A student project for the IS4990 Comprehensive Group Project, University of Moratuwa. Group 6, JARVIS, October 2026.</p>
+</div></footer>
+</body>
+</html>
