@@ -1,9 +1,9 @@
 /* SWOT Tank Water Tracker: shared site styles. Colours match the proposal deck. */
 :root {
   color-scheme: light;
-  --page: #f4f7f9; --surface: #ffffff; --surface-2: #eef3f6;
-  --ink: #142430; --ink-2: #44545e; --muted: #5b6973;
-  --rule: #dce3e8; --grid: #e6ebef; --axis: #c3cdd4;
+  --page: #f8f5ef; --surface: #fffdf9; --surface-2: #f2ede3;
+  --ink: #1d2a33; --ink-2: #4c5961; --muted: #626b70;
+  --rule: #e7e0d3; --grid: #ede7db; --axis: #cfc6b6;
   --navy: #0b2230; --navy-2: #12384d; --on-navy: #ffffff; --on-navy-2: #c9d6de;
   --blue: #2a78d6; --orange: #eb6834; --aqua: #1baf7a;
   --blue-strong: #1c5cab; --orange-strong: #b9481b; --link: #1c5cab;
