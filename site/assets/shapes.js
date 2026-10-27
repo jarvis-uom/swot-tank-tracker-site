@@ -1,4 +1,4 @@
-// Tank shapes page: five bank shapes, four ways to count the water, and how close each way gets.
+// Tank shapes page: five bank shapes, five ways to count the water, and how close each way gets.
 (() => {
   const $ = (s) => document.querySelector(s);
   const fmt = (n) => Math.round(n).toLocaleString("en-US");
@@ -15,15 +15,18 @@
       lesson: "For a long tank like this, the average is exact: the sand that the top area wrongly adds is the same size as the water that the bottom area misses. A round pond is different: see the cone formula below." },
     { id: "shallow", name: "Shallow edges", area: (h) => 10 + 7 * h + 3 * h * h, real: 42,
       about: "The bank gets flatter near the top, like a saucer, so the water spreads out faster as it rises: 10, 20, then 36 ha.",
-      lesson: "The average over one big 2 m layer counts 40,000 m³ too much. Two thin 1 m layers, a and b, cut this to 10,000 m³." },
+      lesson: "The average over one big 2 m layer counts 40,000 m³ too much. Two 1 m layers, a and b, cut this to 10,000 m³, and four 50 cm layers to 2,500 m³. Each time the layers get half as thick, the error drops to a quarter." },
     { id: "bowl", name: "Bowl", area: (h) => 10 + 13 * h - 3 * h * h, real: 38,
       about: "The bank gets steeper near the top, like a bowl or the bund: 10, 20, then only 24 ha.",
-      lesson: "The average over one big 2 m layer counts 40,000 m³ too little. Two thin 1 m layers, a and b, cut this to 10,000 m³." },
+      lesson: "The average over one big 2 m layer counts 40,000 m³ too little. Two 1 m layers, a and b, cut this to 10,000 m³, and four 50 cm layers to 2,500 m³. Each time the layers get half as thick, the error drops to a quarter." },
     { id: "shore", name: "Flat shore", area: (h) => (h < 1.95 ? 10 : 30), real: 21,
       about: "Steep sides, then a flat shore right at the top. At 102 m the water spreads over 20 more hectares, but there it is only 5 cm deep: 10, 10, then 30 ha.",
-      lesson: "The area jumps, but the new water is only 5 cm deep, so even two thin layers count far too much. The fix: one more height and area, measured just below the shore." },
+      lesson: "The area jumps, but the new water is only 5 cm deep, so even four thin layers count 40,000 m³ too much. The fix: one more height and area, measured just below the shore." },
   ];
   SHAPES.forEach((s) => { s.A = [s.area(0), s.area(1), s.area(2)]; });
+
+  // the four 50 cm layers a1, a2, b1 and b2, using the area at each half metre
+  const halves = (s) => [0, 1, 2, 3].map((i) => [i / 2, (i + 1) / 2, (s.area(i / 2) + s.area((i + 1) / 2)) / 2]);
 
   // each way of counting is a list of boxes: [from height, to height, area in ha]
   const METHODS = [
@@ -36,8 +39,11 @@
     { button: "Two thin layers", name: "Two thin layers, a + b",
       parts: (A) => [[0, 1, (A[0] + A[1]) / 2], [1, 2, (A[1] + A[2]) / 2]],
       sum: (A) => `a: (${A[0]} + ${A[1]}) ÷ 2 = ${(A[0] + A[1]) / 2} ha, then × 1 m<br>b: (${A[1]} + ${A[2]}) ÷ 2 = ${(A[1] + A[2]) / 2} ha, then × 1 m` },
+    { button: "Four thin layers", name: "Four thin layers, a1 + a2 + b1 + b2",
+      parts: (A, s) => halves(s),
+      sum: (A, s) => `Each 50 cm thick, with 2 more areas measured halfway up each metre:<br>${halves(s).map(([h0, h1, a]) => fmt(a * (h1 - h0) * M3)).join(" + ")} m³` },
   ];
-  const counted = (m, s) => m.parts(s.A).reduce((v, [h0, h1, a]) => v + a * (h1 - h0), 0);   // hectare-metres
+  const counted = (m, s) => m.parts(s.A, s).reduce((v, [h0, h1, a]) => v + a * (h1 - h0), 0);   // hectare-metres
   function compare(v, s) {
     const d = (v - s.real) * M3;
     return d === 0 ? "Exact" : `${fmt(Math.abs(d))} m³ too ${d > 0 ? "much" : "little"}`;
@@ -78,7 +84,7 @@
   function drawSide(s, m) {
     const water = path(waterPts(s)), banks = bankPts(s);
     const earth = path([[X0, H], [X0, LAND], ...banks, [X1, LAND], [X1, H]]);
-    const boxes = m.parts(s.A).map(([h0, h1, a]) => ({ x: CX - HALF(a), y: Y(h1), w: 2 * HALF(a), h: Y(h0) - Y(h1) }));
+    const boxes = m.parts(s.A, s).map(([h0, h1, a]) => ({ x: CX - HALF(a), y: Y(h1), w: 2 * HALF(a), h: Y(h0) - Y(h1) }));
     const holes = boxes.map((r) => `M${r.x} ${r.y} h${r.w} v${r.h} h${-r.w} Z`).join(" ");
     const top = s.id === "shore" ? 30 : s.A[2], mid = s.A[1];
     let g = `<defs>
@@ -96,7 +102,8 @@
     g += `<path class="t-bank" d="${path(banks, false)}"/>`;
     g += `<line class="t-surface" x1="${CX - HALF(top)}" y1="${Y(2)}" x2="${CX + HALF(top)}" y2="${Y(2)}"/>`;
     g += `<line class="t-level" x1="${CX - HALF(mid)}" y1="${Y(1)}" x2="${CX + HALF(mid)}" y2="${Y(1)}"/>`;
-    g += `<text class="t-layer" x="${CX}" y="${(Y(0) + Y(1)) / 2 + 8}">a</text><text class="t-layer" x="${CX}" y="${(Y(1) + Y(2)) / 2 + 8}">b</text>`;
+    const marks = boxes.length === 4 ? [["a1", 0.25], ["a2", 0.75], ["b1", 1.25], ["b2", 1.75]] : [["a", 0.5], ["b", 1.5]];
+    g += marks.map(([t, h]) => `<text class="t-layer" x="${CX}" y="${Y(h) + 8}">${t}</text>`).join("");
     boxes.forEach((r) => {
       g += `<rect class="t-box-halo counted" x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}"/>` +
            `<rect class="t-box" x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}"/>`;
@@ -145,7 +152,7 @@
   function drawTable(s, m) {
     const rows = METHODS.map((x) => {
       const v = counted(x, s);
-      return `<tr${x === m ? ' class="on"' : ""}><th scope="row">${x.name}</th><td class="sum">${x.sum(s.A)}</td>` +
+      return `<tr${x === m ? ' class="on"' : ""}><th scope="row">${x.name}</th><td class="sum">${x.sum(s.A, s)}</td>` +
              `<td>${fmt(v * M3)} m³</td><td>${compare(v, s)}</td></tr>`;
     });
     rows.push(`<tr class="real"><th scope="row">Real water</th><td class="sum">very thin layers, all the way up</td>` +
@@ -154,7 +161,7 @@
   }
   $("#summary-rows").innerHTML = SHAPES.map((s) => {
     const cell = (v) => `${fmt(v * M3)} m³ <span class="d">(${compare(v, s).toLowerCase()})</span>`;
-    return `<tr><th scope="row">${s.name}</th><td>${fmt(s.real * M3)} m³</td><td>${cell(counted(METHODS[2], s))}</td><td>${cell(counted(METHODS[3], s))}</td></tr>`;
+    return `<tr><th scope="row">${s.name}</th><td>${fmt(s.real * M3)} m³</td><td>${cell(counted(METHODS[2], s))}</td><td>${cell(counted(METHODS[3], s))}</td><td>${cell(counted(METHODS[4], s))}</td></tr>`;
   }).join("");
 
   // ---- pickers ------------------------------------------------------------------------
