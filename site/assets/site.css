@@ -293,3 +293,31 @@ table.data.st-table .st-total th, table.data.st-table .st-total td { font-weight
 .st-img { width: 100%; height: auto; margin: 12px 0 10px; border-radius: 8px; }
 .st-math { margin-top: 22px; }
 .st-math p { max-width: 80ch; }
+
+/* satellite calendar page */
+.cal-legend { list-style: none; padding: 0; margin: 0 0 6px; display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.cal-legend li { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); font-size: .95rem; }
+.cal-months { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; }
+.cal-month { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 14px 12px; box-shadow: var(--shadow); }
+.cal-month h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; }
+.cal-head { font-size: .72rem; color: var(--muted); text-align: center; padding-bottom: 2px; }
+.cal-day { min-height: 56px; border: 1px solid var(--rule); border-radius: 6px; padding: 2px 3px 3px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 2px; position: relative; background: var(--page); }
+.cal-day.empty { border: 0; background: transparent; }
+.cal-day.out { opacity: .35; }
+.cal-day.future { background: transparent; border-style: dashed; }
+.cal-day.today { outline: 2.5px solid var(--orange); outline-offset: -1px; }
+.cal-n { width: 100%; font-size: .72rem; color: var(--ink-2); font-weight: 600; line-height: 1.15; }
+.cal-g { position: absolute; top: 2px; right: 3px; font-size: .6rem; font-weight: 700; color: var(--muted); }
+.cal-legend .cal-g { position: static; display: inline-grid; place-items: center; width: 24px; height: 20px; border: 1px solid var(--rule); border-radius: 4px; font-size: .72rem; }
+.cal-chip { display: inline-block; font-size: .62rem; font-weight: 700; line-height: 1; padding: 2px 3px; border-radius: 3px; color: #fff; background: var(--c); border: 1.5px solid var(--c); }
+.cal-legend .cal-chip { font-size: .74rem; padding: 3px 5px; }
+.cal-chip.exp { background: transparent; color: var(--ink); border-style: dashed; }
+.cal-chip.cloudy { opacity: .4; text-decoration: line-through; }
+.cal-swot { --c: var(--ink); } .cal-chip.cal-swot:not(.exp) { color: var(--page); }
+.cal-s1 { --c: #b9481b; } .cal-ni { --c: #0f7a55; } .cal-al { --c: #6250d6; } .cal-s2 { --c: #1c5cab; } .cal-ls { --c: #8a5a00; }
+@media (prefers-color-scheme: dark) {
+  .cal-s1 { --c: #e0743f; } .cal-ni { --c: #2bb184; } .cal-al { --c: #9085e9; } .cal-s2 { --c: #5598e7; } .cal-ls { --c: #d39a1c; }
+  .cal-chip:not(.exp) { color: #0b141a; }
+}
+.cal-kind { display: block; font-size: .75rem; color: var(--muted); font-weight: 400; }
