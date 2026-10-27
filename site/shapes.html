@@ -31,13 +31,13 @@
 <section><div class="wrap">
   <div class="section-head">
     <p class="eyebrow">The basic idea</p>
-    <h2>A straight bank: layer a and layer b</h2>
+    <h2>A straight slope: layer a and layer b</h2>
     <p class="lead">The water rose from 100 m to 102 m. Sentinel saw 10 ha of water at 100 m, 20 ha at 101 m and 30 ha at 102 m. Layer a is the bottom metre and layer b is the top metre.</p>
   </div>
   <div class="cards">
     <div class="card"><h3>Top area × height</h3><p class="sum-line">30 ha × 2 m = <b>600,000 m³</b></p><p><b>Too much.</b> It also counts the sand under the sloping bank as water.</p></div>
     <div class="card"><h3>Bottom area × height</h3><p class="sum-line">10 ha × 2 m = <b>200,000 m³</b></p><p><b>Too little.</b> It misses the water lying over the slope.</p></div>
-    <div class="card"><h3>Average area × height</h3><p class="sum-line">(10 + 30) ÷ 2 = 20 ha × 2 m = <b>400,000 m³</b></p><p><b>Just right.</b> The sand it wrongly adds is the same size as the water it misses.</p></div>
+    <div class="card"><h3>Average area × height</h3><p class="sum-line">(10 + 30) ÷ 2 = 20 ha, then × 2 m = <b>400,000 m³</b></p><p><b>Just right</b> for a long tank with straight banks, like this one. The sand it wrongly adds is the same size as the water it misses.</p></div>
   </div>
   <p class="callout">Real banks are not always straight. Try five shapes below and see when the average works.</p>
 </div></section>
@@ -46,18 +46,19 @@
   <div class="section-head">
     <p class="eyebrow">Try it</p>
     <h2>Five shapes a tank's bank can have</h2>
-    <p>Pick a shape, then a way of counting. The dashed box shows the water that each way counts.</p>
+    <p>Pick a shape, then a way of counting. The dashed boxes show the water that each way counts.</p>
   </div>
   <div class="picker" id="shape-picker" role="tablist" aria-label="Bank shape"></div>
 
-  <div id="shape-panel" role="tabpanel">
+  <div id="shape-panel" role="tabpanel" tabindex="0">
     <h3 id="shape-name" class="shape-name"></h3>
     <p id="shape-about" class="shape-about"></p>
     <div class="presets" id="method-picker" role="group" aria-label="Way of counting"></div>
+    <p id="result" class="sr" aria-live="polite"></p>
 
     <div class="shape-figs">
       <figure class="chart tank-fig">
-        <figcaption><h3>Side view</h3><p class="small" style="margin:0">A cut through the tank. Not to scale: the depth is stretched so you can see it.</p></figcaption>
+        <figcaption><h3>Side view</h3><p class="small" style="margin:0">A cut through a long tank: the width at each height shows the water area there. Not to scale: the depth is stretched so you can see it.</p></figcaption>
         <div class="scrollx"><svg id="side" class="tank-side" viewBox="0 0 640 300" role="img" aria-labelledby="side-title side-desc"><title id="side-title">Side view of the tank</title><desc id="side-desc"></desc><g id="side-g"></g></svg></div>
         <ul class="key">
           <li><svg viewBox="0 0 18 14" aria-hidden="true"><rect x="1.5" y="1.5" width="15" height="11" class="t-box-halo"/><rect x="1.5" y="1.5" width="15" height="11" class="t-box"/></svg>What this way counts</li>
@@ -66,7 +67,7 @@
         </ul>
       </figure>
       <figure class="chart tank-fig">
-        <figcaption><h3>What Sentinel sees from above</h3><p class="small" style="margin:0">The water at each height. Each hectare is drawn the same size for every shape.</p></figcaption>
+        <figcaption><h3>What Sentinel sees from above</h3><p class="small" style="margin:0">The water at each height, from 100 m (inside) to 102 m (outside). Each hectare is drawn the same size for every shape.</p></figcaption>
         <svg id="top" class="tank-top" viewBox="0 0 300 220" role="img" aria-labelledby="top-title top-desc"><title id="top-title">Top view of the water</title><desc id="top-desc"></desc><g id="top-g"></g></svg>
         <ul class="key" id="top-key"></ul>
       </figure>
@@ -96,9 +97,9 @@
     </table>
   </div>
   <ul class="notes">
-    <li><b>Straight banks:</b> the average is exact.</li>
-    <li><b>Curved banks:</b> one big layer is off by about 10%. Two thin layers cut the error to a quarter, from 40,000 to 10,000 m³. Even thinner layers get closer still.</li>
-    <li><b>Flat shores:</b> the area jumps, but the new water is very shallow. We need a dot just below the shore, so the curve shows where the jump is.</li>
+    <li><b>Straight banks in a long tank:</b> the average is exact. Around a round pond, straight banks make a cone, and the area grows faster near the top. There the average counts a little too much, and the cone formula below is exact.</li>
+    <li><b>Curved banks:</b> the average over one big layer is off by about 10%. Two thin layers cut the error to a quarter, from 40,000 to 10,000 m³. Even thinner layers get closer still.</li>
+    <li><b>Flat shores:</b> the area jumps, but the new water is very shallow. One more height and area, measured just below the shore, shows where the jump is.</li>
   </ul>
 </div></section>
 
@@ -108,8 +109,9 @@
     <h2>Integration or differentiation?</h2>
   </div>
   <div class="cards">
-    <div class="card"><h3>Integration: for the volume</h3><p>The volume is all the thin layers added up, from the bottom to the top: V = ∫ A dh. “Average area × height” is the simplest way to do this sum, and thinner layers make it more exact.</p></div>
-    <div class="card"><h3>Differentiation: the other way round</h3><p>How fast the volume grows with the height is the area: dV/dh = A. At 20 ha, every extra 1 cm of water adds 2,000 m³.</p></div>
+    <div class="card"><h3>Integration: for the volume</h3><p>The volume is all the thin layers added up, from the bottom to the top: V&nbsp;=&nbsp;∫&nbsp;A&nbsp;dh. “Average area × height” is the simplest way to do this sum, and thinner layers make it more exact.</p></div>
+    <div class="card"><h3>Differentiation: the other way round</h3><p>How fast the volume grows with the height is the area: dV/dh&nbsp;=&nbsp;A. At 20 ha, every extra 1 cm of water adds 2,000 m³.</p></div>
+    <div class="card"><h3>The cone formula: for round ponds</h3><p>Around a round pond with straight banks, the exact sum between two heights is V&nbsp;=&nbsp;H&nbsp;÷&nbsp;3 × (A1 + A2 + √(A1&nbsp;×&nbsp;A2)). Example: 9 ha at 100 m and 36 ha at 102 m. √(9 × 36) = 18, then 2 ÷ 3 × (9 + 36 + 18) = 42, so <b>420,000 m³</b>. The average gives (9 + 36) ÷ 2 × 2 = 45, so 450,000 m³: 30,000 m³ too much.</p></div>
   </div>
 </div></section>
 
@@ -122,7 +124,7 @@
     <li>Each day that SWOT and Sentinel both see a tank gives one dot: a height and an area. Many dots give the tank's height–area curve.</li>
     <li>We add up thin layers along that curve, so curved banks are counted well. More dots mean thinner layers.</li>
     <li>For our five reservoirs, the Irrigation Department's daily gauge heights give extra dots for free.</li>
-    <li>SWOT's own storage numbers use the same idea: one uses the average area, the other a formula for cone-shaped lakes.</li>
+    <li>SWOT's own storage-change numbers use the same two rules: one uses the average area, the other the cone formula.</li>
   </ul>
   <p style="margin-top:22px"><a class="btn line" href="explainer.html">See it move in the model tank</a></p>
 </div></section>

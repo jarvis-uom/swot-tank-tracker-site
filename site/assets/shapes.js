@@ -11,17 +11,17 @@
       about: "The bank goes straight up, like a rock wall or a spillway. The water area stays at 20 ha at every height.",
       lesson: "The area does not change, so every way of counting gives the same answer." },
     { id: "slope", name: "Straight slope", area: (h) => 10 + 10 * h, real: 40,
-      about: "An even slope, like your drawing. The area grows by the same 10 ha every metre: 10, 20, then 30 ha.",
-      lesson: "The average is exact: the sand that the top area wrongly adds is the same size as the water that the bottom area misses." },
+      about: "An even slope, as in the basic idea above. The area grows by the same 10 ha every metre: 10, 20, then 30 ha.",
+      lesson: "For a long tank like this, the average is exact: the sand that the top area wrongly adds is the same size as the water that the bottom area misses. A round pond is different: see the cone formula below." },
     { id: "shallow", name: "Shallow edges", area: (h) => 10 + 7 * h + 3 * h * h, real: 42,
       about: "The bank gets flatter near the top, like a saucer, so the water spreads out faster as it rises: 10, 20, then 36 ha.",
-      lesson: "One big layer counts a little too much. Two thin layers, a and b, cut the error from 40,000 to 10,000 m³." },
+      lesson: "The average over one big 2 m layer counts 40,000 m³ too much. Two thin 1 m layers, a and b, cut this to 10,000 m³." },
     { id: "bowl", name: "Bowl", area: (h) => 10 + 13 * h - 3 * h * h, real: 38,
       about: "The bank gets steeper near the top, like a bowl or the bund: 10, 20, then only 24 ha.",
-      lesson: "One big layer counts a little too little. Two thin layers, a and b, cut the error from 40,000 to 10,000 m³." },
-    { id: "shore", name: "Flat shore", area: (h) => (h < 2 ? 10 : 30), real: 20,
-      about: "Steep sides, then a flat shore right at the top. At 102 m the water spreads over 20 more hectares, but there it is only a few centimetres deep: 10, 10, then 30 ha.",
-      lesson: "The area jumps, but the new water is very shallow, so even two thin layers count far too much. A dot just below the shore shows where the jump is." },
+      lesson: "The average over one big 2 m layer counts 40,000 m³ too little. Two thin 1 m layers, a and b, cut this to 10,000 m³." },
+    { id: "shore", name: "Flat shore", area: (h) => (h < 1.95 ? 10 : 30), real: 21,
+      about: "Steep sides, then a flat shore right at the top. At 102 m the water spreads over 20 more hectares, but there it is only 5 cm deep: 10, 10, then 30 ha.",
+      lesson: "The area jumps, but the new water is only 5 cm deep, so even two thin layers count far too much. The fix: one more height and area, measured just below the shore." },
   ];
   SHAPES.forEach((s) => { s.A = [s.area(0), s.area(1), s.area(2)]; });
 
@@ -32,10 +32,10 @@
     { button: "Bottom area", name: "Bottom area × height",
       parts: (A) => [[0, 2, A[0]]], sum: (A) => `${A[0]} ha × 2 m` },
     { button: "Average", name: "Average area × height",
-      parts: (A) => [[0, 2, (A[0] + A[2]) / 2]], sum: (A) => `(${A[0]} + ${A[2]}) ÷ 2 = ${(A[0] + A[2]) / 2} ha × 2 m` },
+      parts: (A) => [[0, 2, (A[0] + A[2]) / 2]], sum: (A) => `(${A[0]} + ${A[2]}) ÷ 2 = ${(A[0] + A[2]) / 2} ha, then × 2 m` },
     { button: "Two thin layers", name: "Two thin layers, a + b",
       parts: (A) => [[0, 1, (A[0] + A[1]) / 2], [1, 2, (A[1] + A[2]) / 2]],
-      sum: (A) => `a: ${(A[0] + A[1]) / 2} ha × 1 m + b: ${(A[1] + A[2]) / 2} ha × 1 m` },
+      sum: (A) => `a: (${A[0]} + ${A[1]}) ÷ 2 = ${(A[0] + A[1]) / 2} ha, then × 1 m<br>b: (${A[1]} + ${A[2]}) ÷ 2 = ${(A[1] + A[2]) / 2} ha, then × 1 m` },
   ];
   const counted = (m, s) => m.parts(s.A).reduce((v, [h0, h1, a]) => v + a * (h1 - h0), 0);   // hectare-metres
   function compare(v, s) {
@@ -48,7 +48,7 @@
   const Y = (h) => 250 - 90 * h;                      // 100 m at y = 250, 101 m at 160, 102 m at 70
   const HALF = (a) => 6 * a;                          // half the water width: 6 px for each hectare
   const TOPH = (250 - LAND) / 90;                     // the top of the land in the drawing, 2.33 m above 100 m
-  const FILM = 4 / 90;                                // the flat shore's water, drawn 4 px (about 4 cm) deep
+  const FILM = 0.05;                                  // the flat shore's water is 5 cm deep
 
   function bank(s) {                                  // [height, area] along the bank, from the bed to the top of the land
     if (s.id === "shore") return [[0, 10], [2 - FILM, 10], [2 - FILM, 30], [TOPH, 30]];
@@ -131,8 +131,14 @@
       g += `<path class="${FILLS[h]}" d="${smooth(BASE.map(([x, y]) => [C[0] + (x - C[0]) * k, C[1] + (y - C[1]) * k]))}"/>`;
     });
     $("#top-g").innerHTML = g;
-    $("#top-key").innerHTML = [0, 1, 2].map((h) =>
-      `<li><svg viewBox="0 0 18 14" aria-hidden="true"><rect width="18" height="14" rx="3" class="${FILLS[h]}"/></svg>${100 + h} m: ${s.A[h]} ha</li>`).join("");
+    const groups = [];                                // heights with the same area share one outline and one key entry
+    [0, 1, 2].forEach((h) => {
+      const g = groups.find((x) => x.area === s.A[h]);
+      if (g) g.hs.push(100 + h); else groups.push({ area: s.A[h], hs: [100 + h], fill: FILLS[h] });
+    });
+    const list = (a) => (a.length < 2 ? `${a[0]}` : `${a.slice(0, -1).join(", ")} and ${a[a.length - 1]}`);
+    $("#top-key").innerHTML = groups.map((g) =>
+      `<li><svg viewBox="0 0 18 14" aria-hidden="true"><rect width="18" height="14" rx="3" class="${g.fill}"/></svg>${list(g.hs)} m: ${g.area} ha</li>`).join("");
   }
 
   // ---- tables ------------------------------------------------------------------------
@@ -143,7 +149,7 @@
              `<td>${fmt(v * M3)} m³</td><td>${compare(v, s)}</td></tr>`;
     });
     rows.push(`<tr class="real"><th scope="row">Real water</th><td class="sum">very thin layers, all the way up</td>` +
-              `<td>${fmt(s.real * M3)} m³${s.id === "shore" ? " + a thin film" : ""}</td><td></td></tr>`);
+              `<td>${fmt(s.real * M3)} m³</td><td></td></tr>`);
     $("#method-rows").innerHTML = rows.join("");
   }
   $("#summary-rows").innerHTML = SHAPES.map((s) => {
@@ -189,7 +195,8 @@
     drawSide(s, m);
     drawTop(s);
     drawTable(s, m);
-    $("#lesson").textContent = s.lesson;
+    if ($("#lesson").textContent !== s.lesson) $("#lesson").textContent = s.lesson;
+    $("#result").textContent = `${m.name} counts ${fmt(v * M3)} m³: ${compare(v, s).toLowerCase()}.`;
     $("#side-desc").textContent = `${s.name}. Water area ${s.A[0]} ha at 100 m, ${s.A[1]} ha at 101 m and ${s.A[2]} ha at 102 m. ` +
       `${m.name} counts ${fmt(v * M3)} m³: ${compare(v, s).toLowerCase()}.`;
     $("#top-desc").textContent = `Water outlines from above: ${s.A[0]} ha at 100 m, ${s.A[1]} ha at 101 m and ${s.A[2]} ha at 102 m.`;
