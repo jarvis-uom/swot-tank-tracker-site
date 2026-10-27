@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step by step · SWOT Tank Water Tracker</title>
+<meta name="description" content="One example, step by step: real satellite days, where each height and area comes from, the function A(h) and the integral that gives the water.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3987e5" d="M12 2.5c3.7 4.7 6.7 8.3 6.7 11.7a6.7 6.7 0 0 1-13.4 0C5.3 10.8 8.3 7.2 12 2.5z"/></svg>SWOT Tank Water Tracker</a>
+  <nav class="nav" aria-label="Main">
+    <a href="./">Home</a>
+    <a href="explainer.html">How volume works</a>
+    <a href="shapes.html">Tank shapes</a>
+    <a href="steps.html" aria-current="page">Step by step</a>
+    <a href="data.html">Real SWOT data</a>
+    <a href="presentation.html">Presentation</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<div class="band"><div class="wrap">
+  <p class="eyebrow" style="color:#8fc1f2">Step by step</p>
+  <h1>How we count the water, step by step</h1>
+  <p>One example tank near Mahakanadarawa, from satellite days to cubic metres. The days are real: they are the days each satellite really gave data over Mahakanadarawa in 2026. The heights and areas are made-up round numbers, so the sums stay easy to follow.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Where each number comes from</p>
+    <h2>Two things to measure: the height and the area</h2>
+  </div>
+  <div class="cards">
+    <div class="card"><h3>SWOT: the height</h3><p>Measures how high the water stands, to about 10 cm. Over our tanks it passes twice every 21 days: 6 days apart, then 14.</p></div>
+    <div class="card"><h3>Sentinel-2: a photo</h3><p>Shows the water's area with 10 m pixels, but only when the sky is clear: about once a month here.</p></div>
+    <div class="card"><h3>Sentinel-1: radar</h3><p>Shows the water's area through cloud, every 12 days.</p></div>
+    <div class="card"><h3>NISAR: radar</h3><p>Shows the water's area through cloud, and better under water plants. Twice every 12 days, since June 2026.</p></div>
+  </div>
+  <p class="small" style="margin-top:14px">At the five big reservoirs, the Irrigation Department's gauge also gives the height every day.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Step 1</p>
+    <h2>Collect dots: a height and an area for the same day</h2>
+    <p class="lead">A dot is one day when we know both the water's height and its area. Below are the real days with data from January to August 2026. Five of them became our dots.</p>
+  </div>
+  <figure class="chart">
+    <figcaption><h3>Days with data over Mahakanadarawa, January to August 2026</h3><p class="small" style="margin:0">Each line is one day. SWOT: usable passes. Sentinel-2: clear photos only. The numbered days are our five dots.</p></figcaption>
+    <div class="scrollx"><svg id="timeline" class="st-svg st-wide" viewBox="0 0 900 250" role="img" aria-labelledby="tl-title tl-desc"><title id="tl-title">Days with data from each satellite</title><desc id="tl-desc">SWOT passed about twice every 21 days, Sentinel-1 every 12 days, Sentinel-2 had only three clear photos, and NISAR began in mid-June. Our dots are on 13 January, 28 February, 25 March, 29 June and 24 August.</desc></svg></div>
+  </figure>
+  <p style="margin-top:22px;max-width:75ch">When the map and the SWOT pass fall on different days, we read the height from a straight line between the SWOT passes before and after. Example: SWOT measured 103 m 20 cm on 24 February and 102 m 50 cm on 10 March, so the water fell 5 cm a day, and on 28 February it stood at 103 m.</p>
+  <div class="scrollx">
+    <table class="data st-table">
+      <caption class="sr">Our five dots: made-up heights and areas on real satellite days</caption>
+      <thead><tr><th scope="col">Dot</th><th scope="col">Day</th><th scope="col">Height</th><th scope="col">Height from</th><th scope="col">Area</th><th scope="col">Area from</th></tr></thead>
+      <tbody id="dot-rows">
+        <tr><td>1</td><td>13 Jan 2026</td><td>104 m</td><td>SWOT, same day</td><td>32 ha</td><td>Sentinel-1 radar</td></tr>
+        <tr><td>2</td><td>28 Feb 2026</td><td>103 m</td><td>SWOT, between 24 Feb and 10 Mar</td><td>24 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>3</td><td>25 Mar 2026</td><td>102 m</td><td>SWOT, between 16 Mar and 6 Apr</td><td>20 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>4</td><td>29 Jun 2026</td><td>101 m</td><td>SWOT, same day</td><td>14 ha</td><td>NISAR radar</td></tr>
+        <tr><td>5</td><td>24 Aug 2026</td><td>100 m</td><td>SWOT, same day</td><td>10 ha</td><td>Sentinel-1 radar</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Step 2</p>
+    <h2>Join the dots: the function A(h)</h2>
+    <p class="lead">Put the dots on a chart of height against area and join them. That line is the function A(h): put in a height, get the water's area at that height. Between two dots, the line assumes the bank changes evenly.</p>
+  </div>
+  <figure class="chart">
+    <figcaption><h3>The dots and the function A(h)</h3><p class="small" style="margin:0">Each dot shows its day and where its area came from. Every height came from SWOT. Reading the line: A(102 m) = 20 ha.</p></figcaption>
+    <div class="scrollx"><svg id="curve" class="st-svg" viewBox="0 0 680 360" role="img" aria-labelledby="cv-title cv-desc"><title id="cv-title">Water area against water height</title><desc id="cv-desc">Five dots joined by a line: 10 ha at 100 m, 14 ha at 101 m, 20 ha at 102 m, 24 ha at 103 m and 32 ha at 104 m.</desc></svg></div>
+    <ul class="key">
+      <li><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" class="st-s2"/></svg>Area from a Sentinel-2 photo</li>
+      <li><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="12" height="12" class="st-s1"/></svg>Area from Sentinel-1 radar</li>
+      <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1 L15 8 L8 15 L1 8 Z" class="st-ni"/></svg>Area from NISAR radar</li>
+    </ul>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Step 3</p>
+    <h2>Integrate: cut the water into layers and add them up</h2>
+    <p class="lead">Between 13 January (104 m) and 24 August (100 m) the water fell 4 m. Cut those 4 m into layers. Each layer is the average of its two areas × its thickness. Adding the layers up is the integral of A(h): V = ∫ A(h) dh.</p>
+  </div>
+  <figure class="chart">
+    <figcaption><h3>The water between the two days, as four layers</h3><p class="small" style="margin:0">1 ha × 1 m = 10,000 m³.</p></figcaption>
+    <div class="scrollx"><svg id="layers" class="st-svg" viewBox="0 0 680 360" role="img" aria-labelledby="ly-title ly-desc"><title id="ly-title">Four layers under the function A(h)</title><desc id="ly-desc">Layer a 120,000 m³, layer b 170,000 m³, layer c 220,000 m³ and layer d 280,000 m³: 790,000 m³ in all.</desc></svg></div>
+  </figure>
+  <div class="scrollx">
+    <table class="data st-table">
+      <caption class="sr">The four layers and their sums</caption>
+      <thead><tr><th scope="col">Layer</th><th scope="col">Heights</th><th scope="col">Areas</th><th scope="col">The sum</th><th scope="col">Water</th></tr></thead>
+      <tbody id="layer-rows">
+        <tr><td>d</td><td>103 to 104 m</td><td>24 and 32 ha</td><td>(24 + 32) ÷ 2 = 28 ha, × 1 m</td><td>280,000 m³</td></tr>
+        <tr><td>c</td><td>102 to 103 m</td><td>20 and 24 ha</td><td>(20 + 24) ÷ 2 = 22 ha, × 1 m</td><td>220,000 m³</td></tr>
+        <tr><td>b</td><td>101 to 102 m</td><td>14 and 20 ha</td><td>(14 + 20) ÷ 2 = 17 ha, × 1 m</td><td>170,000 m³</td></tr>
+        <tr><td>a</td><td>100 to 101 m</td><td>10 and 14 ha</td><td>(10 + 14) ÷ 2 = 12 ha, × 1 m</td><td>120,000 m³</td></tr>
+        <tr class="st-total"><th scope="row">Total</th><td></td><td></td><td>a + b + c + d</td><td>790,000 m³</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="callout">Water used between 13 January and 24 August: about 790,000 m³.</p>
+  <p style="margin-top:18px;max-width:75ch">Real dots sit much closer together than 1 m: Mahakanadarawa has 85 SWOT passes over 5 m of height. So real layers are thinner, and the sum works in exactly the same way.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Step 4</p>
+    <h2>How sure are we?</h2>
+  </div>
+  <ul class="notes">
+    <li><b>Safe limits:</b> the area can only grow as the water rises, so the water must lie between the bottom areas × 1 m and the top areas × 1 m. Here that is between 680,000 and 900,000 m³, and our 790,000 sits in between.</li>
+    <li><b>Five big reservoirs:</b> we compare our number with the Irrigation Department's daily storage records.</li>
+    <li><b>Tanks without a gauge:</b> we give our number together with its safe limits.</li>
+  </ul>
+  <div class="card st-real">
+    <h3>A real test: Mahakanadarawa, Yala 2026</h3>
+    <p>SWOT measured 95 m 22 cm on 16 March and 93 m 13 cm on 30 August 2026. Using SWOT's own water areas for the dots, the sum gives 22 to 24 million m³. The department's daily records say 25 million m³.</p>
+    <p>The gap comes from the areas. On 10 March 2024, SWOT's own area was 705 ha, but a clear Sentinel-2 photo taken the same day showed 1,113 ha of water. That is why the project builds better water maps from Sentinel-1, Sentinel-2 and NISAR.</p>
+  </div>
+  <p style="margin-top:22px"><a class="btn line" href="shapes.html">See how bank shapes change the sum</a> <a class="btn line" href="data.html">See the real SWOT data</a></p>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p>A student project for the IS4990 Comprehensive Group Project, University of Moratuwa. Group 6, JARVIS, October 2026.</p>
+</div></footer>
+<script src="assets/steps.js"></script>
+</body>
+</html>
