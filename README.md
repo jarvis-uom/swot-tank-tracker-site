@@ -12,6 +12,7 @@ A small website for our IS4990 project "SWOT Tank Water Tracker for Sri Lanka" (
 | `explainer.html` | An interactive model tank: how water height and water area add up to volume |
 | `data.html` | Three years of SWOT water levels and stored water for the five reservoirs, with a table of every reading |
 | `costs.html` | A calculator: what loggers, a sonar or paid images would cost to check the village tanks more often |
+| `presentation.html` | Our 17-slide proposal talk in a slide viewer, with the PDF (opens in a new tab) and the PowerPoint to download |
 
 It is plain HTML, CSS and JavaScript, with no build step and no outside libraries. The pages also work when opened straight from the disk.
 
@@ -22,6 +23,16 @@ python tools/prep_data.py
 ```
 
 This gets the latest best-quality readings from NASA's Hydrocron service (no login) and rewrites `site/data/reservoirs.json` and `site/data/reservoirs.js`. It needs only the Python standard library.
+
+## Update the slides
+
+1. Copy the PowerPoint without its speaker notes (the website copy has none; the deck with notes is not changed):
+   ```
+   python tools/strip_notes.py "<deck with notes>.pptx" site/assets/docs/swot-tank-tracker-proposal-talk.pptx
+   ```
+2. Replace the PDF, `site/assets/docs/swot-tank-tracker-proposal-talk.pdf`, with a slides-only PDF (no notes pages).
+3. Export each slide as a 1280 × 720 JPG to `site/assets/slides/slide-01.jpg`, `slide-02.jpg` and so on, and a 320 × 180 copy as `thumb-01.jpg` and so on.
+4. If the number of slides or their titles change, update the title list near the end of `presentation.html`, and the date under the buttons.
 
 ## Put it on Netlify
 
