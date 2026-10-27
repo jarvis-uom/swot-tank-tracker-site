@@ -7,3 +7,14 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+# The cost page was removed on 27 Oct 2026; old links go to the home page.
+[[redirects]]
+  from = "/costs"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/costs.html"
+  to = "/"
+  status = 301

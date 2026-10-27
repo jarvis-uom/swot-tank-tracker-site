@@ -12,7 +12,6 @@ A small website for our IS4990 project "SWOT Tank Water Tracker for Sri Lanka" (
 | `explainer.html` | An interactive model tank: how water height and water area add up to volume |
 | `shapes.html` | Five tank bank shapes with round numbers: when top, bottom or average area × height gives the right amount of water |
 | `data.html` | Three years of SWOT water levels and stored water for the five reservoirs, with a table of every reading |
-| `costs.html` | A calculator: what loggers, a sonar or paid images would cost to check the village tanks more often |
 | `presentation.html` | Our 17-slide proposal talk in a slide viewer, with the PDF (opens in a new tab) and the PowerPoint to download |
 
 It is plain HTML, CSS and JavaScript, with no build step and no outside libraries. The pages also work when opened straight from the disk.
