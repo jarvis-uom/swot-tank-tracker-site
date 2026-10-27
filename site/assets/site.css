@@ -290,3 +290,6 @@ table.methods tr.real > * { font-weight: 700; border-top: 2px solid var(--rule);
 table.data.st-table th, table.data.st-table td { text-align: left; }
 table.data.st-table .st-total th, table.data.st-table .st-total td { font-weight: 700; border-bottom: 0; }
 .st-real { margin-top: 22px; }
+.st-img { width: 100%; height: auto; margin: 12px 0 10px; border-radius: 8px; }
+.st-math { margin-top: 22px; }
+.st-math p { max-width: 80ch; }

@@ -26,7 +26,7 @@
 <div class="band"><div class="wrap">
   <p class="eyebrow" style="color:#8fc1f2">Step by step</p>
   <h1>How we count the water, step by step</h1>
-  <p>One example tank near Mahakanadarawa, from satellite days to cubic metres. The days are real: they are the days each satellite really gave data over Mahakanadarawa in 2026. The heights and areas are made-up round numbers, so the sums stay easy to follow.</p>
+  <p>One example tank near Mahakanadarawa, from satellite days to cubic metres. The days are real: they are the days each satellite really gave data over Mahakanadarawa in 2026. The heights and areas in the example are made-up round numbers, so the sums stay easy to follow. Real measured dots are further down.</p>
 </div></div>
 
 <section><div class="wrap">
@@ -54,10 +54,11 @@
     <div class="scrollx"><svg id="timeline" class="st-svg st-wide" viewBox="0 0 900 250" role="img" aria-labelledby="tl-title tl-desc"><title id="tl-title">Days with data from each satellite</title><desc id="tl-desc">SWOT passed about twice every 21 days, Sentinel-1 every 12 days, Sentinel-2 had only three clear photos, and NISAR began in mid-June. Our dots are on 13 January, 28 February, 25 March, 29 June and 24 August.</desc></svg></div>
   </figure>
   <p style="margin-top:22px;max-width:75ch">When the map and the SWOT pass fall on different days, we read the height from a straight line between the SWOT passes before and after. Example: SWOT measured 103 m 20 cm on 24 February and 102 m 50 cm on 10 March, so the water fell 5 cm a day, and on 28 February it stood at 103 m.</p>
+  <p class="callout st-example">Example values: the days and the satellites are real, but these heights and areas are made-up round numbers. Real measured dots are in the "Real data" section below.</p>
   <div class="scrollx">
     <table class="data st-table">
-      <caption class="sr">Our five dots: made-up heights and areas on real satellite days</caption>
-      <thead><tr><th scope="col">Dot</th><th scope="col">Day</th><th scope="col">Height</th><th scope="col">Height from</th><th scope="col">Area</th><th scope="col">Area from</th></tr></thead>
+      <caption class="sr">Our five example dots: made-up heights and areas on real satellite days</caption>
+      <thead><tr><th scope="col">Dot</th><th scope="col">Day (real)</th><th scope="col">Height (example)</th><th scope="col">Height from</th><th scope="col">Area (example)</th><th scope="col">Area from</th></tr></thead>
       <tbody id="dot-rows">
         <tr><td>1</td><td>13 Jan 2026</td><td>104 m</td><td>SWOT, same day</td><td>32 ha</td><td>Sentinel-1 radar</td></tr>
         <tr><td>2</td><td>28 Feb 2026</td><td>103 m</td><td>SWOT, between 24 Feb and 10 Mar</td><td>24 ha</td><td>Sentinel-2 photo</td></tr>
@@ -75,6 +76,10 @@
     <h2>Join the dots: the function A(h)</h2>
     <p class="lead">Put the dots on a chart of height against area and join them. That line is the function A(h): put in a height, get the water's area at that height. Between two dots, the line assumes the bank changes evenly.</p>
   </div>
+  <figure class="chart">
+    <figcaption><h3>Where one area comes from</h3><p class="small" style="margin:0">A side view of a tank is one slice of the lake. The area at a height adds up every slice, each with its own bank shape. The satellite does this for us by counting water pixels from above.</p></figcaption>
+    <img src="assets/img/slices-to-area.png" width="1800" height="1152" loading="lazy" class="st-img" alt="Five slices across a lake, 100 m apart, each with its own bank shape. At 102 m their water is 200, 500, 600, 400 and 300 m wide. Added up and multiplied by 100 m, that is 200,000 square metres, or 20 ha: the area at 102 m.">
+  </figure>
   <figure class="chart">
     <figcaption><h3>The dots and the function A(h)</h3><p class="small" style="margin:0">Each dot shows its day and where its area came from. Every height came from SWOT. Reading the line: A(102 m) = 20 ha.</p></figcaption>
     <div class="scrollx"><svg id="curve" class="st-svg" viewBox="0 0 680 360" role="img" aria-labelledby="cv-title cv-desc"><title id="cv-title">Water area against water height</title><desc id="cv-desc">Five dots joined by a line: 10 ha at 100 m, 14 ha at 101 m, 20 ha at 102 m, 24 ha at 103 m and 32 ha at 104 m.</desc></svg></div>
@@ -109,8 +114,56 @@
       </tbody>
     </table>
   </div>
+  <div class="card st-math">
+    <h3>The integration, written out</h3>
+    <p>Between two dots the line is straight, so in each layer A(h) is a simple formula. Let x be the height above the bottom of the layer, from 0 to 1 m.</p>
+    <div class="scrollx">
+      <table class="data st-table">
+        <caption class="sr">Each layer's formula and its integral</caption>
+        <thead><tr><th scope="col">Layer</th><th scope="col">A(h) in this layer (ha)</th><th scope="col">The integral over 1 m</th><th scope="col">Water</th></tr></thead>
+        <tbody id="integral-rows">
+          <tr><td>a: 100 to 101 m</td><td>A = 10 + 4x</td><td>∫₀¹ (10 + 4x) dx = 10 + 2 = 12 ha·m</td><td>120,000 m³</td></tr>
+          <tr><td>b: 101 to 102 m</td><td>A = 14 + 6x</td><td>∫₀¹ (14 + 6x) dx = 14 + 3 = 17 ha·m</td><td>170,000 m³</td></tr>
+          <tr><td>c: 102 to 103 m</td><td>A = 20 + 4x</td><td>∫₀¹ (20 + 4x) dx = 20 + 2 = 22 ha·m</td><td>220,000 m³</td></tr>
+          <tr><td>d: 103 to 104 m</td><td>A = 24 + 8x</td><td>∫₀¹ (24 + 8x) dx = 24 + 4 = 28 ha·m</td><td>280,000 m³</td></tr>
+          <tr class="st-total"><th scope="row">All four</th><td></td><td>∫ A(h) dh from 100 to 104 m = 12 + 17 + 22 + 28 = 79 ha·m</td><td>790,000 m³</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:12px">How layer a works: the integral of 10 + 4x is 10x + 2x². At x = 1 that is 10 + 2 = 12, and at x = 0 it is 0, so the layer holds 12 ha·m. That is the same as the average area, (10 + 14) ÷ 2 = 12 ha, times 1 m: for a straight line, the integral and the average give the same answer. 1 ha·m = 10,000 m³. With real data the computer does the same over a fitted curve, in layers 1 cm thick.</p>
+  </div>
   <p class="callout">Water used between 13 January and 24 August: about 790,000 m³.</p>
   <p style="margin-top:18px;max-width:75ch">Real dots sit much closer together than 1 m: Mahakanadarawa has 85 SWOT passes over 5 m of height. So real layers are thinner, and the sum works in exactly the same way.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Real data</p>
+    <h2>Real dots from Mahakanadarawa</h2>
+    <p class="lead">These are real measurements, not examples: SWOT's height and the water counted in a clear Sentinel-2 photo. Since 2024, nine photos had almost no cloud over the tank.</p>
+  </div>
+  <div class="scrollx">
+    <table class="data st-table">
+      <caption class="sr">Real dots: SWOT heights and the water area in clear Sentinel-2 photos at Mahakanadarawa</caption>
+      <thead><tr><th scope="col">Photo day</th><th scope="col">SWOT height</th><th scope="col">Height from</th><th scope="col">Water in the photo</th><th scope="col">Area from</th></tr></thead>
+      <tbody id="real-rows">
+        <tr><td>10 Mar 2024</td><td>94 m 79 cm</td><td>SWOT, same day</td><td>1,113 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>20 Mar 2024</td><td>94 m 64 cm</td><td>SWOT, between 16 Mar and 31 Mar</td><td>897 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>30 Mar 2025</td><td>95 m 40 cm</td><td>SWOT, between 27 Mar and 10 Apr</td><td>899 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>9 May 2025</td><td>95 m 69 cm</td><td>SWOT, between 8 May and 22 May</td><td>1,097 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>28 Jul 2025</td><td>93 m 62 cm</td><td>SWOT, between 9 Jul and 30 Jul</td><td>1,012 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>30 Jul 2025</td><td>93 m 58 cm</td><td>SWOT, same day</td><td>989 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>22 Aug 2025</td><td>93 m 35 cm</td><td>SWOT, between 20 Aug and 3 Sep</td><td>958 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>31 Oct 2025</td><td>91 m 45 cm</td><td>SWOT, between 21 Oct and 5 Nov</td><td>578 ha</td><td>Sentinel-2 photo</td></tr>
+        <tr><td>28 Feb 2026</td><td>95 m 60 cm</td><td>SWOT, between 24 Feb and 10 Mar</td><td>1,144 ha</td><td>Sentinel-2 photo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li><b>Heights:</b> SWOT on the same day, or read from the straight line between the SWOT passes before and after the photo.</li>
+    <li><b>Areas:</b> inside the tank's outline, every 10 m pixel that is brighter in green light than in infrared counts as water.</li>
+    <li><b>Not perfect yet:</b> on 20 March 2024 and 30 March 2025 the photos show less water than on days when the water stood lower. Grass and water plants hide water at the shallow edges. That is why the project trains an AI water model with a "water under plants" class and adds radar.</li>
+  </ul>
 </div></section>
 
 <section><div class="wrap">
