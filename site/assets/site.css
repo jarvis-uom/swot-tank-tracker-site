@@ -338,3 +338,29 @@ table.data.st-table .st-total th, table.data.st-table .st-total td { font-weight
 .cal-day.sw-real { border-top: 5px solid var(--ink); }
 .cal-day.sw-exp { border-top: 5px dashed var(--ink); }
 .cal-sw-sample { display: inline-block; width: 26px; height: 20px; border: 1px solid var(--rule); border-top: 5px solid var(--ink); border-radius: 4px; flex: none; }
+
+/* past research page: one table, cards on small screens */
+table.rs { width: 100%; margin-top: 14px; border-collapse: separate; border-spacing: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow); font-size: .92rem; line-height: 1.45; }
+table.rs th, table.rs td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+table.rs thead th { font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); background: var(--surface-2); }
+table.rs thead th:first-child { border-top-left-radius: var(--radius); }
+table.rs thead th:last-child { border-top-right-radius: var(--radius); }
+table.rs tbody tr:last-child > * { border-bottom: 0; }
+table.rs tbody th { width: 19%; font-weight: 650; }
+table.rs tbody th span { display: block; font-weight: 400; color: var(--ink-2); margin-top: 3px; }
+table.rs tbody th .rs-chk { font-size: .78rem; color: var(--muted); margin-top: 6px; }
+table.rs td:last-child { width: 24%; background: var(--blue-wash); }
+table.rs tr:last-child td:last-child { border-bottom-right-radius: var(--radius); }
+table.rs .rs-group th { width: auto; padding-top: 20px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+@media (max-width: 760px) {
+  table.rs, table.rs tbody, table.rs tr, table.rs th, table.rs td, table.rs tbody th, table.rs td:last-child { display: block; width: auto; }
+  table.rs { background: none; border: 0; box-shadow: none; }
+  table.rs thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  table.rs tbody tr { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); margin-bottom: 12px; box-shadow: var(--shadow); overflow: hidden; }
+  table.rs tbody tr.rs-group { background: none; border: 0; box-shadow: none; margin: 22px 0 8px; }
+  table.rs .rs-group th { padding: 0; border: 0; }
+  table.rs td::before { content: attr(data-label); display: block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  table.rs tr:last-child td:last-child { border-bottom-right-radius: 0; }
+}
+/* nine menu items: slightly tighter links keep the menu on one line from 1280px */
+@media (min-width: 641px) { .nav a { padding: 7px 9px; font-size: .92rem; } }
