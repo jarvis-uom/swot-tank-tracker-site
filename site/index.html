@@ -168,30 +168,30 @@
 <section id="team"><div class="wrap">
   <div class="section-head">
     <p class="eyebrow">Team</p>
-    <h2>Who does what: one research question each</h2>
-    <p class="lead">Each of us owns one core research question from start to finish.</p>
+    <h2>Who does what: one model each</h2>
+    <p class="lead">Each of us owns a research question from start to finish, and trains one model for it.</p>
   </div>
   <div class="members">
     <div class="member" style="--c:var(--blue)">
       <div class="who">Member A</div>
       <h3>AI water maps</h3>
       <span class="pill">RQ1</span>
-      <ul><li>Labelled water masks of Sri Lankan tanks</li><li>Sentinel-1 and Sentinel-2 deep-learning model</li><li>A water-plant class for covered tanks</li></ul>
+      <ul><li>Labelled water masks of Sri Lankan tanks</li><li>A water-plant class for covered tanks</li><li>Model: a Sentinel-1 and Sentinel-2 water map (U-Net)</li></ul>
       <p class="out"><b>Output:</b> water maps for all tanks</p>
     </div>
     <div class="member" style="--c:var(--aqua)">
       <div class="who">Member B</div>
       <h3>SWOT and gauges</h3>
       <span class="pill">RQ2</span>
-      <ul><li>SWOT heights from Hydrocron, poor readings removed</li><li>Gauge data: daily records, history and field photos</li><li>Tests whether "suspect" readings can be trusted</li></ul>
-      <p class="out"><b>Output:</b> SWOT accuracy report</p>
+      <ul><li>SWOT heights from Hydrocron, checked against gauges</li><li>Gauge data: daily records and history</li><li>Model: a SWOT trust model (gradient boosting)</li></ul>
+      <p class="out"><b>Output:</b> accuracy report and trust model</p>
     </div>
     <div class="member" style="--c:var(--orange)">
       <div class="who">Member C</div>
-      <h3>Storage and dashboard</h3>
-      <span class="pill">RQ3</span><span class="pill stretch">RQ4 stretch</span>
-      <ul><li>Height–area–volume curve for each tank</li><li>Storage every 5–12 days, checked against official figures</li><li>Dashboard, and the forecast if time allows</li></ul>
-      <p class="out"><b>Output:</b> storage series and dashboard</p>
+      <h3>Storage and forecast</h3>
+      <span class="pill">RQ3</span><span class="pill">RQ4</span>
+      <ul><li>Height–area–volume curve for each tank</li><li>Storage every 5–12 days, checked against official figures</li><li>Model: a 2–4 week storage forecast (LSTM)</li></ul>
+      <p class="out"><b>Output:</b> storage, forecast and dashboard</p>
     </div>
   </div>
   <p class="shared"><b>All three:</b> field visits on SWOT pass dates, labelling water masks, the thesis and the research paper.</p>

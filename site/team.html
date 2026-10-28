@@ -31,7 +31,7 @@
 <div class="band"><div class="wrap">
   <p class="eyebrow" style="color:#8fc1f2">Team</p>
   <h1>Who does what</h1>
-  <p>Three members, one research question each, owned from start to finish. For each one: the data analysis and the technical work.</p>
+  <p>Three members, each with a research question and one model to train: a water map, a SWOT trust model and a storage forecast. For each one: the data analysis and the technical work.</p>
 </div></div>
 
 <section class="tm" style="--c:var(--blue)"><div class="wrap">
@@ -49,7 +49,7 @@
       <li>Compare with the simple rules and with SWOT's own area on the same days.</li>
     </ul></div>
     <div class="tm-card"><h3>Technical work</h3><ul>
-      <li>A U-Net (EfficientNet-B0) trained on the S1S2-Water dataset, then fine-tuned on our tanks.</li>
+      <li>Model: a U-Net (EfficientNet-B0) trained on the S1S2-Water dataset, then fine-tuned on our tanks.</li>
       <li>Inputs: Sentinel-1 VV and VH, NISAR L-band radar, Sentinel-2, slope.</li>
       <li>Pipeline: find each picture day (<a href="pictures.html">Picture days</a>), download it, map the water, measure the area.</li>
     </ul></div>
@@ -62,48 +62,47 @@
     <p class="eyebrow">Member B</p>
     <h2>SWOT and gauges</h2>
     <p class="tm-rq"><span class="pill">RQ2</span></p>
-    <p class="lead">How accurate is SWOT on reservoirs and on small village tanks, and can its "suspect" readings be trusted?</p>
+    <p class="lead">How accurate is SWOT on reservoirs and village tanks, and can a learned model tell which readings to trust better than SWOT's own flags?</p>
   </div>
   <div class="tm-grid">
     <div class="tm-card tm-main"><h3>Data analysis</h3><ul>
       <li>SWOT minus gauge on every pass: the average gap and the spread in cm.</li>
-      <li>"Good" against "suspect" readings: how much extra error?</li>
-      <li>Effect of lake size, distance from the track and season.</li>
+      <li>Labels for the model: each reading's error at the 117 department reservoirs.</li>
+      <li>The trust model against SWOT's own flags, on reservoirs it never saw.</li>
       <li>How a height error turns into a volume error.</li>
     </ul></div>
     <div class="tm-card"><h3>Technical work</h3><ul>
-      <li>Hydrocron pipeline: each tank's lake ID, every pass (<a href="data.html">SWOT data</a>), cleaned with quality flags and an outlier test.</li>
+      <li>Hydrocron pipeline: each tank's lake ID, every pass (<a href="data.html">SWOT data</a>).</li>
+      <li>Model: a SWOT trust model, gradient boosting (XGBoost or LightGBM) on SWOT's quality fields, track distance, lake size and season.</li>
       <li>Gauge zero in metres above sea level: full supply level minus full supply depth.</li>
       <li>Daily logger for the department's sheet; storage history turned back into gauge heights.</li>
-      <li>Field visits on pass days: photos of the gauge.</li>
     </ul></div>
   </div>
-  <p class="tm-out"><b>Output:</b> a SWOT accuracy report, and the fixed gap for each reservoir.</p>
+  <p class="tm-out"><b>Output:</b> a SWOT accuracy report, the fixed gap for each reservoir, and a trust model that scores every reading.</p>
 </div></section>
 
 <section class="tm" style="--c:var(--orange)"><div class="wrap">
   <div class="section-head">
     <p class="eyebrow">Member C</p>
-    <h2>Storage and dashboard</h2>
-    <p class="tm-rq"><span class="pill">RQ3</span><span class="pill stretch">RQ4 stretch</span></p>
-    <p class="lead">Does AI water area plus SWOT height give storage close to official and measured values? Stretch: can storage be forecast 2–4 weeks ahead?</p>
+    <h2>Storage and forecast</h2>
+    <p class="tm-rq"><span class="pill">RQ3</span><span class="pill">RQ4</span></p>
+    <p class="lead">Does AI water area plus SWOT height give storage close to official values, and can a deep-learning model forecast it 2–4 weeks ahead?</p>
   </div>
   <div class="tm-grid">
     <div class="tm-card tm-main"><h3>Data analysis</h3><ul>
       <li>Each tank's area–height curve A(h) from its dots.</li>
       <li>Storage change against the department's daily storage.</li>
       <li>Test the method on Kanhindawewa's drone table, and against Imbulana's formula.</li>
-      <li>Error budget: height error plus area error, layer by layer.</li>
-      <li>RQ4: a 2–4 week forecast against a "no change" forecast.</li>
+      <li>Forecast error at 1, 2 and 4 weeks, against "no change" and the seasonal average.</li>
     </ul></div>
     <div class="tm-card"><h3>Technical work</h3><ul>
       <li>Storage engine: dots, curve, thin layers and safe limits, after every pass (<a href="steps.html">Step by step</a>).</li>
-      <li>Dashboard: storage and safe limits for each tank.</li>
+      <li>Model: a storage forecast, an LSTM with a gradient-boosting baseline, trained on 117 reservoirs' daily storage (2020–2026), rain and evaporation.</li>
+      <li>Dashboard: storage, safe limits and the forecast for each tank.</li>
       <li>Automatic updates with GitHub Actions.</li>
-      <li>Forecast model with rain and evaporation, if time allows.</li>
     </ul></div>
   </div>
-  <p class="tm-out"><b>Output:</b> storage for every tank with safe limits, on a dashboard.</p>
+  <p class="tm-out"><b>Output:</b> storage for every tank with safe limits, and a 2–4 week forecast, on a dashboard.</p>
 </div></section>
 
 <section><div class="wrap">
