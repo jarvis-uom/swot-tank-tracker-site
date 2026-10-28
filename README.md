@@ -13,6 +13,7 @@ A small website for our IS4990 project "SWOT Tank Water Tracker for Sri Lanka" (
 | `shapes.html` | Five tank bank shapes with round numbers: when top, bottom or average area × height gives the right amount of water |
 | `steps.html` | One worked example on real satellite days: where each height and area comes from, the function A(h), the layers (the integral) and the checks |
 | `calendar.html` | Satellite calendar: real days with data from each satellite since NISAR started (June 2026) and expected days to March 2027, from `assets/calendar-data.js` (made by `temp/calendar/build_calendar_data.py` in the project folder) |
+| `pictures.html` | Picture days: water pictures only (radar every pass, photos when clear), month by month, the running total and a rough layer thickness; same data file as the calendar |
 | `data.html` | Three years of SWOT water levels and stored water for the five reservoirs, with a table of every reading |
 | `presentation.html` | Our 17-slide proposal talk in a slide viewer, with the PDF (opens in a new tab) and the PowerPoint to download |
 

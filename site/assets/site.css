@@ -321,3 +321,14 @@ table.data.st-table .st-total th, table.data.st-table .st-total td { font-weight
   .cal-chip:not(.exp) { color: #0b141a; }
 }
 .cal-kind { display: block; font-size: .75rem; color: var(--muted); font-weight: 400; }
+
+/* picture days page */
+:root { --pd-s1: #b9481b; --pd-ni: #0f7a55; --pd-al: #6250d6; --pd-s2: #1c5cab; --pd-ls: #8a5a00; }
+@media (prefers-color-scheme: dark) { :root { --pd-s1: #e0743f; --pd-ni: #2bb184; --pd-al: #9085e9; --pd-s2: #5598e7; --pd-ls: #d39a1c; } }
+.pd-s1 { fill: var(--pd-s1); } .pd-ni { fill: var(--pd-ni); } .pd-al { fill: var(--pd-al); } .pd-s2 { fill: var(--pd-s2); } .pd-ls { fill: var(--pd-ls); }
+#bars rect { stroke: var(--surface); stroke-width: 1.5; }
+.pd-exp { fill-opacity: .38; }
+.pd-line { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; }
+.pd-dash { stroke-dasharray: 7 6; }
+/* eight menu items: let the header use a little more width than the page text */
+.top .wrap { max-width: 1320px; }

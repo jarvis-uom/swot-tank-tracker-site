@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Picture days · SWOT Tank Water Tracker</title>
+<meta name="description" content="How many water pictures the satellites give over our tanks, month by month, and a rough number of layers they make: real days since June 2026 and expected days to March 2027.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3987e5" d="M12 2.5c3.7 4.7 6.7 8.3 6.7 11.7a6.7 6.7 0 0 1-13.4 0C5.3 10.8 8.3 7.2 12 2.5z"/></svg>SWOT Tank Water Tracker</a>
+  <nav class="nav" aria-label="Main">
+    <a href="./">Home</a>
+    <a href="explainer.html">How volume works</a>
+    <a href="shapes.html">Tank shapes</a>
+    <a href="steps.html">Step by step</a>
+    <a href="calendar.html">Satellite calendar</a>
+    <a href="pictures.html" aria-current="page">Picture days</a>
+    <a href="data.html">Real SWOT data</a>
+    <a href="presentation.html">Presentation</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<div class="band"><div class="wrap">
+  <p class="eyebrow" style="color:#8fc1f2">Picture days</p>
+  <h1>How many layers the pictures give</h1>
+  <p>Only the water pictures here: radar on every pass, photos only when the sky is clear. No gauge and no SWOT. Each picture day can become one dot, and each dot adds one layer. Real days since NISAR started on 17 June 2026, expected days to the end of March 2027, over Mahakanadarawa.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Month by month</p>
+    <h2>Picture days from each satellite</h2>
+    <p class="lead">Radar sees through cloud, so it gives pictures in every month. Photos count only when the sky over the tank is clear, which is rare from November to February.</p>
+  </div>
+  <figure class="chart">
+    <figcaption><h3>Picture days each month</h3><p class="small" style="margin:0">Solid: real days. Light: expected days. Expected photos are the photo days times the share that were clear in that month over the last three years.</p></figcaption>
+    <div class="scrollx"><svg id="bars" class="st-svg" viewBox="0 0 760 340" role="img" aria-labelledby="bars-title bars-desc"><title id="bars-title">Picture days each month by satellite</title><desc id="bars-desc">From June 2026 to March 2027, radar gives most of the pictures every month; clear photos add a few, mostly in September and March.</desc></svg></div>
+    <ul class="key" id="bars-key"></ul>
+  </figure>
+  <div class="scrollx">
+    <table class="data" id="pd-table">
+      <caption class="sr">Picture days each month by satellite</caption>
+      <thead><tr><th scope="col">Month</th><th scope="col">Sentinel-1 radar</th><th scope="col">NISAR radar</th><th scope="col">ALOS-2 radar</th><th scope="col">Clear Sentinel-2 photos</th><th scope="col">Clear Landsat photos</th><th scope="col">Picture days (any)</th></tr></thead>
+      <tbody id="pd-rows"></tbody>
+    </table>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Adding up</p>
+    <h2>The dots add up over the months</h2>
+    <p class="lead">Each picture day is one more dot on the tank's curve. A day with two pictures counts once.</p>
+  </div>
+  <figure class="chart">
+    <figcaption><h3>Picture days collected since 17 June 2026</h3><p class="small" style="margin:0">Solid: real. Dashed: expected.</p></figcaption>
+    <div class="scrollx"><svg id="total" class="st-svg" viewBox="0 0 760 300" role="img" aria-labelledby="total-title total-desc"><title id="total-title">Running total of picture days</title><desc id="total-desc">The running total of picture days rises steadily, by about 15 a month.</desc></svg></div>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">A rough number of layers</p>
+    <h2>How thick the layers get</h2>
+  </div>
+  <div class="cards" id="layer-cards"></div>
+  <ul class="notes">
+    <li><b>Each picture still needs a height</b> to become a dot: the gauge every day at the five big reservoirs, or the straight line between two SWOT passes at other tanks.</li>
+    <li><b>Layers are not even:</b> in the rains the water rises fast, so pictures land far apart in height and layers get thicker. On the slow fall in the dry season they get thinner.</li>
+    <li><b>Rough on purpose:</b> expected days can change, a satellite can miss a day, and ALOS-2 is not counted ahead because it has no fixed plan.</li>
+  </ul>
+  <p style="margin-top:22px"><a class="btn line" href="calendar.html">See every day in the Satellite calendar</a></p>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p>A student project for the IS4990 Comprehensive Group Project, University of Moratuwa. Group 6, JARVIS, October 2026.</p>
+</div></footer>
+<script src="assets/calendar-data.js"></script>
+<script src="assets/pictures.js"></script>
+</body>
+</html>
