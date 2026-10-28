@@ -362,5 +362,22 @@ table.rs .rs-group th { width: auto; padding-top: 20px; font-size: .78rem; font-
   table.rs td::before { content: attr(data-label); display: block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
   table.rs tr:last-child td:last-child { border-bottom-right-radius: 0; }
 }
-/* nine menu items: slightly tighter links keep the menu on one line from 1280px */
-@media (min-width: 641px) { .nav a { padding: 7px 9px; font-size: .92rem; } }
+/* ten menu items: slightly tighter links keep the menu on one line from 1280px */
+@media (min-width: 641px) { .nav a { padding: 7px 7px; font-size: .9rem; } }
+
+/* team page: one block per member */
+.tm-rq { margin: 0 0 4px; }
+.tm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 18px; }
+.tm-card { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
+.tm-card.tm-main { border-top: 4px solid var(--c, var(--blue)); }
+.tm-card h3 { margin: 0 0 .6em; font-size: 1.1rem; }
+.tm-card ul { margin: 0; padding-left: 1.1em; color: var(--ink-2); display: grid; gap: 7px; }
+.tm-out { margin: 16px 0 0; background: var(--navy); color: var(--on-navy); border-radius: var(--radius); padding: 14px 20px; }
+.tm-out b { color: #8fc1f2; }
+
+/* presentation page: datasets and links */
+.links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 6px 36px; }
+.links-grid h3 { margin: 14px 0 8px; font-size: 1.05rem; }
+.links { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; }
+.links a { font-weight: 600; }
+.links .d { color: var(--muted); }
