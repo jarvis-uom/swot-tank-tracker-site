@@ -169,33 +169,33 @@
   <div class="section-head">
     <p class="eyebrow">Team</p>
     <h2>Who does what: one model each</h2>
-    <p class="lead">Each of us owns a research question from start to finish, and trains one model for it.</p>
+    <p class="lead">Three models in one chain: A finds where the water is, B works out how much there is, and C says what comes next.</p>
   </div>
   <div class="members">
     <div class="member" style="--c:var(--blue)">
       <div class="who">Member A</div>
-      <h3>AI water maps</h3>
+      <h3>Water maps</h3>
       <span class="pill">RQ1</span>
-      <ul><li>Labelled water masks of Sri Lankan tanks</li><li>A water-plant class for covered tanks</li><li>Model: a Sentinel-1 and Sentinel-2 water map (U-Net)</li></ul>
-      <p class="out"><b>Output:</b> water maps for all tanks</p>
+      <ul><li>Labelled water masks of Sri Lankan tanks</li><li>A "water under plants" class for covered tanks</li><li>Model: a Sentinel-1 and Sentinel-2 water map (U-Net)</li></ul>
+      <p class="out"><b>Output:</b> the water area of every tank</p>
     </div>
     <div class="member" style="--c:var(--aqua)">
       <div class="who">Member B</div>
-      <h3>SWOT and gauges</h3>
-      <span class="pill">RQ2</span>
-      <ul><li>SWOT heights from Hydrocron, checked against gauges</li><li>Gauge data: daily records and history</li><li>Model: a SWOT trust model (gradient boosting)</li></ul>
-      <p class="out"><b>Output:</b> accuracy report and trust model</p>
+      <h3>SWOT and storage</h3>
+      <span class="pill">RQ2</span><span class="pill">RQ3</span>
+      <ul><li>SWOT heights, checked against gauges</li><li>A trust screen that cleans every reading</li><li>Model: SWOT height and water area into % full (gradient boosting)</li></ul>
+      <p class="out"><b>Output:</b> how full every tank is</p>
     </div>
     <div class="member" style="--c:var(--orange)">
       <div class="who">Member C</div>
-      <h3>Storage and forecast</h3>
-      <span class="pill">RQ3</span><span class="pill">RQ4</span>
-      <ul><li>Height–area–volume curve for each tank</li><li>Storage every 5–12 days, checked against official figures</li><li>Model: a 2–4 week storage forecast (LSTM)</li></ul>
-      <p class="out"><b>Output:</b> storage, forecast and dashboard</p>
+      <h3>Forecast and system</h3>
+      <span class="pill">RQ4</span>
+      <ul><li>Daily storage of 117 reservoirs, rain and evaporation</li><li>The chain from picture to forecast, run after every pass</li><li>Model: a 2–4 week storage forecast (LSTM)</li></ul>
+      <p class="out"><b>Output:</b> the forecast and the dashboard</p>
     </div>
   </div>
   <p class="shared"><b>All three:</b> field visits on SWOT pass dates, labelling water masks, the thesis and the research paper.</p>
-  <p style="margin-top:18px"><a class="btn line" href="team.html">See each member's work in detail</a></p>
+  <p style="margin-top:18px"><a class="btn line" href="team.html">See each member's work step by step</a></p>
 </div></section>
 
 <section id="explore"><div class="wrap">
@@ -208,9 +208,9 @@
     <a href="calendar.html"><b>Satellite calendar</b><span>Which days each satellite gives us data: real days since June 2026 and expected days to March 2027.</span></a>
     <a href="pictures.html"><b>Picture days</b><span>How many water pictures the satellites give each month, and a rough number of layers they make.</span></a>
     <a href="research.html"><b>Past research</b><span>What earlier studies used, how accurate they were, the problem for our small tanks and our answer, in one table.</span></a>
-    <a href="team.html"><b>Team</b><span>Each member's research question, with the work already done, the data analysis and the technical work.</span></a>
+    <a href="team.html"><b>Team</b><span>The chain of three models, and each member's work step by step, one tab per member.</span></a>
     <a href="data.html"><b>Real SWOT data</b><span>Three years of SWOT water levels and stored water for our five reservoirs.</span></a>
-    <a href="presentation.html"><b>Presentation</b><span>Our 17-slide proposal talk. Flip through it here, or open the PDF or PowerPoint.</span></a>
+    <a href="presentation.html"><b>Presentation</b><span>Our 21-slide proposal talk. Flip through it here, or open the PDF or PowerPoint.</span></a>
   </div>
 </div></section>
 </main>

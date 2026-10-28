@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Team · SWOT Tank Water Tracker</title>
-<meta name="description" content="Who does what in the SWOT Tank Water Tracker: one research question for each member, with the data analysis and the technical work.">
+<meta name="description" content="Who does what in the SWOT Tank Water Tracker: three members and three models in one chain, with each member's work step by step.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -31,88 +31,172 @@
 <div class="band"><div class="wrap">
   <p class="eyebrow" style="color:#8fc1f2">Team</p>
   <h1>Who does what</h1>
-  <p>Three members, each with a research question and one model to train: a water map, a SWOT trust model and a storage forecast. For each one: the data analysis and the technical work.</p>
+  <p>Three members, three models, one chain. Member A finds where the water is, Member B works out how much water there is, and Member C says what comes next.</p>
 </div></div>
 
-<section class="tm" style="--c:var(--blue)"><div class="wrap">
+<section class="tm-chain"><div class="wrap">
   <div class="section-head">
-    <p class="eyebrow">Member A</p>
-    <h2>AI water maps</h2>
-    <p class="tm-rq"><span class="pill">RQ1</span></p>
-    <p class="lead">How accurately can deep learning map tank water from Sentinel-1 and Sentinel-2, even under cloud or water plants?</p>
+    <p class="eyebrow">The chain</p>
+    <h2>Each model feeds the next</h2>
+    <p class="lead">Every few days a new satellite picture or SWOT pass arrives, and it moves along the chain to the dashboard.</p>
   </div>
-  <div class="tm-grid">
-    <div class="tm-card tm-main"><h3>Data analysis</h3><ul>
-      <li>Label water masks of our tanks, with a "water under plants" class.</li>
-      <li>Score the maps: IoU and F1 against the labels.</li>
-      <li>Area error against Kanhindawewa's drone survey, by sensor, season and plant cover.</li>
-      <li>Compare with the simple rules and with SWOT's own area on the same days.</li>
-    </ul></div>
-    <div class="tm-card"><h3>Technical work</h3><ul>
-      <li>Model: a U-Net (EfficientNet-B0) trained on the S1S2-Water dataset, then fine-tuned on our tanks.</li>
-      <li>Inputs: Sentinel-1 VV and VH, NISAR L-band radar, Sentinel-2, slope.</li>
-      <li>Pipeline: find each picture day (<a href="pictures.html">Picture days</a>), download it, map the water, measure the area.</li>
-    </ul></div>
+  <div class="chain" role="img" aria-label="Member A's water map turns radar and photos into the water area. Member B's storage model turns the water area and SWOT's water height into how full the tank is. Member C's forecast turns that into storage in 2 to 4 weeks, shown on the dashboard for every tank.">
+    <div class="ch-node" style="--c:var(--blue)"><em>Member A</em><b>Water map</b><span>where the water is</span><small class="ch-plus">from radar and photos</small></div>
+    <div class="ch-arrow"><span>water area</span></div>
+    <div class="ch-node" style="--c:var(--aqua)"><em>Member B</em><b>Storage model</b><span>how much water</span><small class="ch-plus">+ SWOT water height</small></div>
+    <div class="ch-arrow"><span>% full</span></div>
+    <div class="ch-node" style="--c:var(--orange)"><em>Member C</em><b>Forecast</b><span>what comes next</span><small class="ch-plus">+ rain and evaporation</small></div>
+    <div class="ch-arrow"><span>2–4 weeks ahead</span></div>
+    <div class="ch-node ch-end"><em>For everyone</em><b>Dashboard</b><span>every tank, after every pass</span></div>
   </div>
-  <p class="tm-out"><b>Output:</b> water area for every tank on every picture day, with its accuracy.</p>
 </div></section>
 
-<section class="tm" style="--c:var(--aqua)"><div class="wrap">
-  <div class="section-head">
-    <p class="eyebrow">Member B</p>
-    <h2>SWOT and gauges</h2>
-    <p class="tm-rq"><span class="pill">RQ2</span></p>
-    <p class="lead">How accurate is SWOT on reservoirs and village tanks, and can a learned model tell which readings to trust better than SWOT's own flags?</p>
+<section class="tm-members"><div class="wrap">
+  <div class="tabs" role="tablist" aria-label="Team members" hidden>
+    <button type="button" role="tab" id="tab-a" aria-controls="member-a" style="--c:var(--blue)"><span class="tt-who">Member A</span><span class="tt-what">Water maps</span></button>
+    <button type="button" role="tab" id="tab-b" aria-controls="member-b" style="--c:var(--aqua)"><span class="tt-who">Member B</span><span class="tt-what">SWOT and storage</span></button>
+    <button type="button" role="tab" id="tab-c" aria-controls="member-c" style="--c:var(--orange)"><span class="tt-who">Member C</span><span class="tt-what">Forecast and system</span></button>
+    <button type="button" role="tab" id="tab-all" aria-controls="all-three" style="--c:var(--ink-2)"><span class="tt-who">Together</span><span class="tt-what">All three</span></button>
   </div>
-  <div class="tm-grid">
-    <div class="tm-card tm-main"><h3>Data analysis</h3><ul>
-      <li>SWOT minus gauge on every pass: the average gap and the spread in cm.</li>
-      <li>Labels for the model: each reading's error at the 117 department reservoirs.</li>
-      <li>The trust model against SWOT's own flags, on reservoirs it never saw.</li>
-      <li>How a height error turns into a volume error.</li>
-    </ul></div>
-    <div class="tm-card"><h3>Technical work</h3><ul>
-      <li>Hydrocron pipeline: each tank's lake ID, every pass (<a href="data.html">SWOT data</a>).</li>
-      <li>Model: a SWOT trust model, gradient boosting (XGBoost or LightGBM) on SWOT's quality fields, track distance, lake size and season.</li>
-      <li>Gauge zero in metres above sea level: full supply level minus full supply depth.</li>
-      <li>Daily logger for the department's sheet; storage history turned back into gauge heights.</li>
-    </ul></div>
-  </div>
-  <p class="tm-out"><b>Output:</b> a SWOT accuracy report, the fixed gap for each reservoir, and a trust model that scores every reading.</p>
-</div></section>
 
-<section class="tm" style="--c:var(--orange)"><div class="wrap">
-  <div class="section-head">
-    <p class="eyebrow">Member C</p>
-    <h2>Storage and forecast</h2>
-    <p class="tm-rq"><span class="pill">RQ3</span><span class="pill">RQ4</span></p>
-    <p class="lead">Does AI water area plus SWOT height give storage close to official values, and can a deep-learning model forecast it 2–4 weeks ahead?</p>
+  <div class="tp" id="member-a" role="tabpanel" aria-labelledby="tab-a" tabindex="0" style="--c:var(--blue)">
+    <div class="tp-head">
+      <p class="eyebrow">Member A · water maps</p>
+      <h2>Where the water is</h2>
+      <p class="tm-rq"><span class="pill">RQ1</span></p>
+      <p class="lead">How accurately can deep learning map tank water from Sentinel-1 and Sentinel-2, even under cloud or water plants?</p>
+    </div>
+    <div class="tp-grid">
+      <div class="tp-steps">
+        <h3>Step by step</h3>
+        <ol class="path">
+          <li><b>Find the picture days <span class="tag">Build</span></b><p>List every Sentinel-1 radar and Sentinel-2 photo day over our 13 tanks, and NISAR when its data starts (see <a href="pictures.html">Picture days</a>).</p></li>
+          <li><b>Download and cut <span class="tag">Build</span></b><p>Cut each picture to the tank, mask the clouds, and add the land slope.</p></li>
+          <li><b>Label the water <span class="tag">Data</span></b><p>Draw open water and "water under plants" on our tanks, using each tank's full-supply outline and photos from field visits.</p></li>
+          <li><b>Pre-train the U-Net <span class="tag model">Model</span></b><p>First it learns water from S1S2-Water, a public set of labelled pictures from around the world.</p></li>
+          <li><b>Fine-tune on our tanks <span class="tag model">Model</span></b><p>Then it learns our tanks from our own labels, especially the ones covered by plants.</p></li>
+          <li><b>Test it <span class="tag test">Test</span></b><p>IoU and F1 against our labels, the area against Kanhindawewa's drone survey, and the simple water rules on the same days.</p></li>
+          <li><b>Hand over <span class="tag out">Output</span></b><p>The water area of every tank on every picture day, with how sure the map is.</p></li>
+        </ol>
+      </div>
+      <div class="tp-side">
+        <div class="glance">
+          <div class="gl"><p class="k">Model</p><p class="v">U-Net water map</p><p class="s">EfficientNet-B0, with a "water under plants" class</p></div>
+          <div class="gl"><p class="k">Learns from</p><p class="v">S1S2-Water, then our labels</p><p class="s">water masks we draw for our own tanks</p></div>
+          <div class="gl"><p class="k">Must beat</p><p class="v">Simple water rules</p><p class="s">NDWI, a radar threshold and SWOT's own water area</p></div>
+          <div class="gl"><p class="k">Gives</p><p class="v">Water area</p><p class="s">every tank, every picture day, to Members B and C</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="tm-out"><b>Output:</b> a water map for every tank on every picture day, and how accurate it is under clouds and plants.</p>
   </div>
-  <div class="tm-grid">
-    <div class="tm-card tm-main"><h3>Data analysis</h3><ul>
-      <li>Each tank's area–height curve A(h) from its dots.</li>
-      <li>Storage change against the department's daily storage.</li>
-      <li>Test the method on Kanhindawewa's drone table, and against Imbulana's formula.</li>
-      <li>Forecast error at 1, 2 and 4 weeks, against "no change" and the seasonal average.</li>
-    </ul></div>
-    <div class="tm-card"><h3>Technical work</h3><ul>
-      <li>Storage engine: dots, curve, thin layers and safe limits, after every pass (<a href="steps.html">Step by step</a>).</li>
-      <li>Model: a storage forecast, an LSTM with a gradient-boosting baseline, trained on 117 reservoirs' daily storage (2020–2026), rain and evaporation.</li>
-      <li>Dashboard: storage, safe limits and the forecast for each tank.</li>
-      <li>Automatic updates with GitHub Actions.</li>
-    </ul></div>
+
+  <div class="tp" id="member-b" role="tabpanel" aria-labelledby="tab-b" tabindex="0" style="--c:var(--aqua)">
+    <div class="tp-head">
+      <p class="eyebrow">Member B · SWOT and storage</p>
+      <h2>How much water there is</h2>
+      <p class="tm-rq"><span class="pill">RQ2</span><span class="pill">RQ3</span></p>
+      <p class="lead">How accurately does SWOT measure water height on our reservoirs and village tanks? And can a model trained on about 100 gauged reservoirs turn a tank's SWOT height and water area into how full it is, for tanks it has never seen?</p>
+    </div>
+    <div class="tp-grid">
+      <div class="tp-steps">
+        <h3>Step by step</h3>
+        <ol class="path">
+          <li><b>Collect SWOT heights <span class="tag">Build</span></b><p>Every pass since July 2023, for our 13 tanks and about 100 Irrigation Department reservoirs, from NASA's Hydrocron service (see <a href="data.html">SWOT data</a>).</p></li>
+          <li><b>Check SWOT against gauges <span class="tag">Data</span></b><p>SWOT minus the gauge on every pass at the 5 big reservoirs: the steady gap between them, and the spread in cm.</p></li>
+          <li><b>Trust screen <span class="tag model">Model</span></b><p>A small model scores each reading, so "suspect" readings that are fine are kept and the bad ones are dropped.</p></li>
+          <li><b>Build the training pairs <span class="tag">Data</span></b><p>Each reservoir's daily storage, matched with its SWOT height and its water area on the same day.</p></li>
+          <li><b>Train the storage model <span class="tag model">Model</span></b><p>Gradient boosting in which more height or more area never means less water. It only uses inputs every tank has.</p></li>
+          <li><b>Test it <span class="tag test">Test</span></b><p>On reservoirs it never saw: the error in % of capacity, against one formula for all tanks and Imbulana's equation, with and without the trust screen.</p></li>
+          <li><b>Hand over <span class="tag out">Output</span></b><p>How full every tank is, after every SWOT pass.</p></li>
+        </ol>
+      </div>
+      <div class="tp-side">
+        <div class="glance">
+          <div class="gl"><p class="k">Model</p><p class="v">Storage model</p><p class="s">gradient boosting: SWOT height and water area in, % full out</p></div>
+          <div class="gl"><p class="k">Learns from</p><p class="v">About 100 gauged reservoirs</p><p class="s">daily storage, paired with SWOT heights and water areas</p></div>
+          <div class="gl"><p class="k">Must beat</p><p class="v">One formula and Imbulana's equation</p><p class="s">on reservoirs the model never saw</p></div>
+          <div class="gl"><p class="k">Gets and gives</p><p class="v">Water area in, % full out</p><p class="s">water area from Member A; % full to Member C</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="tm-out"><b>Output:</b> a SWOT accuracy report, a screen that cleans every reading, and a model that says how full any tank is.</p>
   </div>
-  <p class="tm-out"><b>Output:</b> storage for every tank with safe limits, and a 2–4 week forecast, on a dashboard.</p>
+
+  <div class="tp" id="member-c" role="tabpanel" aria-labelledby="tab-c" tabindex="0" style="--c:var(--orange)">
+    <div class="tp-head">
+      <p class="eyebrow">Member C · forecast and system</p>
+      <h2>What comes next</h2>
+      <p class="tm-rq"><span class="pill">RQ4</span></p>
+      <p class="lead">Can a deep-learning model forecast each tank's storage 2–4 weeks ahead, from recent storage, rain and evaporation, better than a "no change" forecast?</p>
+    </div>
+    <div class="tp-grid">
+      <div class="tp-steps">
+        <h3>Step by step</h3>
+        <ol class="path">
+          <li><b>Collect the history <span class="tag">Build</span></b><p>Daily storage for 117 Irrigation Department reservoirs since 2020, with CHIRPS rain and ERA5 evaporation.</p></li>
+          <li><b>Seasonal average <span class="tag">Data</span></b><p>For each tank, its usual storage on each day of the year, built from past years only.</p></li>
+          <li><b>Train the forecast <span class="tag model">Model</span></b><p>An LSTM, and a gradient-boosting model to compare it with, for 1, 2 and 4 weeks ahead.</p></li>
+          <li><b>Test it <span class="tag test">Test</span></b><p>On years and reservoirs it never saw, against "no change" and the seasonal average.</p></li>
+          <li><b>Run the chain <span class="tag">Build</span></b><p>After every pass, Member A's water map and SWOT's height go into Member B's model, and out comes each study tank's % full.</p></li>
+          <li><b>Build the dashboard <span class="tag">Build</span></b><p>Storage, safe limits and the forecast for every tank, updated by itself with GitHub Actions.</p></li>
+          <li><b>Test the whole chain <span class="tag test">Test</span></b><p>From picture to forecast, on the village tanks and on Kanhindawewa's drone survey.</p></li>
+        </ol>
+      </div>
+      <div class="tp-side">
+        <div class="glance">
+          <div class="gl"><p class="k">Model</p><p class="v">Storage forecast</p><p class="s">an LSTM, with a gradient-boosting model to compare</p></div>
+          <div class="gl"><p class="k">Learns from</p><p class="v">117 reservoirs, 6 years</p><p class="s">daily storage, CHIRPS rain, ERA5 evaporation</p></div>
+          <div class="gl"><p class="k">Must beat</p><p class="v">"No change" and the seasonal average</p><p class="s">at 1, 2 and 4 weeks ahead</p></div>
+          <div class="gl"><p class="k">Gets and gives</p><p class="v">% full in, the dashboard out</p><p class="s">% full from Member B; the dashboard for everyone</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="tm-out"><b>Output:</b> a 2–4 week forecast for every tank, the running chain and the dashboard.</p>
+  </div>
+
+  <div class="tp" id="all-three" role="tabpanel" aria-labelledby="tab-all" tabindex="0" style="--c:var(--ink-2)">
+    <div class="tp-head">
+      <p class="eyebrow">Together</p>
+      <h2>All three, on one tank and one day</h2>
+      <p class="lead">An example with made-up round numbers, to show what each member adds.</p>
+    </div>
+    <ol class="day">
+      <li style="--c:var(--blue)"><em>Member A</em><b>The water covers 400 ha</b><span>from today's radar picture</span></li>
+      <li style="--c:var(--aqua)"><em>Member B</em><b>The tank is 60% full</b><span>from that area and SWOT's height</span></li>
+      <li style="--c:var(--orange)"><em>Member C</em><b>About 50% full in 2 weeks</b><span>from the forecast</span></li>
+    </ol>
+    <div class="tp-grid tp-together">
+      <div>
+        <h3>Who hands what to whom</h3>
+        <ul class="handoff">
+          <li><b>Member A → Member B</b><span>the water area, every picture day (about every 3 days)</span></li>
+          <li><b>SWOT → Member B</b><span>the water height, about twice every 21 days for each study tank</span></li>
+          <li><b>Member B → Member C</b><span>how full each tank is, after every SWOT pass</span></li>
+          <li><b>Member C → everyone</b><span>the dashboard, with the forecast</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Work we share</h3>
+        <ul class="shared-list">
+          <li>Field visits on SWOT pass days: gauge photos and the water's edge.</li>
+          <li>Labelling water pictures: Member A leads, and all three help.</li>
+          <li>A weekly check that each hand-over arrives on time.</li>
+          <li>The thesis and the research paper.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div></section>
 
 <section><div class="wrap">
-  <p class="shared"><b>All three:</b> field visits on SWOT pass dates, labelling water masks, the thesis and the research paper.</p>
-  <p style="margin-top:22px"><a class="btn line" href="presentation.html">See the same plan in the presentation</a></p>
+  <p><a class="btn line" href="presentation.html">See the plan in the presentation</a></p>
 </div></section>
 </main>
 
 <footer class="foot"><div class="wrap">
   <p>A student project for the IS4990 Comprehensive Group Project, University of Moratuwa. Group 6, JARVIS, October 2026.</p>
 </div></footer>
+<script src="assets/team.js"></script>
 </body>
 </html>
