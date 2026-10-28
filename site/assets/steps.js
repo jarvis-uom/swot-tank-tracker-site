@@ -121,7 +121,42 @@
     svg.append(el("text", { x: X(40), y: Y(100.6), class: "st-strong", "text-anchor": "end" }, `a + b + c + d = ${fmt(total)} m³`));
   }
 
+  // ---- example 2: the water goes down, up and down again ---------------------------
+  function updown() {
+    const svg = $("#updown");
+    if (!svg) return;
+    const t0 = Date.UTC(2026, 0, 1), t1 = Date.UTC(2026, 7, 31);
+    const TX = (d) => 90 + (Date.parse(`2026-${d}T00:00:00Z`) - t0) / (t1 - t0) * 600;
+    const TY = (h) => 290 - (h - 99.5) / 5 * 260;
+    [[100, 101, "a"], [101, 102, "b"], [102, 103, "c"], [103, 104, "d"]].forEach(([lo, hi, n], i) => {
+      svg.append(el("rect", { x: 90, y: TY(hi), width: 600, height: TY(lo) - TY(hi), class: `st-band${i % 2}` }));
+      svg.append(el("text", { x: 702, y: TY((lo + hi) / 2) + 5, class: "st-strong" }, `layer ${n}`));
+    });
+    [100, 101, 102, 103, 104].forEach((h) => svg.append(el("text", { x: 82, y: TY(h) + 4, class: "st-txt", "text-anchor": "end" }, `${h} m`)));
+    for (let m = 0; m < 8; m++) {
+      const mid = 90 + ((Date.UTC(2026, m, 1) + Date.UTC(2026, m + 1, 1)) / 2 - t0) / (t1 - t0) * 600;
+      svg.append(el("text", { x: mid, y: 316, class: "st-txt", "text-anchor": "middle" },
+        new Date(Date.UTC(2026, m, 1)).toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" })));
+    }
+    const P = [["01-13", 104], ["04-21", 101], ["05-18", 102], ["08-24", 100]];
+    const xy = (i) => [TX(P[i][0]), TY(P[i][1])];
+    [[0, 1, "st-out"], [1, 2, "st-in"], [2, 3, "st-out"]].forEach(([a, b, cls]) => {
+      const [x1, y1] = xy(a), [x2, y2] = xy(b);
+      svg.append(el("line", { x1, y1, x2, y2, class: cls }));
+    });
+    const say = (x, y, text, anchor) => svg.append(el("text", { x, y, class: "st-strong", "text-anchor": anchor || "start" }, text));
+    say(272, 118, "fell 3 m: 670,000 m³ out");
+    say(372, 254, "rose 1 m: 170,000 m³ in");
+    say(470, 150, "fell 2 m: 290,000 m³ out");
+    P.forEach((p, i) => svg.append(el("circle", { cx: xy(i)[0], cy: xy(i)[1], r: 6, class: "st-s2" })));
+    say(xy(0)[0] + 12, xy(0)[1] - 10, "13 Jan: 104 m");
+    say(xy(1)[0] - 8, xy(1)[1] + 26, "21 Apr: 101 m", "end");
+    say(xy(2)[0] - 10, xy(2)[1] - 12, "18 May: 102 m", "end");
+    say(xy(3)[0], xy(3)[1] + 24, "24 Aug: 100 m", "end");
+  }
+
   timeline();
   curve();
   layers();
+  updown();
 })();

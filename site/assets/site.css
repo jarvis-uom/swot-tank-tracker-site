@@ -332,3 +332,6 @@ table.data.st-table .st-total th, table.data.st-table .st-total td { font-weight
 .pd-dash { stroke-dasharray: 7 6; }
 /* eight menu items: let the header use a little more width than the page text */
 .top .wrap { max-width: 1320px; }
+.st-band0 { fill: var(--blue-wash); } .st-band1 { fill: transparent; }
+.st-out { stroke: var(--orange); stroke-width: 3; stroke-linecap: round; }
+.st-in { stroke: var(--blue); stroke-width: 3; stroke-linecap: round; }

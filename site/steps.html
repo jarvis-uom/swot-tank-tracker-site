@@ -140,6 +140,35 @@
 
 <section><div class="wrap">
   <div class="section-head">
+    <p class="eyebrow">Example 2</p>
+    <h2>When the water goes up and down</h2>
+    <p class="lead">Same tank, same layers a, b, c and d. This time the water does not just fall: rain in May lifts it again before it falls to the end. The days are real SWOT pass days in 2026; the heights are made-up round numbers.</p>
+  </div>
+  <figure class="chart">
+    <figcaption><h3>The water's height from January to August</h3><p class="small" style="margin:0">Each fall or rise crosses some of the layers. A fall sends that water out; a rise brings water in.</p></figcaption>
+    <div class="scrollx"><svg id="updown" class="st-svg" viewBox="0 0 760 330" role="img" aria-labelledby="ud-title ud-desc"><title id="ud-title">Water height going down, up and down again</title><desc id="ud-desc">104 m on 13 January, 101 m on 21 April, 102 m on 18 May after rain, and 100 m on 24 August.</desc></svg></div>
+  </figure>
+  <div class="scrollx">
+    <table class="data st-table">
+      <caption class="sr">Each fall and rise and the layers it crosses</caption>
+      <thead><tr><th scope="col">From</th><th scope="col">To</th><th scope="col">Height</th><th scope="col">Layers crossed</th><th scope="col">Water</th></tr></thead>
+      <tbody id="updown-rows">
+        <tr><td>13 Jan</td><td>21 Apr</td><td>104 m to 101 m: fell 3 m</td><td>d + c + b = 280,000 + 220,000 + 170,000</td><td>670,000 m³ out</td></tr>
+        <tr><td>21 Apr</td><td>18 May</td><td>101 m to 102 m: rose 1 m (rain)</td><td>b = 170,000</td><td>170,000 m³ in</td></tr>
+        <tr><td>18 May</td><td>24 Aug</td><td>102 m to 100 m: fell 2 m</td><td>b + a = 170,000 + 120,000</td><td>290,000 m³ out</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cards" style="margin-top:22px">
+    <div class="card"><h3>Net change</h3><p class="sum-line">670,000 − 170,000 + 290,000 = <b>790,000 m³</b></p><p>The same as Example 1: only the start and end heights decide it, whatever happens in between.</p></div>
+    <div class="card"><h3>Water that went out</h3><p class="sum-line">670,000 + 290,000 = <b>960,000 m³</b></p><p>More than the net change, because the rain put 170,000 m³ back in between.</p></div>
+  </div>
+  <p class="callout">To catch every rise and fall, we work out the volume on every dot day and add up the falls and the rises separately. That is why frequent picture days matter.</p>
+  <p style="margin-top:14px"><a class="btn line" href="pictures.html">See how many picture days we get</a></p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
     <p class="eyebrow">Real data</p>
     <h2>Real dots from Mahakanadarawa</h2>
     <p class="lead">These are real measurements, not examples: SWOT's height and the water counted in a clear Sentinel-2 photo. Since 2024, nine photos had almost no cloud over the tank.</p>
