@@ -60,7 +60,9 @@
     const last = new Date(Date.UTC(m.getUTCFullYear(), m.getUTCMonth() + 1, 0)).getUTCDate();
     const real = ev.length && ev.every((e) => e.real) ? "real" : ev.some((e) => e.real) ? "real and expected" : "expected";
     const tr = document.createElement("tr");
-    const label = m.toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" });
+    // the first month starts part-way (17 June), so its counts cover only those days: say so in the label
+    const label = m.toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" }) +
+      (first > 1 ? ` (from ${first} ${m.toLocaleDateString("en-GB", { month: "long", timeZone: "UTC" })})` : "");
     tr.innerHTML = `<th scope="row">${label} <span class="cal-kind">${real}</span></th><td>${cnt("swot")}</td><td>${cnt("s1")}</td><td>${cnt("ni")}</td>` +
       `<td>${cnt("al")}</td><td>${photos("s2")}</td><td>${photos("ls")}</td><td>${days}</td><td>${last - first + 1}</td>`;
     rows.append(tr);

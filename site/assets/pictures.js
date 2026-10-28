@@ -84,7 +84,9 @@
         return s.by[k].exp > 0 ? `≈${Math.round(v)}` : `${v}`;
       };
       const tr = document.createElement("tr");
-      tr.innerHTML = `<th scope="row">${label(s.k, { month: "long", year: "numeric" })}${s.expected ? ' <span class="cal-kind">expected</span>' : ""}</th>` +
+      // the first month starts part-way (17 June), so say so in the label
+      const from = s.k === C.start.slice(0, 7) && Number(C.start.slice(8)) > 1 ? ` (from ${Number(C.start.slice(8))} ${label(s.k, { month: "long" })})` : "";
+      tr.innerHTML = `<th scope="row">${label(s.k, { month: "long", year: "numeric" })}${from}${s.expected ? ' <span class="cal-kind">expected</span>' : ""}</th>` +
         SRC.map(([k]) => `<td>${cell(k)}</td>`).join("") + `<td>${s.expected ? "≈" : ""}${Math.round(s.any)}</td>`;
       body.append(tr);
     });
