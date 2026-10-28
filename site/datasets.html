@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datasets · SWOT Tank Water Tracker</title>
+<meta name="description" content="Every dataset in the SWOT Tank Water Tracker: what it gives, how big it is, whether it is right for our tanks, how others used it, and which member uses it.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3987e5" d="M12 2.5c3.7 4.7 6.7 8.3 6.7 11.7a6.7 6.7 0 0 1-13.4 0C5.3 10.8 8.3 7.2 12 2.5z"/></svg>SWOT Tank Water Tracker</a>
+  <nav class="nav" aria-label="Main">
+    <a href="./">Home</a>
+    <a href="explainer.html">How volume works</a>
+    <a href="shapes.html">Tank shapes</a>
+    <a href="steps.html">Step by step</a>
+    <a href="drone.html">Drone survey</a>
+    <a href="calendar.html">Calendar</a>
+    <a href="pictures.html">Picture days</a>
+    <a href="research.html">Past research</a>
+    <a href="team.html">Team</a>
+    <a href="data.html">SWOT data</a>
+    <a href="datasets.html" aria-current="page">Datasets</a>
+    <a href="presentation.html">Presentation</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<div class="band"><div class="wrap">
+  <p class="eyebrow" style="color:#8fc1f2">Datasets</p>
+  <h1>The data we use</h1>
+  <p>Every dataset in the project: what it gives, how big it is, whether it is right for our tanks, how others used it, and which member uses it. All of it is free.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="tiles">
+    <div class="tile"><p class="value">19</p><p class="label">datasets, in six groups. All are free and public, except the past gauge records we must ask for.</p></div>
+    <div class="tile"><p class="value">165<span class="unit">GB</span></p><p class="label">The biggest: S1S2-Water, the AI training pictures. We plan one part of about 30 GB.</p></div>
+    <div class="tile"><p class="value">&lt; 1<span class="unit">MB</span></p><p class="label">The smallest: every SWOT height for our 13 tanks since July 2023.</p></div>
+  </div>
+</div></section>
+
+<section id="who"><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Who uses what</p>
+    <h2>Each dataset, its members and the size we need</h2>
+    <p class="lead">Pick a member to see only their data. A full dot is a main use; a ring is for checks or a stretch goal. Click a name to jump to its card.</p>
+  </div>
+  <div class="ds-filter" role="group" aria-label="Show datasets for" hidden>
+    <button type="button" data-member="" aria-pressed="true">All</button>
+    <button type="button" data-member="A" aria-pressed="false" style="--c:var(--blue)">Member A</button>
+    <button type="button" data-member="B" aria-pressed="false" style="--c:var(--aqua)">Member B</button>
+    <button type="button" data-member="C" aria-pressed="false" style="--c:var(--orange)">Member C</button>
+  </div>
+  <div class="scrollx">
+  <table class="ds-matrix">
+    <thead><tr><th scope="col">Dataset</th><th scope="col" class="m"><a href="team.html#member-a">A</a></th><th scope="col" class="m"><a href="team.html#member-b">B</a></th><th scope="col" class="m"><a href="team.html#member-c">C</a></th><th scope="col">Size we need</th></tr></thead>
+    <tbody>
+      <tr data-members="A B"><th scope="row"><a href="#swot">SWOT lake product</a><span class="msize">Under 1 MB for our 13 tanks</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="dot" style="--c:var(--aqua)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="sr">not used</span></td><td>Under 1 MB for our 13 tanks</td></tr>
+      <tr data-members="B"><th scope="row"><a href="#swot-pixc">SWOT pixel cloud</a><span class="msize">About 500 MB a file; about 100 files a tank</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot ring" style="--c:var(--aqua)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td>About 500 MB a file; about 100 files a tank</td></tr>
+      <tr data-members="B"><th scope="row"><a href="#icesat2">ICESat-2 laser heights</a><span class="msize">Under 50 MB through SlideRule</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot ring" style="--c:var(--aqua)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td>Under 50 MB through SlideRule</td></tr>
+      <tr data-members="A"><th scope="row"><a href="#sentinel-2">Sentinel-2 photos</a><span class="msize">Small windows only</span></th><td class="m"><span class="dot" style="--c:var(--blue)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td>Small windows only</td></tr>
+      <tr data-members="A"><th scope="row"><a href="#sentinel-1">Sentinel-1 radar</a><span class="msize">Small windows only; pieces about 14 MB</span></th><td class="m"><span class="dot" style="--c:var(--blue)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td>Small windows only; pieces about 14 MB</td></tr>
+      <tr data-members="A"><th scope="row"><a href="#l-band">L-band radar: NISAR and ALOS-2</a><span class="msize">NISAR: about 4–5 GB a scene</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td>NISAR: about 4–5 GB a scene</td></tr>
+      <tr data-members="A"><th scope="row"><a href="#opera">OPERA water maps</a><span class="msize">1–48 MB a map</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td>1–48 MB a map</td></tr>
+      <tr data-members="B"><th scope="row"><a href="#gww">Global Water Watch archive</a><span class="msize">527 MB (one file)</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot" style="--c:var(--aqua)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="sr">not used</span></td><td>527 MB (one file)</td></tr>
+      <tr data-members="A"><th scope="row"><a href="#jrc">JRC Global Surface Water</a><span class="msize">18 MB (one tile)</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td>18 MB (one tile)</td></tr>
+      <tr data-members="A"><th scope="row"><a href="#training">S1S2-Water and Sen1Floods11</a><span class="msize">About 14 GB plus one 30 GB part</span></th><td class="m"><span class="dot" style="--c:var(--blue)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td>About 14 GB plus one 30 GB part</td></tr>
+      <tr data-members="B C"><th scope="row"><a href="#dept-sheet">Irrigation Department daily storage</a><span class="msize">13 MB</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot" style="--c:var(--aqua)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="dot" style="--c:var(--orange)" title="main use"></span><span class="sr">main use</span></td><td>13 MB</td></tr>
+      <tr data-members="A B"><th scope="row"><a href="#dept-layer">Irrigation Department reservoir layer</a><span class="msize">6 MB</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="dot" style="--c:var(--aqua)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="sr">not used</span></td><td>6 MB</td></tr>
+      <tr data-members="A B"><th scope="row"><a href="#drone">Kanhindawewa drone survey</a><span class="msize">2 MB (one PDF)</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="dot ring" style="--c:var(--aqua)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td>2 MB (one PDF)</td></tr>
+      <tr data-members="B"><th scope="row"><a href="#mahaweli">Mahaweli reservoir status reports</a><span class="msize">A small PDF a day</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot ring" style="--c:var(--aqua)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td>A small PDF a day</td></tr>
+      <tr data-members="A B C"><th scope="row"><a href="#field">Our gauge photos</a><span class="msize">A few MB a visit</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="dot" style="--c:var(--aqua)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="dot ring" style="--c:var(--orange)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td>A few MB a visit</td></tr>
+      <tr data-members="A B"><th scope="row"><a href="#dem">Copernicus DEM (GLO-30)</a><span class="msize">47 MB (one tile)</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="dot" style="--c:var(--aqua)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="sr">not used</span></td><td>47 MB (one tile)</td></tr>
+      <tr data-members="B"><th scope="row"><a href="#3d-lakes">3D-LAKES</a><span class="msize">3 GB (all files)</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot ring" style="--c:var(--aqua)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td>3 GB (all files)</td></tr>
+      <tr data-members="C"><th scope="row"><a href="#chirps">CHIRPS rain (and GPM IMERG)</a><span class="msize">About 3 MB a day (world)</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot" style="--c:var(--orange)" title="main use"></span><span class="sr">main use</span></td><td>About 3 MB a day (world)</td></tr>
+      <tr data-members="C"><th scope="row"><a href="#era5">ERA5 weather</a><span class="msize">9 MB</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot" style="--c:var(--orange)" title="main use"></span><span class="sr">main use</span></td><td>9 MB</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div></section>
+
+<section class="ds-group" id="g-height" aria-labelledby="h-height"><div class="wrap">
+  <div class="section-head"><h2 id="h-height">Water height</h2><p class="lead">How high the water stands. Member B turns it into how full each tank is.</p></div>
+  <div class="ds-grid">
+<article class="ds" id="swot" data-members="A B">
+  <figure class="ds-fig"><img src="assets/img/datasets/swot-hurulu.png" alt="Chart of SWOT water heights at Hurulu Wewa from 2023 to 2026, rising and falling each year; most readings are best quality" width="1151" height="619" loading="lazy"><figcaption>Hurulu Wewa: every SWOT pass, July 2023 to October 2026 (101 readings; 4 far-off ones are off the chart). Data: NASA/CNES SWOT, via Hydrocron.</figcaption></figure>
+  <div class="ds-body">
+    <h3>SWOT lake product<span class="ds-prov">NASA and CNES · version D · July 2023 onwards</span></h3>
+    <p class="verdict ok"><span aria-hidden="true">✓</span> Checked: works for us</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>A water height (and area) for every lake on each pass. SWOT sees all 13 study tanks about twice every 21 days.</dd></div>
+      <div><dt>Size</dt><dd>One pass file for every lake: about 12 MB. Through Hydrocron a lake&#x27;s whole record is tiny: all 677 lakes we checked came to 9 MB.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>All 13 study tanks have a SWOT lake ID, with 47–90 usable readings each since July 2023.</li><li>At the 5 big reservoirs SWOT reads 40–64 cm above the gauges: a steady gap, with only 7–13 cm of scatter.</li><li>Village tanks get almost only &quot;suspect&quot; readings, so Member B&#x27;s trust screen cleans them first.</li><li>Official accuracy: 10 cm is required on lakes over 1 km²; 25 cm is the goal for smaller lakes.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1029/2024EA004178">Das and Hossain, 2025: 245 reservoirs in 5 countries; SWOT height R² 0.91 (usual miss 92 cm)</a></li><li><a href="https://doi.org/10.1029/2025WR041223">Ma et al., 2026: 12 reservoirs in the western USA; height within 20 cm, storage within 10%</a></li><li><a href="https://doi.org/10.3390/w18192462">Li et al., 2026: 14 reservoirs; storage error 15% of capacity, 3% once tied to each reservoir&#x27;s records</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://mibrechb.github.io/swot-data-explorer/">SWOT Lake and River Explorer (click any tank)</a></li><li><a href="https://podaac.github.io/hydrocron/">Hydrocron</a></li><li><a href="data.html">Our SWOT data page</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://search.earthdata.nasa.gov/search/granules?p=C3233944983-POCLOUD">NASA Earthdata: the files we use</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a> <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+<article class="ds" id="swot-pixc" data-members="B">
+  <div class="ds-body">
+    <h3>SWOT pixel cloud<span class="ds-prov">NASA and CNES · version D</span></h3>
+    <p class="verdict new"><span aria-hidden="true">…</span> Stretch: not tested yet</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>A height for every water pixel, including the shoreline. It also covers tanks that have no SWOT lake ID.</dd></div>
+      <div><dt>Size</dt><dd>About 460–600 MB per file. About 100 files cover each of our tanks since July 2023.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Only 58% of mapped tanks of 6.25 ha or more have a lake ID; the pixel cloud is how to add the rest.</li><li>Big files and an Earthdata login, so it stays a stretch goal.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.5194/hess-30-6443-2026">Köhn and Nielsen, 2026: 37 lakes in Denmark (25 ha to 40 km²); pixel-cloud water levels within 5–6 cm</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://search.earthdata.nasa.gov/search?q=SWOT_L2_HR_PIXC_D">NASA Earthdata search</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
+  </div>
+</article>
+<article class="ds" id="icesat2" data-members="B">
+  <div class="ds-body">
+    <h3>ICESat-2 laser heights<span class="ds-prov">NASA · ATL13 inland water · 2018 onwards</span></h3>
+    <p class="verdict aux"><span aria-hidden="true">◦</span> For checks</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Water heights along narrow laser tracks. Each track repeats only every 91 days.</dd></div>
+      <div><dt>Size</dt><dd>About 90–100 MB per file for a whole track. Through SlideRule we took only the points over our tanks: under 50 MB in all.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Its beams crossed 12 of our 13 tanks: 12–23 dates at each big reservoir, but 0–5 at the village tanks.</li><li>Against SWOT, 13 of 14 pairs taken within 4 days agree within 15 cm.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.4038/engineer.v58i1.7674">Madumalsha et al., 2025: 9 Sri Lankan reservoirs; correlation 0.99 with the gauges, but 37 cm too high on average</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://slideruleearth.io">SlideRule (no login)</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://search.earthdata.nasa.gov/search?q=ATL13">NASA Earthdata search</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
+  </div>
+</article>
+  </div>
+</div></section>
+
+<section class="ds-group" id="g-area" aria-labelledby="h-area"><div class="wrap">
+  <div class="section-head"><h2 id="h-area">Water area: pictures from space</h2><p class="lead">Where the water is. Member A&#x27;s water map learns from these pictures.</p></div>
+  <div class="ds-grid">
+<article class="ds" id="sentinel-2" data-members="A">
+  <figure class="ds-fig"><img src="assets/img/datasets/sentinel-2-mahakanadarawa.jpg" alt="Sentinel-2 colour photo of Mahakanadarawa reservoir on a clear day" width="720" height="720" loading="lazy"><figcaption>Mahakanadarawa on a clear day, 10 March 2024. Contains modified Copernicus Sentinel data 2024; map labels © OpenStreetMap contributors.</figcaption></figure>
+  <div class="ds-body">
+    <h3>Sentinel-2 photos<span class="ds-prov">Copernicus (ESA) · 10 m · 2015 onwards</span></h3>
+    <p class="verdict care"><span aria-hidden="true">!</span> Works, with care: clouds and plants</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Colour and infrared photos at 10 m. Our tanks get about 89 pictures a year (one tile, 44PMQ).</dd></div>
+      <div><dt>Size</dt><dd>230–640 MB per scene (a 110 km square). We read only small windows around each tank: our check of over 400 scenes read about 200 MB.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Only 8–12% of scenes are fully clear over Mahakanadarawa. The best months are March and September–October.</li><li>At plant-covered Kanhindawewa, a simple water index (NDWI) missed about 65% of the water.</li><li>At 10 m a 6 ha tank is 600 pixels, against 67 at 30 m, so it suits small tanks.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://www.ifad.org/en/w/publications/water-surface-maps-to-manage-ancient-tank-cascade-systems-in-sri-lanka">IFAD and ESA, 2026: monthly 10 m water maps of over 10,650 water bodies in 6 Sri Lankan districts, 2017 to August 2025</a></li><li><a href="https://doi.org/10.1016/j.jag.2025.104523">Dossou Codjia et al., 2025: 20 reservoirs in Burkina Faso; R² 0.76–0.97 at 14, but plants hid the water at 6</a></li><li><a href="https://doi.org/10.1371/journal.pwat.0000260">Pascal et al., 2024: 504 tanks in Telangana, India; a 17% area error became a 31% volume error</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://browser.dataspace.copernicus.eu/?themeId=DEFAULT-THEME&amp;dateMode=SINGLE&amp;zoom=14&amp;lat=8.3868&amp;lng=80.5471&amp;datasetId=S2_L2A_CDAS&amp;fromTime=2024-03-10T00%3A00%3A00.000Z&amp;toTime=2024-03-10T23%3A59%3A59.999Z&amp;layerId=1_TRUE_COLOR">Copernicus Browser (opens on Mahakanadarawa)</a></li><li><a href="https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1">Dynamic World water class</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">Sentinel-2 in Google Earth Engine</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+<article class="ds" id="sentinel-1" data-members="A">
+  <figure class="ds-fig"><img src="assets/img/datasets/sentinel-1-mahakanadarawa.jpg" alt="Sentinel-1 radar picture of Mahakanadarawa during a cyclone; the water shows dark blue" width="720" height="720" loading="lazy"><figcaption>Mahakanadarawa on 26 November 2025, during Cyclone Ditwah, when photos showed only cloud. Open water is dark blue. Contains modified Copernicus Sentinel data 2025; labels © OpenStreetMap contributors.</figcaption></figure>
+  <div class="ds-body">
+    <h3>Sentinel-1 radar<span class="ds-prov">Copernicus (ESA) · C-band · 2014 onwards</span></h3>
+    <p class="verdict care"><span aria-hidden="true">!</span> Works, with care: plants</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Radar pictures that see through cloud, day and night. Our tanks get 2–3 dates a month (tracks 19 and 27, every 12 days each).</dd></div>
+      <div><dt>Size</dt><dd>About 1–2 GB per scene. Ready-made terrain-corrected pieces (OPERA RTC-S1) are about 14 MB each.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>It sees the water through monsoon cloud, when photos see nothing.</li><li>Thick floating plants look like land to it: at Kanhindawewa a simple −18 dB rule found only about a tenth of the water.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://archive.cmb.ac.lk/items/84f64851-eaa9-4b8c-babd-5d18f130c1ee">Perera and Jayaweera, 2020: Sri Lankan reservoirs; radar water area against reported volume, R² 0.67–0.94</a></li><li><a href="https://doi.org/10.1109/JSTARS.2023.3333969">Wieland et al., 2024: a U-Net on radar matched 85% of the true water</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://planetarycomputer.microsoft.com/dataset/sentinel-1-rtc">Planetary Computer: terrain-corrected Sentinel-1</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S1_GRD">Sentinel-1 in Google Earth Engine</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+<article class="ds" id="l-band" data-members="A">
+  <div class="ds-body">
+    <h3>L-band radar: NISAR and ALOS-2<span class="ds-prov">NASA–ISRO (NISAR, 2025 onwards) · JAXA (ALOS-2, 2014 onwards)</span></h3>
+    <p class="verdict new"><span aria-hidden="true">…</span> New: not tested yet</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Longer-wave radar that sees further into plants. NISAR gives about 5 pictures a month here; free ALOS-2 pictures come about 10 times a year.</dd></div>
+      <div><dt>Size</dt><dd>NISAR: about 4–5 GB per scene for the map-ready version (GCOV); the raw versions are 15–26 GB. ALOS-2: size not checked.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>NISAR already has pictures over our tanks (October 2026).</li><li>It should see water under floating plants better than Sentinel-1. We have not tested it on our tanks yet.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li>NISAR data only started in 2025, so we found no tank study yet.</li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://registry.opendata.aws/jaxa-alos-palsar2-scansar/">JAXA ALOS-2 on AWS (free, no login)</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://asf.alaska.edu/nisar/">ASF: NISAR data</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+<article class="ds" id="opera" data-members="A">
+  <div class="ds-body">
+    <h3>OPERA water maps<span class="ds-prov">NASA · DSWx · 30 m</span></h3>
+    <p class="verdict aux"><span aria-hidden="true">◦</span> For checks</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Ready-made water maps: one from each photo (DSWx-HLS, since 2016) and one from each radar picture (DSWx-S1, since August 2024).</dd></div>
+      <div><dt>Size</dt><dd>About 48 MB per photo-based map and 1–10 MB per radar-based map, for one tile.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Over our tile: 109 photo-based maps and 26 radar dates in 12 months.</li><li>30 m pixels are coarse for small tanks, and it has no &quot;water under plants&quot;. A ready-made baseline for Member A&#x27;s maps.</li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://search.earthdata.nasa.gov/search?q=OPERA_L3_DSWX-S1_V1">NASA Earthdata search</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+<article class="ds" id="gww" data-members="B">
+  <figure class="ds-fig"><img src="assets/img/datasets/gww-hurulu.png" alt="Chart of Hurulu Wewa&#x27;s water area from 2021 to 2026, between about 400 and 1,200 ha, below its full-supply area" width="1167" height="619" loading="lazy"><figcaption>Hurulu Wewa: 147 water areas from Landsat and Sentinel-2, October 2020 to 2026, against its full-supply area. Data: Global Water Watch archive (CC BY 4.0); outline: Irrigation Department.</figcaption></figure>
+  <div class="ds-body">
+    <h3>Global Water Watch archive<span class="ds-prov">Global Water Watch · Landsat and Sentinel-2 · saved September 2026</span></h3>
+    <p class="verdict ok"><span aria-hidden="true">✓</span> Checked: works for us</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Water area over time for 71,208 reservoirs worldwide. The archive was saved before the service closes.</dd></div>
+      <div><dt>Size</dt><dd>One 527 MB file for every reservoir. Hurulu Wewa&#x27;s record since October 2020 is 147 areas.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>We matched 69 of the department&#x27;s 117 reservoirs by their outlines (78% overlap on the median), giving 11,484 area–storage pairs to train Member B&#x27;s model.</li><li>Cloud gaps are filled in by its method, not measured. It has no village tanks.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1038/s41598-022-17074-6">Donchyts et al., 2022: the method behind it, for small and medium reservoirs worldwide</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://www.globalwaterwatch.earth/">Global Water Watch website</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://zenodo.org/records/22643338">Zenodo: the archive (CC BY 4.0)</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
+  </div>
+</article>
+<article class="ds" id="jrc" data-members="A">
+  <div class="ds-body">
+    <h3>JRC Global Surface Water<span class="ds-prov">European Commission JRC · Landsat · 1984 onwards</span></h3>
+    <p class="verdict aux"><span aria-hidden="true">◦</span> For history and checks</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Monthly 30 m water maps since 1984, and how often each pixel was wet.</dd></div>
+      <div><dt>Size</dt><dd>One 10° × 10° tile of &quot;how often wet&quot;: 18 MB.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Its newest month is December 2024, so it gives history, not new dates.</li><li>Each tank was fully seen in 21–22 of the 36 months of 2022–24. Its &quot;how often wet&quot; map can give each tank&#x27;s largest outline.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1038/nature20584">Pekel et al., 2016 (Nature): the dataset paper</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://global-surface-water.appspot.com/download">JRC Global Surface Water downloads</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+  </div>
+</div></section>
+
+<section class="ds-group" id="g-labels" aria-labelledby="h-labels"><div class="wrap">
+  <div class="section-head"><h2 id="h-labels">Training labels</h2><p class="lead">Pictures with the water already drawn, so the water map can learn.</p></div>
+  <div class="ds-grid">
+<article class="ds" id="training" data-members="A">
+  <figure class="ds-fig"><img src="assets/img/datasets/plants-bulankulama.jpg" alt="Sentinel-2 photo of Bulankulama tank covered in green water plants" width="720" height="720" loading="lazy"><figcaption>Why we add our own labels: Bulankulama tank, 25 March 2026, covered in plants. A simple water index misses it, yet SWOT has 47 usable heights here. Contains modified Copernicus Sentinel data 2026; labels © OpenStreetMap contributors.</figcaption></figure>
+  <div class="ds-body">
+    <h3>S1S2-Water and Sen1Floods11<span class="ds-prov">DLR (S1S2-Water) · Cloud to Street (Sen1Floods11)</span></h3>
+    <p class="verdict care"><span aria-hidden="true">!</span> Works, with care: no water under plants</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Hand-checked water masks for Sentinel-1 and Sentinel-2 pictures. S1S2-Water covers 65 areas in 29 countries; Sen1Floods11 covers flood events.</dd></div>
+      <div><dt>Size</dt><dd>S1S2-Water: 165 GB in 7 files (3 parts of about 30 GB each). Sen1Floods11: about 14 GB. We plan Sen1Floods11 plus one part of S1S2-Water.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>U-Nets trained on S1S2-Water matched 97% of the true water on photos and 85% on radar.</li><li>Neither has a &quot;water under plants&quot; class, so we add our own labels from our tanks.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1109/JSTARS.2023.3333969">Wieland et al., 2024: the S1S2-Water paper</a></li><li>Bonafilia et al., 2020: the Sen1Floods11 paper (CVPR workshops)</li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://github.com/cloudtostreet/Sen1Floods11">Sen1Floods11 on GitHub</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://doi.org/10.5281/zenodo.8314175">Zenodo: S1S2-Water</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+  </div>
+</div></section>
+
+<section class="ds-group" id="g-truth" aria-labelledby="h-truth"><div class="wrap">
+  <div class="section-head"><h2 id="h-truth">Ground truth</h2><p class="lead">Measured on the ground: what we train on and test against.</p></div>
+  <div class="ds-grid">
+<article class="ds" id="dept-sheet" data-members="B C">
+  <figure class="ds-fig"><img src="assets/img/datasets/dept-storage.png" alt="Chart of Hurulu Wewa&#x27;s daily storage from 2020 to 2026, filling each wet season and reaching about 100% after Cyclone Ditwah" width="1167" height="619" loading="lazy"><figcaption>Hurulu Wewa&#x27;s daily storage, October 2020 to October 2026, as % of capacity (no data April–September 2021). Data: Irrigation Department of Sri Lanka.</figcaption></figure>
+  <div class="ds-body">
+    <h3>Irrigation Department daily storage<span class="ds-prov">Irrigation Department of Sri Lanka · Reservoir Status · 2020 onwards</span></h3>
+    <p class="verdict care"><span aria-hidden="true">!</span> Checked: works, with care</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Daily storage of 117 reservoirs (74 major since October 2020, 43 medium since April 2023), with capacity, and daily gauge depth for the big ones.</dd></div>
+      <div><dt>Size</dt><dd>About 200,000 daily values: a 13 MB table.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>The department&#x27;s own public dashboards read this same sheet.</li><li>The value changes on only 34–62% of days at the big reservoirs, so some days are not updated.</li><li>Its &quot;long-term average&quot; column is the average of the seasons in the sheet, including the latest years. It must not be used to test forecasts.</li><li>On 27 October 2026 it differed from the Mahaweli Authority&#x27;s figure for Nachchaduwa by 4%.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li>It trains Member B&#x27;s storage model and Member C&#x27;s forecast, and labels the trust screen.</li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://irrigation.gov.lk/web/index.php?option=com_content&amp;view=article&amp;id=84&amp;Itemid=201&amp;lang=en">Reservoir Status page</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTcSGhi9RESl7CMCl1TQnrKe07Gx5Q696YiSB9jneIHqIP9lifpqSErgI3D5k9KtQXSdW5JpycIIr5e/pubhtml">The daily sheet</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a> <a class="mchip" style="--c:var(--orange)" href="team.html#member-c">Member C</a></span></p>
+  </div>
+</article>
+<article class="ds" id="dept-layer" data-members="A B">
+  <figure class="ds-fig"><img src="assets/img/datasets/dept-layer-map.png" alt="Map of 50 department tank outlines in the study area, with the five big reservoirs named" width="810" height="910" loading="lazy"><figcaption>50 department tank outlines at full supply in our study area (80.4–80.8° E, 8.1–8.6° N). Village tanks are not in this layer. Data: Irrigation Department.</figcaption></figure>
+  <div class="ds-body">
+    <h3>Irrigation Department reservoir layer<span class="ds-prov">Irrigation Department of Sri Lanka · &quot;as at 1 January 2022&quot;</span></h3>
+    <p class="verdict care"><span aria-hidden="true">!</span> Checked: works, with care</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>A map layer of 354 irrigation schemes: full-supply outline and area, capacity, dead storage, catchment, flood level and bund top.</dd></div>
+      <div><dt>Size</dt><dd>354 outlines: a 6 MB file.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>258 tanks have both capacity and area (81 major, 164 medium, 13 minor). 116 of the 117 daily-sheet reservoirs sit on an outline.</li><li>It gives no survey year. Mahakanadarawa&#x27;s spill was raised in 2024–26, so its capacity rose from 45 to 47 million m³, but the layer still shows the old level.</li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://irrigation.gov.lk/web/images/Publications/SCHEME_REGISTER_2ND_EDITION_Book__2022.pdf">Scheme Register 2022 (PDF)</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://services3.arcgis.com/J7ZFXmR8rSmQ3FGf/ArcGIS/rest/services/Scheme_Data_2/FeatureServer/10">The map layer (ArcGIS)</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a> <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+<article class="ds" id="drone" data-members="A B">
+  <div class="ds-body">
+    <h3>Kanhindawewa drone survey<span class="ds-prov">Irrigation Department · LiDAR drone and GNSS · 2026</span></h3>
+    <p class="verdict ok"><span aria-hidden="true">✓</span> Checked: our best truth</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>A measured tank bed: the area and capacity of Kanhindawewa at every foot of height.</dd></div>
+      <div><dt>Size</dt><dd>One 2 MB PDF.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>The only measured tank bed we have: full supply at 260 ft, 83.5 ha and 817 acre-feet.</li><li>On it, Imbulana&#x27;s formula gave 4–14% too much water above one-third depth (our test).</li><li>We show no picture of it: reusing the map needs the Director General of Irrigation&#x27;s approval.</li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="drone.html">Our Drone survey page</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://www.irrigation.gov.lk/web/images/Scheme-Maps/Anuradhapura/HuruluWewa/Area_Capacity_Kanhindawewa_01_07_2026.pdf">The survey sheet (PDF)</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a> <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
+  </div>
+</article>
+<article class="ds" id="mahaweli" data-members="B">
+  <div class="ds-body">
+    <h3>Mahaweli reservoir status reports<span class="ds-prov">Mahaweli Authority · Water Management Secretariat</span></h3>
+    <p class="verdict aux"><span aria-hidden="true">◦</span> For checks</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Water level in metres above sea level, and storage, for Hurulu Wewa, Nachchaduwa and Nuwara Wewa.</dd></div>
+      <div><dt>Size</dt><dd>A small PDF each day. Only today&#x27;s is online: it is replaced daily.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Its sea-level readings matched our &quot;gauge zero&quot; sum (full supply level minus full depth) within 11 cm on 27 October 2026.</li><li>It must be saved every day, or the record is lost.</li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://mahaweli.gov.lk/wms.html">Reservoirs status reports</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
+  </div>
+</article>
+<article class="ds" id="field" data-members="A B C">
+  <div class="ds-body">
+    <h3>Our gauge photos<span class="ds-prov">Collected by the team · on SWOT pass days</span></h3>
+    <p class="verdict new"><span aria-hidden="true">…</span> To collect</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Photos of the gauge posts at the village tanks, with time and GPS, on the days SWOT passes.</dd></div>
+      <div><dt>Size</dt><dd>A few MB of phone photos a visit.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>The only height check at village tanks that have no records.</li><li>Visits are in daylight and in pairs, and nobody enters the water.</li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="calendar.html">Our Calendar page: the pass days</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a> <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a> <a class="mchip" style="--c:var(--orange)" href="team.html#member-c">Member C</a></span></p>
+  </div>
+</article>
+  </div>
+</div></section>
+
+<section class="ds-group" id="g-shape" aria-labelledby="h-shape"><div class="wrap">
+  <div class="section-head"><h2 id="h-shape">Ground and tank-bed shape</h2><p class="lead">The land around each tank, and the shape of the bed.</p></div>
+  <div class="ds-grid">
+<article class="ds" id="dem" data-members="A B">
+  <figure class="ds-fig"><img src="assets/img/datasets/dem-mahakanadarawa.jpg" alt="Elevation map around Mahakanadarawa: brown ground, and the reservoir in blue as one flat value" width="978" height="755" loading="lazy"><figcaption>Copernicus DEM around Mahakanadarawa: the water is one flat value, so the bed is missing. © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018, provided under COPERNICUS by the European Union and ESA; all rights reserved.</figcaption></figure>
+  <div class="ds-body">
+    <h3>Copernicus DEM (GLO-30)<span class="ds-prov">Copernicus · 30 m · radar from 2011–12 here</span></h3>
+    <p class="verdict care"><span aria-hidden="true">!</span> Works, with care: no tank beds</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Ground height every 30 m. Member B takes land slope and catchment from it; Member A uses the slope.</dd></div>
+      <div><dt>Size</dt><dd>One 1° × 1° tile is 47 MB, and one tile covers all 13 of our tanks.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Water is flattened: 70–95% of each big reservoir is one flat value, so the bed is missing.</li><li>On dry beds it is within about 1 m of ICESat-2: the best of the free elevation maps here.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1371/journal.pwat.0000260">Pascal et al., 2024: global elevation maps gave 47–78% volume errors on small reservoirs</a></li><li><a href="https://doi.org/10.1029/2024EA004178">Das and Hossain, 2025: curves from SRTM elevation can be off by a few metres</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://registry.opendata.aws/copernicus-dem/">Copernicus DEM on AWS</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a> <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+  </div>
+</article>
+<article class="ds" id="3d-lakes" data-members="B">
+  <div class="ds-body">
+    <h3>3D-LAKES<span class="ds-prov">Huang et al. · ICESat-2 and Landsat · 2025</span></h3>
+    <p class="verdict aux"><span aria-hidden="true">◦</span> For checks: big reservoirs only</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Height–area–volume curves for lakes and reservoirs worldwide.</dd></div>
+      <div><dt>Size</dt><dd>3 GB in 8 files.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Curves are about 60 cm off (median) against 214 surveyed curves.</li><li>Most lakes under 1 km² have no curve, so it can only check the 5 big reservoirs.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1038/s41597-025-05911-y">Huang et al., 2025 (Scientific Data): the dataset paper</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://zenodo.org/records/13107867">Zenodo: 3D-LAKES</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
+  </div>
+</article>
+  </div>
+</div></section>
+
+<section class="ds-group" id="g-weather" aria-labelledby="h-weather"><div class="wrap">
+  <div class="section-head"><h2 id="h-weather">Weather</h2><p class="lead">Rain and evaporation, for Member C&#x27;s forecast.</p></div>
+  <div class="ds-grid">
+<article class="ds" id="chirps" data-members="C">
+  <div class="ds-body">
+    <h3>CHIRPS rain (and GPM IMERG)<span class="ds-prov">UC Santa Barbara (CHIRPS, 1981 onwards) · NASA (IMERG)</span></h3>
+    <p class="verdict ok"><span aria-hidden="true">✓</span> Works</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Daily rain on a 5 km grid, from satellites and rain gauges. IMERG is a 10 km backup that is only one day behind.</dd></div>
+      <div><dt>Size</dt><dd>CHIRPS: about 3 MB a day for the whole world. IMERG: about 27 MB a day.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Final CHIRPS data runs about a month behind, with an early version about a week behind.</li><li>We have not yet checked it against Sri Lankan rain gauges.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1038/sdata.2015.66">Funk et al., 2015 (Scientific Data): the CHIRPS paper</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://www.chc.ucsb.edu/data/chirps">CHIRPS</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--orange)" href="team.html#member-c">Member C</a></span></p>
+  </div>
+</article>
+<article class="ds" id="era5" data-members="C">
+  <figure class="ds-fig"><img src="assets/img/datasets/era5-rain-hurulu.png" alt="Bar chart of monthly rain at Hurulu Wewa from 2021 to 2026, highest from October to January" width="1151" height="619" loading="lazy"><figcaption>Monthly rain at Hurulu Wewa, January 2021 to September 2026: the October–January rains fill the tanks. Data: ERA5 via Open-Meteo (CC BY 4.0).</figcaption></figure>
+  <div class="ds-body">
+    <h3>ERA5 weather<span class="ds-prov">Copernicus Climate Change Service · 25 km · 1940 onwards</span></h3>
+    <p class="verdict ok"><span aria-hidden="true">✓</span> Checked: works for us</p>
+    <dl>
+      <div><dt>What it gives</dt><dd>Hourly weather on a 25 km grid: rain, temperature, wind and evaporation. Open-Meteo serves it free, with no key.</dd></div>
+      <div><dt>Size</dt><dd>Our daily rain for 117 reservoirs, 2020–2026: a 9 MB table.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>In our forecast test, past rain helped a little; knowing the coming weeks&#x27; rain cut the error by another 6–9%.</li><li>It runs about 6 days behind.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1002/qj.3803">Hersbach et al., 2020: the ERA5 paper</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://open-meteo.com/en/docs/historical-weather-api">Open-Meteo archive API</a></li></ul></dd></div>
+    </dl>
+    <p class="ds-foot"><a class="ds-open" href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels">ERA5 at the Climate Data Store</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--orange)" href="team.html#member-c">Member C</a></span></p>
+  </div>
+</article>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head"><p class="eyebrow">Notes</p><h2>How we checked</h2></div>
+  <ul class="notes">
+    <li>Sizes come from each provider's own catalogue (Copernicus Data Space, NASA Earthdata, ASF, Zenodo, AWS), read on 29 October 2026. "Size we need" is our own estimate.</li>
+    <li>"Is it right for us?" comes from our own checks in October 2026, on our tanks, and from the papers linked under each card.</li>
+    <li>The pictures are our own, made from the data in each card. The credit for each is under it.</li>
+  </ul>
+  <p style="margin-top:22px"><a class="btn line" href="team.html">See what each member does</a></p>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p>A student project for the IS4990 Comprehensive Group Project, University of Moratuwa. Group 6, JARVIS, October 2026.</p>
+</div></footer>
+<script src="assets/datasets.js"></script>
+</body>
+</html>

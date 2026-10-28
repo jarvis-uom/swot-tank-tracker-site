@@ -16,8 +16,9 @@ A small website for our IS4990 project "SWOT Tank Water Tracker for Sri Lanka" (
 | `calendar.html` | Satellite calendar: real days with data from each satellite since NISAR started (June 2026) and expected days to March 2027, from `assets/calendar-data.js` (made by `temp/calendar/build_calendar_data.py` in the project folder) |
 | `pictures.html` | Picture days: water pictures only (radar every pass, photos when clear), month by month, the running total and a rough layer thickness; same data file as the calendar |
 | `research.html` | Past research: earlier studies in one table (what they used, how accurate, the problem for our tanks, our answer); every number checked against the study (record in the project's `temp/research-check/checked.md`) |
-| `team.html` | Team: one research question per member, with the work already done, the data analysis and the technical work (the same as slides 16–18 of the talk) |
+| `team.html` | Team: the chain of three models, and one tab per member with their research questions, steps, facts and datasets (the same plan as slides 15–18 of the talk) |
 | `data.html` | Three years of SWOT water levels and stored water for the five reservoirs, with a table of every reading |
+| `datasets.html` | Datasets: all 19 datasets (what each gives, its size, whether it is right for our tanks, how others used it, ready-made tools, and which member uses it), a member filter and example pictures in `assets/img/datasets/`. Made by `temp/datasets-page/make_datasets_page.py` and `make_images.py` in the project folder |
 | `presentation.html` | Our 21-slide proposal talk in a slide viewer, with the PDF (opens in a new tab) and the PowerPoint to download |
 
 It is plain HTML, CSS and JavaScript, with no build step and no outside libraries. The pages also work when opened straight from the disk.
