@@ -27,13 +27,17 @@
     return s;
   }
 
-  // legend
+  // legend: pictures (areas) as tags; SWOT and the gauge give heights, so they are marked differently
   const legend = $("#legend");
-  SRC.forEach(([k, , n]) => {
+  SRC.filter(([k]) => k !== "swot").forEach(([k, , n]) => {
     const li = document.createElement("li");
     li.append(chip({ s: k, real: true }), document.createTextNode(n));
     legend.append(li);
   });
+  const sw = document.createElement("li");
+  const ss = document.createElement("span"); ss.className = "cal-sw-sample";
+  sw.append(ss, document.createTextNode("Dark stripe on top: SWOT pass, water height (dashed when expected)"));
+  legend.append(sw);
   const g = document.createElement("li");
   const gs = document.createElement("span"); gs.className = "cal-g"; gs.textContent = "G";
   g.append(gs, document.createTextNode("Gauge height, every day (5 big reservoirs only)"));
@@ -88,7 +92,15 @@
       if (inside) {
         const gg = document.createElement("span"); gg.className = "cal-g"; gg.textContent = "G"; gg.title = "Gauge height (big reservoirs)";
         cell.append(gg);
-        (byDay[key] || []).forEach((e) => cell.append(chip(e)));
+        const list = byDay[key] || [];
+        const swot = list.find((e) => e.s === "swot");
+        if (swot) {   // a height, not a picture: a stripe on top of the day instead of a tag
+          cell.classList.add(swot.real ? "sw-real" : "sw-exp");
+          cell.title = `SWOT pass (water height), ${swot.real ? "real" : "expected"}`;
+          const t = document.createElement("span"); t.className = "sr"; t.textContent = `SWOT pass, ${swot.real ? "real" : "expected"}.`;
+          cell.append(t);
+        }
+        list.filter((e) => e.s !== "swot").forEach((e) => cell.append(chip(e)));
       }
       if (key === C.today) cell.setAttribute("aria-label", `Today, ${key}`);
       grid.append(cell);

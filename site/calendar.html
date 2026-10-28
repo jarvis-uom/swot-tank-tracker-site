@@ -34,11 +34,12 @@
 <section><div class="wrap">
   <div class="section-head">
     <p class="eyebrow">How to read it</p>
-    <h2>One tag for each satellite on each day</h2>
+    <h2>Tags are pictures; the stripe and the G are heights</h2>
   </div>
   <ul class="cal-legend" id="legend"></ul>
   <ul class="notes">
-    <li><b>Solid tag:</b> a real day, found in the satellite's own catalogue. <b>Dashed tag:</b> an expected day, worked out from the satellite's fixed repeat cycle. <b>Faded photo tag:</b> a real photo that was too cloudy to use.</li>
+    <li><b>Tags are water pictures</b>, which give the water's area: radar (S1, NI, AL) and photos (S2, LS). A solid tag is a real day from the satellite's own catalogue; a dashed tag is an expected day from its fixed repeat cycle; a faded photo tag was too cloudy to use.</li>
+    <li><b>Heights are marked differently:</b> a dark stripe along the top of a day is a SWOT pass, and the small G is the gauge. Pictures plus a height make the dots, and the dots make the layers.</li>
     <li><b>Big reservoirs:</b> the Irrigation Department's gauge gives a height every day (the small G in each day). So every satellite day there becomes a dot.</li>
     <li><b>Village tanks:</b> SWOT days give the height. Radar and photo days in between take their height from the straight line between two SWOT passes.</li>
   </ul>
@@ -53,7 +54,7 @@
   <div class="scrollx">
     <table class="data" id="month-table">
       <caption class="sr">Days with data from each satellite, month by month</caption>
-      <thead><tr><th scope="col">Month</th><th scope="col">SWOT</th><th scope="col">Sentinel-1</th><th scope="col">NISAR</th><th scope="col">ALOS-2</th><th scope="col">Sentinel-2 photos (clear)</th><th scope="col">Landsat photos (clear)</th><th scope="col">Days with any satellite</th><th scope="col">Gauge days (big 5)</th></tr></thead>
+      <thead><tr><th scope="col">Month</th><th scope="col">SWOT passes (height)</th><th scope="col">Sentinel-1</th><th scope="col">NISAR</th><th scope="col">ALOS-2</th><th scope="col">Sentinel-2 photos (clear)</th><th scope="col">Landsat photos (clear)</th><th scope="col">Days with any satellite</th><th scope="col">Gauge days (big 5)</th></tr></thead>
       <tbody id="month-rows"></tbody>
     </table>
   </div>

@@ -335,3 +335,6 @@ table.data.st-table .st-total th, table.data.st-table .st-total td { font-weight
 .st-band0 { fill: var(--blue-wash); } .st-band1 { fill: transparent; }
 .st-out { stroke: var(--orange); stroke-width: 3; stroke-linecap: round; }
 .st-in { stroke: var(--blue); stroke-width: 3; stroke-linecap: round; }
+.cal-day.sw-real { border-top: 5px solid var(--ink); }
+.cal-day.sw-exp { border-top: 5px dashed var(--ink); }
+.cal-sw-sample { display: inline-block; width: 26px; height: 20px; border: 1px solid var(--rule); border-top: 5px solid var(--ink); border-radius: 4px; flex: none; }
