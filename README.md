@@ -12,6 +12,7 @@ A small website for our IS4990 project "SWOT Tank Water Tracker for Sri Lanka" (
 | `explainer.html` | An interactive model tank: how water height and water area add up to volume |
 | `shapes.html` | Five tank bank shapes with round numbers: when top, bottom or average area × height gives the right amount of water |
 | `steps.html` | One worked example on real satellite days: where each height and area comes from, the function A(h), the layers (the integral) and the checks |
+| `drone.html` | Drone survey: the Irrigation Department's 2026 drone survey of Kanhindawewa (key values and the link to the sheet; the sheet itself is not copied, as it asks), and how satellites make the same area and capacity table |
 | `calendar.html` | Satellite calendar: real days with data from each satellite since NISAR started (June 2026) and expected days to March 2027, from `assets/calendar-data.js` (made by `temp/calendar/build_calendar_data.py` in the project folder) |
 | `pictures.html` | Picture days: water pictures only (radar every pass, photos when clear), month by month, the running total and a rough layer thickness; same data file as the calendar |
 | `research.html` | Past research: earlier studies in one table (what they used, how accurate, the problem for our tanks, our answer); every number checked against the study (record in the project's `temp/research-check/checked.md`) |

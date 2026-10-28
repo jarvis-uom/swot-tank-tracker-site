@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drone survey · SWOT Tank Water Tracker</title>
+<meta name="description" content="The Irrigation Department's 2026 drone survey of Kanhindawewa, and how our satellite method makes the same area and capacity table for every tank.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3987e5" d="M12 2.5c3.7 4.7 6.7 8.3 6.7 11.7a6.7 6.7 0 0 1-13.4 0C5.3 10.8 8.3 7.2 12 2.5z"/></svg>SWOT Tank Water Tracker</a>
+  <nav class="nav" aria-label="Main">
+    <a href="./">Home</a>
+    <a href="explainer.html">How volume works</a>
+    <a href="shapes.html">Tank shapes</a>
+    <a href="steps.html">Step by step</a>
+    <a href="drone.html" aria-current="page">Drone survey</a>
+    <a href="calendar.html">Calendar</a>
+    <a href="pictures.html">Picture days</a>
+    <a href="research.html">Past research</a>
+    <a href="team.html">Team</a>
+    <a href="data.html">SWOT data</a>
+    <a href="presentation.html">Presentation</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<div class="band"><div class="wrap">
+  <p class="eyebrow" style="color:#8fc1f2">Drone survey</p>
+  <h1>A drone mapped one tank. Satellites can do it for every tank.</h1>
+  <p>In 2026 the Irrigation Department used a drone survey to draw Kanhindawewa's area and capacity curve. Our project makes the same kind of curve from satellites, for every tank SWOT sees, and keeps it up to date.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">The survey</p>
+    <h2>Area capacity curve, Kanhindawewa tank</h2>
+    <p class="lead">Irrigation Department, Geo Informatics Branch. Huruluwewa Division, Anuradhapura Region. Drawing 491/15/2A, dated 25 June 2026.</p>
+  </div>
+  <ul class="notes">
+    <li><b>How it was made:</b> a 3D model of the ground (a DEM) made from LiDAR data collected by a drone, and from GNSS survey data.</li>
+    <li><b>The map:</b> scale 1:3,000, on the Sri Lanka Grid 1999 (SLD99), with a contour every 1 ft of height.</li>
+    <li><b>The table:</b> the water area and capacity at every 1 ft, from the sluice sill at 249.5 ft to 261 ft, and the capacity at every 0.1 ft.</li>
+  </ul>
+  <div class="dv-facts" id="dv-facts">
+    <div class="dv-fact"><p class="k">Full supply level</p><p class="v">260 ft</p><p class="s">above sea level</p></div>
+    <div class="dv-fact"><p class="k">Water spread at full supply</p><p class="v">206.37 acres</p><p class="s">83.52 ha</p></div>
+    <div class="dv-fact"><p class="k">Capacity at full supply</p><p class="v">817 acre-feet</p><p class="s">1.01 million m³</p></div>
+    <div class="dv-fact"><p class="k">Dead storage</p><p class="v">0 acre-feet</p><p class="s">the sluice sill is at 249.5 ft</p></div>
+    <div class="dv-fact"><p class="k">High flood level</p><p class="v">262 ft</p><p class="s">bund top at 263 ft</p></div>
+    <div class="dv-fact"><p class="k">Bund</p><p class="v">1,420 m long</p><p class="s">earth fill, 4.8 m high</p></div>
+    <div class="dv-fact"><p class="k">Catchment</p><p class="v">23.18 km²</p><p class="s">from GIS</p></div>
+    <div class="dv-fact"><p class="k">Irrigable area</p><p class="v">600 acres</p><p class="s">243 ha</p></div>
+  </div>
+  <p style="margin-top:22px">
+    <a class="btn primary" href="https://www.irrigation.gov.lk/web/images/Scheme-Maps/Anuradhapura/HuruluWewa/Area_Capacity_Kanhindawewa_01_07_2026.pdf">Open the survey sheet (PDF)</a>
+    <a class="btn line" href="https://browser.dataspace.copernicus.eu/?themeId=DEFAULT-THEME&amp;dateMode=SINGLE&amp;zoom=15&amp;lat=8.4487&amp;lng=80.8094&amp;datasetId=S2_L2A_CDAS&amp;fromTime=2024-03-10T00%3A00%3A00.000Z&amp;toTime=2024-03-10T23%3A59%3A59.999Z&amp;layerId=1_TRUE_COLOR">See the tank from space</a>
+  </p>
+  <p class="small" style="margin-top:12px">Values from the survey sheet. The sheet asks for the Director General of Irrigation's approval before the map, or any part of it, is redrawn in another format, so we link to it rather than copy it.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">The same job from space</p>
+    <h2>Two ways to the same table</h2>
+    <p class="lead">Both end with the water area and capacity at each level of the tank. They get there in different ways.</p>
+  </div>
+  <div class="dv-lane drone">
+    <h3>Drone survey</h3>
+    <ol class="dv-steps">
+      <li>A drone with LiDAR flies over the tank</li>
+      <li>A 3D model of the ground, from LiDAR and GNSS data</li>
+      <li>A shoreline at every 1 ft of water level</li>
+      <li>The area and capacity at each level</li>
+    </ol>
+  </div>
+  <div class="dv-lane sat">
+    <h3>Satellites (our project)</h3>
+    <ol class="dv-steps">
+      <li>SWOT measures the water height on each pass</li>
+      <li>Radar and photos measure the water area</li>
+      <li>Each picture day adds one dot: a height and an area</li>
+      <li>The dots give the area and capacity at each level</li>
+    </ol>
+  </div>
+  <table class="rs dv-compare" id="dv-compare">
+    <caption class="sr">The drone survey and our satellite method, side by side</caption>
+    <thead><tr><th scope="col"></th><th scope="col">Drone survey</th><th scope="col">Satellites (our project)</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">What you get</th><td data-label="Drone survey">The area and capacity at each level</td><td data-label="Satellites (our project)">The same: the area and capacity at each level</td></tr>
+      <tr><th scope="row">How the water is added up</th><td data-label="Drone survey">1 ft layers, from the bottom up</td><td data-label="Satellites (our project)">Thin layers between the dots, from the bottom up</td></tr>
+      <tr><th scope="row">How often</th><td data-label="Drone survey">Once (drawing dated June 2026)</td><td data-label="Satellites (our project)">On every pass: a new dot every few days</td></tr>
+      <tr><th scope="row">How many tanks</th><td data-label="Drone survey">One tank per survey</td><td data-label="Satellites (our project)">Every tank SWOT sees</td></tr>
+      <tr><th scope="row">What it needs</th><td data-label="Drone survey">A drone, LiDAR, GNSS and a survey team</td><td data-label="Satellites (our project)">Free satellite data</td></tr>
+      <tr><th scope="row">When the tank changes (silt, repairs)</th><td data-label="Drone survey">A new survey</td><td data-label="Satellites (our project)">New dots each season update the curve</td></tr>
+    </tbody>
+  </table>
+  <p class="callout">A drone survey is the most detailed map of one tank. Satellites give the same kind of table for every tank, and keep it up to date. Surveys like this one are the reference our satellite curves are compared with.</p>
+  <p style="margin-top:22px"><a class="btn line" href="steps.html">See how the dots and layers work, step by step</a></p>
+</div></section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p>A student project for the IS4990 Comprehensive Group Project, University of Moratuwa. Group 6, JARVIS, October 2026.</p>
+</div></footer>
+</body>
+</html>
