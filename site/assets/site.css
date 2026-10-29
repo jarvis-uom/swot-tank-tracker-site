@@ -164,7 +164,7 @@ section + section { border-top: 1px solid var(--rule); }
 .picker { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
 .picker button { font: inherit; font-size: .95rem; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; }
 .picker button:hover { border-color: var(--blue); }
-.picker button[aria-selected="true"] { background: var(--blue-strong); border-color: var(--blue-strong); color: #fff; }
+.picker button[aria-selected="true"], .picker button[aria-pressed="true"] { background: var(--blue-strong); border-color: var(--blue-strong); color: #fff; }
 .notes { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 10px; }
 .notes li { padding: 10px 14px; border-left: 4px solid var(--orange); background: var(--surface); border-radius: 0 10px 10px 0; color: var(--ink); }
 .chart { margin: 22px 0 0; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 18px 8px; box-shadow: var(--shadow); }
@@ -533,3 +533,20 @@ table.ds-matrix td:last-child { color: var(--ink-2); }
   table.ds-matrix th:last-child, table.ds-matrix td:last-child { display: none; }
   .msize { display: block; margin-top: 2px; font-size: .8rem; font-weight: 400; color: var(--muted); }
 }
+
+/* Satellite calendar: two tabs, and the picture + gauge calendar (one row of days per year) */
+.cal-tabs { padding-bottom: 0; }
+.tabs.tabs-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 760px; margin-bottom: 0; }
+.cal-panel[hidden] { display: none; }
+.pg-years { display: grid; gap: 10px; min-width: 800px; margin: 14px 0 6px; }
+.pg-years svg { display: block; overflow: visible; }
+.pg-year { font-size: 13px; font-weight: 700; fill: var(--ink); }
+.pg-month { font-size: 10px; fill: var(--muted); }
+.pg-g { fill: var(--rule); }
+.pg-none { fill: transparent; stroke: var(--rule); stroke-width: 1; }
+.pg-nogauge { fill: transparent; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 2; }
+.pg-s1 { fill: var(--pd-s1); }
+.pg-s2 { fill: var(--pd-s2); }
+.pg-s2p { fill: var(--pd-s2); fill-opacity: .38; }
+.pg-sw { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+.pg-legend { margin-top: 22px; }

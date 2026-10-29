@@ -1,5 +1,5 @@
-// Team page: one member per tab. Arrow keys move between tabs, and a link such as team.html#member-b opens that tab.
-// Without JavaScript the tab row stays hidden and all four parts show one after another.
+// Tabs (Team and Satellite calendar pages): one panel at a time. Arrow keys move between tabs, and a link such as
+// team.html#member-b or calendar.html#gauge-days opens that tab. Without JavaScript the tab row stays hidden and every panel shows.
 (function () {
   const list = document.querySelector('.tabs[role="tablist"]');
   if (!list) return;

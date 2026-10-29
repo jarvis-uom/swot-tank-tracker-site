@@ -32,8 +32,17 @@
 <div class="band"><div class="wrap">
   <p class="eyebrow" style="color:#8fc1f2">Satellite calendar</p>
   <h1>Which days we get data</h1>
-  <p>Every day each satellite gave data over our tanks since NISAR started on 17 June 2026, and the days we expect until the end of March 2027. All our tanks share the same passes. Dates are Sri Lanka dates.</p>
+  <p>Two calendars. <b>Satellite days:</b> every day each satellite gave data over our tanks since NISAR started on 17 June 2026, and the days we expect until the end of March 2027. <b>Picture + gauge days:</b> every day since October 2020 when a satellite picture of a big reservoir and its gauge reading fall on the same day. All our tanks share the same passes. Dates are Sri Lanka dates.</p>
 </div></div>
+
+<section class="cal-tabs"><div class="wrap">
+  <div class="tabs tabs-2" role="tablist" aria-label="Calendars" hidden>
+    <button type="button" role="tab" id="tab-sat" aria-controls="satellite-days" style="--c:var(--pd-s2)"><span class="tt-who">Satellite days</span><span class="tt-what">June 2026 to March 2027</span></button>
+    <button type="button" role="tab" id="tab-gauge" aria-controls="gauge-days" style="--c:var(--pd-s1)"><span class="tt-who">Picture + gauge days</span><span class="tt-what">Since October 2020, the 5 big reservoirs</span></button>
+  </div>
+</div></section>
+
+<div class="cal-panel" id="satellite-days" role="tabpanel" aria-labelledby="tab-sat">
 
 <section><div class="wrap">
   <div class="section-head">
@@ -76,6 +85,41 @@
     <li><b>Plans can change:</b> a satellite can miss a day (NISAR missed one in August 2026), Sentinel-2A's extra passes may stop, and ALOS-2 is not shown ahead because it has no fixed plan we can repeat.</li>
   </ul>
 </div></section>
+</div>
+
+<div class="cal-panel" id="gauge-days" role="tabpanel" aria-labelledby="tab-gauge">
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Since October 2020</p>
+    <h2>Days with a picture and a gauge reading</h2>
+    <p class="lead">On these days a satellite picture gives the water area, and the Irrigation Department's gauge gives the water stored, on the same day. Each one is a ready-made example to train and test our models. From July 2023, SWOT adds the height on some of them.</p>
+  </div>
+  <div class="picker" id="pg-picker" role="group" aria-label="Reservoir"></div>
+  <div class="tiles" id="pg-kpis"></div>
+  <ul class="cal-legend pg-legend" id="pg-legend"></ul>
+  <div class="scrollx"><div class="pg-years" id="pg-years"></div></div>
+  <p class="small">Each row is one year and each column one week, with Monday at the top. Point at a day to see what it has.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Year by year</p>
+    <h2 id="pg-table-title">Same-day pairs each year</h2>
+  </div>
+  <div class="scrollx">
+    <table class="data" id="pg-table">
+      <thead><tr><th scope="col">Year</th><th scope="col">Radar + gauge</th><th scope="col">Clear photo + gauge</th><th scope="col">Partly cloudy photo + gauge</th><th scope="col">Picture + gauge + SWOT</th><th scope="col">Days with a gauge value</th></tr></thead>
+      <tbody id="pg-rows"></tbody>
+    </table>
+  </div>
+  <ul class="notes">
+    <li><b>The dataset:</b> <a href="data/picture-gauge-days.csv" download>picture-gauge-days.csv</a> (about 180 KB) has one row per picture day for all five reservoirs: the satellite, the photo's cloud cover, the gauge's water stored and its % of capacity that day, and whether SWOT also measured.</li>
+    <li><b>Cloud cover</b> is for the whole photo, about 100 km across, so a tank can be clear in a cloudy photo, or the other way round. Clear means under 20% cloud; partly cloudy, 20–50%. Radar sees through clouds.</li>
+    <li><b>Gauge:</b> the water stored each day in the Irrigation Department's daily sheet. The sheet has no values for April to September 2021, so those days are empty.</li>
+    <li><b>Sources:</b> Sentinel-1 radar (Microsoft Planetary Computer), Sentinel-2 photos (Earth Search), SWOT best-quality and suspect readings (NASA Hydrocron). Made on <span id="pg-made"></span>.</li>
+  </ul>
+</div></section>
+</div>
 </main>
 
 <footer class="foot"><div class="wrap">
@@ -83,5 +127,8 @@
 </div></footer>
 <script src="assets/calendar-data.js"></script>
 <script src="assets/calendar.js"></script>
+<script src="assets/pair-days-data.js"></script>
+<script src="assets/pair-days.js"></script>
+<script src="assets/tabs.js"></script>
 </body>
 </html>
