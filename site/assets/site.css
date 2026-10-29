@@ -56,7 +56,7 @@ p { margin: 0 0 1em; }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--on-navy); text-decoration: none; font-weight: 700; font-size: 1.02rem; }
 .brand svg { width: 26px; height: 26px; flex: none; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
-.brand-url { font-size: .8rem; font-weight: 600; color: #9cc8ff; letter-spacing: .02em; }
+.brand-url { font-size: 1.12rem; font-weight: 700; color: #8fd3ff; letter-spacing: .01em; }
 .nav { display: flex; flex-wrap: wrap; gap: 2px 4px; margin-left: auto; }
 .nav a { color: var(--on-navy-2); text-decoration: none; padding: 7px 12px; border-radius: 999px; font-size: .95rem; }
 .nav a:hover { color: var(--on-navy); background: rgba(255, 255, 255, .08); }
