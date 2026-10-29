@@ -11,7 +11,13 @@
   function show(member) {
     buttons.forEach(b => b.setAttribute('aria-pressed', b.dataset.member === member ? 'true' : 'false'));
     items.forEach(el => { el.hidden = member !== '' && !el.dataset.members.split(' ').includes(member); });
-    groups.forEach(g => { g.hidden = !g.querySelector('.ds:not([hidden])'); });
+    groups.forEach(g => {
+      const shown = Array.from(g.querySelectorAll('.ds:not([hidden])'));
+      g.hidden = shown.length === 0;
+      // a card left alone on its row takes the whole width
+      g.querySelectorAll('.ds').forEach(c => c.classList.remove('ds-wide'));
+      if (shown.length % 2 === 1) shown[shown.length - 1].classList.add('ds-wide');
+    });
   }
 
   buttons.forEach(b => b.addEventListener('click', () => show(b.dataset.member)));

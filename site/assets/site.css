@@ -517,6 +517,13 @@ table.ds-matrix td:last-child { color: var(--ink-2); }
 .tp-data p { margin: 0 0 6px; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .tp-data ul { margin: 0; padding-left: 1.1em; display: grid; gap: 3px; font-size: .95rem; }
 .msize { display: none; }
+/* A card alone on its row uses the whole width: picture on the left and facts on the right, or the facts in two columns */
+@media (min-width: 980px) {
+  .ds-grid > .ds.ds-wide { grid-column: 1 / -1; }
+  .ds.ds-wide.has-fig { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+  .ds.ds-wide.has-fig > .ds-fig { border-bottom: 0; border-right: 1px solid var(--rule); }
+  .ds.ds-wide:not(.has-fig) .ds-body dl { grid-template-columns: 1fr 1fr; column-gap: 28px; }
+}
 @media (max-width: 640px) {
   table.ds-matrix { min-width: 0; }
   table.ds-matrix th:last-child, table.ds-matrix td:last-child { display: none; }

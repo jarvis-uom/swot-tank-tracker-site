@@ -86,7 +86,7 @@
 <section class="ds-group" id="g-height" aria-labelledby="h-height"><div class="wrap">
   <div class="section-head"><h2 id="h-height">Water height</h2><p class="lead">How high the water stands. Member B turns it into how full each tank is.</p></div>
   <div class="ds-grid">
-<article class="ds" id="swot" data-members="A B">
+<article class="ds has-fig" id="swot" data-members="A B">
   <figure class="ds-fig"><img src="assets/img/datasets/swot-hurulu.png" alt="Chart of SWOT water heights at Hurulu Wewa from 2023 to 2026, rising and falling each year; most readings are best quality" width="1151" height="619" loading="lazy"><figcaption>Hurulu Wewa: every SWOT pass, July 2023 to October 2026 (101 readings; 4 far-off ones are off the chart). Data: NASA/CNES SWOT, via Hydrocron.</figcaption></figure>
   <div class="ds-body">
     <h3>SWOT lake product<span class="ds-prov">NASA and CNES · version D · July 2023 onwards</span></h3>
@@ -114,7 +114,7 @@
     <p class="ds-foot"><a class="ds-open" href="https://search.earthdata.nasa.gov/search?q=SWOT_L2_HR_PIXC_D">NASA Earthdata search</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
   </div>
 </article>
-<article class="ds" id="icesat2" data-members="B">
+<article class="ds ds-wide" id="icesat2" data-members="B">
   <div class="ds-body">
     <h3>ICESat-2 laser heights<span class="ds-prov">NASA · ATL13 inland water · 2018 onwards</span></h3>
     <p class="verdict aux"><span aria-hidden="true">◦</span> For checks</p>
@@ -134,7 +134,7 @@
 <section class="ds-group" id="g-area" aria-labelledby="h-area"><div class="wrap">
   <div class="section-head"><h2 id="h-area">Water area: pictures from space</h2><p class="lead">Where the water is. Member A&#x27;s water map learns from these pictures.</p></div>
   <div class="ds-grid">
-<article class="ds" id="sentinel-2" data-members="A">
+<article class="ds has-fig" id="sentinel-2" data-members="A">
   <figure class="ds-fig"><img src="assets/img/datasets/sentinel-2-mahakanadarawa.jpg" alt="Sentinel-2 colour photo of Mahakanadarawa reservoir on a clear day" width="720" height="720" loading="lazy"><figcaption>Mahakanadarawa on a clear day, 10 March 2024. Contains modified Copernicus Sentinel data 2024; map labels © OpenStreetMap contributors.</figcaption></figure>
   <div class="ds-body">
     <h3>Sentinel-2 photos<span class="ds-prov">Copernicus (ESA) · 10 m · 2015 onwards</span></h3>
@@ -149,7 +149,7 @@
     <p class="ds-foot"><a class="ds-open" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">Sentinel-2 in Google Earth Engine</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
   </div>
 </article>
-<article class="ds" id="sentinel-1" data-members="A">
+<article class="ds has-fig" id="sentinel-1" data-members="A">
   <figure class="ds-fig"><img src="assets/img/datasets/sentinel-1-mahakanadarawa.jpg" alt="Sentinel-1 radar picture of Mahakanadarawa during a cyclone; the water shows dark blue" width="720" height="720" loading="lazy"><figcaption>Mahakanadarawa on 26 November 2025, during Cyclone Ditwah, when photos showed only cloud. Open water is dark blue. Contains modified Copernicus Sentinel data 2025; labels © OpenStreetMap contributors.</figcaption></figure>
   <div class="ds-body">
     <h3>Sentinel-1 radar<span class="ds-prov">Copernicus (ESA) · C-band · 2014 onwards</span></h3>
@@ -190,7 +190,7 @@
     <p class="ds-foot"><a class="ds-open" href="https://search.earthdata.nasa.gov/search?q=OPERA_L3_DSWX-S1_V1">NASA Earthdata search</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
   </div>
 </article>
-<article class="ds" id="gww" data-members="B">
+<article class="ds has-fig" id="gww" data-members="B">
   <figure class="ds-fig"><img src="assets/img/datasets/gww-hurulu.png" alt="Chart of Hurulu Wewa&#x27;s water area from 2021 to 2026, between about 400 and 1,200 ha, below its full-supply area" width="1167" height="619" loading="lazy"><figcaption>Hurulu Wewa: 147 water areas from Landsat and Sentinel-2, October 2020 to 2026, against its full-supply area. Data: Global Water Watch archive (CC BY 4.0); outline: Irrigation Department.</figcaption></figure>
   <div class="ds-body">
     <h3>Global Water Watch archive<span class="ds-prov">Global Water Watch · Landsat and Sentinel-2 · saved September 2026</span></h3>
@@ -224,7 +224,7 @@
 <section class="ds-group" id="g-labels" aria-labelledby="h-labels"><div class="wrap">
   <div class="section-head"><h2 id="h-labels">AI training data</h2><p class="lead">Pictures where people have already drawn the water in. Member A&#x27;s AI learns from them what water looks like.</p></div>
   <div class="ds-grid">
-<article class="ds" id="training" data-members="A">
+<article class="ds has-fig ds-wide" id="training" data-members="A">
   <figure class="ds-fig"><img src="assets/img/datasets/plants-bulankulama.jpg" alt="Sentinel-2 photo of Bulankulama tank covered in green water plants" width="720" height="720" loading="lazy"><figcaption>Why we add our own labels: Bulankulama tank, 25 March 2026, covered in plants. A simple water index misses it, yet SWOT has 47 usable heights here. Contains modified Copernicus Sentinel data 2026; labels © OpenStreetMap contributors.</figcaption></figure>
   <div class="ds-body">
     <h3>AI training data: S1S2-Water and Sen1Floods11<span class="ds-prov">DLR (S1S2-Water) · Cloud to Street (Sen1Floods11)</span></h3>
@@ -245,7 +245,7 @@
 <section class="ds-group" id="g-truth" aria-labelledby="h-truth"><div class="wrap">
   <div class="section-head"><h2 id="h-truth">Ground truth</h2><p class="lead">Measured on the ground: what we train on and test against.</p></div>
   <div class="ds-grid">
-<article class="ds" id="dept-sheet" data-members="B C">
+<article class="ds has-fig" id="dept-sheet" data-members="B C">
   <figure class="ds-fig"><img src="assets/img/datasets/dept-storage.png" alt="Chart of Hurulu Wewa&#x27;s daily storage from 2020 to 2026, filling each wet season and reaching about 100% after Cyclone Ditwah" width="1167" height="619" loading="lazy"><figcaption>Hurulu Wewa&#x27;s daily storage, October 2020 to October 2026, as % of capacity (no data April–September 2021). Data: Irrigation Department of Sri Lanka.</figcaption></figure>
   <div class="ds-body">
     <h3>Irrigation Department daily storage<span class="ds-prov">Irrigation Department of Sri Lanka · Reservoir Status · 2020 onwards</span></h3>
@@ -260,7 +260,7 @@
     <p class="ds-foot"><a class="ds-open" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTcSGhi9RESl7CMCl1TQnrKe07Gx5Q696YiSB9jneIHqIP9lifpqSErgI3D5k9KtQXSdW5JpycIIr5e/pubhtml">The daily sheet</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a> <a class="mchip" style="--c:var(--orange)" href="team.html#member-c">Member C</a></span></p>
   </div>
 </article>
-<article class="ds" id="dept-layer" data-members="A B">
+<article class="ds has-fig" id="dept-layer" data-members="A B">
   <figure class="ds-fig"><img src="assets/img/datasets/dept-layer-map.png" alt="Map of 50 department tank outlines in the study area, with the five big reservoirs named" width="810" height="910" loading="lazy"><figcaption>50 department tank outlines at full supply in our study area (80.4–80.8° E, 8.1–8.6° N). Village tanks are not in this layer. Data: Irrigation Department.</figcaption></figure>
   <div class="ds-body">
     <h3>Irrigation Department tank map (reservoir layer)<span class="ds-prov">Irrigation Department of Sri Lanka · &quot;as at 1 January 2022&quot;</span></h3>
@@ -299,7 +299,7 @@
     <p class="ds-foot"><a class="ds-open" href="https://mahaweli.gov.lk/wms.html">Reservoirs status reports</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
   </div>
 </article>
-<article class="ds" id="field" data-members="A B C">
+<article class="ds ds-wide" id="field" data-members="A B C">
   <div class="ds-body">
     <h3>Our gauge photos<span class="ds-prov">Collected by the team · on SWOT pass days</span></h3>
     <p class="verdict new"><span aria-hidden="true">…</span> To collect</p>
@@ -318,7 +318,7 @@
 <section class="ds-group" id="g-shape" aria-labelledby="h-shape"><div class="wrap">
   <div class="section-head"><h2 id="h-shape">Ground and tank-bed shape</h2><p class="lead">The land around each tank, and the shape of the bed.</p></div>
   <div class="ds-grid">
-<article class="ds" id="dem" data-members="A B">
+<article class="ds has-fig" id="dem" data-members="A B">
   <figure class="ds-fig"><img src="assets/img/datasets/dem-mahakanadarawa.jpg" alt="Elevation map around Mahakanadarawa: brown ground, and the reservoir in blue as one flat value" width="978" height="755" loading="lazy"><figcaption>Copernicus DEM around Mahakanadarawa: the water is one flat value, so the bed is missing. © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018, provided under COPERNICUS by the European Union and ESA; all rights reserved.</figcaption></figure>
   <div class="ds-body">
     <h3>Elevation map: Copernicus DEM (GLO-30)<span class="ds-prov">Copernicus · 30 m · radar from 2011–12 here</span></h3>
@@ -364,7 +364,7 @@
     <p class="ds-foot"><a class="ds-open" href="https://www.chc.ucsb.edu/data/chirps">CHIRPS</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--orange)" href="team.html#member-c">Member C</a></span></p>
   </div>
 </article>
-<article class="ds" id="era5" data-members="C">
+<article class="ds has-fig" id="era5" data-members="C">
   <figure class="ds-fig"><img src="assets/img/datasets/era5-rain-hurulu.png" alt="Bar chart of monthly rain at Hurulu Wewa from 2021 to 2026, highest from October to January" width="1151" height="619" loading="lazy"><figcaption>Monthly rain at Hurulu Wewa, January 2021 to September 2026: the October–January rains fill the tanks. Data: ERA5 via Open-Meteo (CC BY 4.0).</figcaption></figure>
   <div class="ds-body">
     <h3>ERA5 weather<span class="ds-prov">Copernicus Climate Change Service · 25 km · 1940 onwards</span></h3>
