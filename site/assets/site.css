@@ -556,3 +556,18 @@ table.ds-matrix td:last-child { color: var(--ink-2); }
 .rs-panel[hidden] { display: none; }
 .rs-member { margin-top: 22px; }
 .rs-member .verdict { display: inline-block; }
+
+/* Home page: the four research questions; RQ pills that link to them */
+.rqs { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); gap: 16px; }
+.rq { background: var(--surface); border: 1px solid var(--rule); border-top: 5px solid var(--c); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); scroll-margin-top: 90px; }
+.rq:target { outline: 3px solid var(--focus); outline-offset: 2px; }
+.rq-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.rq-n { font-size: 1.5rem; font-weight: 800; color: var(--ink); }
+.rq-who { font-size: .85rem; font-weight: 700; color: var(--ink-2); text-decoration: none; border: 1.5px solid var(--c); border-radius: 999px; padding: 2px 10px; }
+.rq-who:hover { background: var(--surface-2); }
+.rq-q { margin: 10px 0 8px; font-size: 1.08rem; font-weight: 600; color: var(--ink); line-height: 1.45; }
+.rq-test { margin: 0; font-size: .92rem; color: var(--ink-2); }
+a.pill { text-decoration: none; }
+.tm-q { display: flex; align-items: flex-start; gap: 10px; }
+.tm-q .pill { flex: none; margin: 3px 0 0; }
+.tm-q + .tm-q { margin-top: 10px; }
