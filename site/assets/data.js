@@ -88,7 +88,7 @@
     if (maxStored === null) {
       notes.push(`SWOT's lake file gives no storage numbers for ${r.name}, so its volume has to come from our own height–area–volume curve.`);
     } else if (maxStored > r.gross_capacity_mcm) {
-      notes.push(`SWOT's numbers say the stored water swung by ${fix(maxStored, 1)} million m³, but the official full capacity is only ${fix(r.gross_capacity_mcm, 1)} million m³. At least one of them is off: checking this is part of our project (research question 3).`);
+      notes.push(`SWOT's numbers say the stored water swung by ${fix(maxStored, 1)} million m³, more than the official full capacity of ${fix(r.gross_capacity_mcm, 1)} million m³. That can be real: capacity counts water only up to the spillway, and in floods the water rises above it (the department's own gauge figures go above capacity too). How close SWOT's storage is to the gauge is part of our project (research questions 2 and 3).`);
     }
     if (r.ditwah) {
       const weeks = Math.round((t(r.ditwah.to) - t(r.ditwah.from)) / DAY / 7);
