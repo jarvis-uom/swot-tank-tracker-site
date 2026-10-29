@@ -13,7 +13,10 @@
   const fix = (x, n) => x.toLocaleString("en-US", { minimumFractionDigits: n, maximumFractionDigits: n });
 
   let cur = 0;      // selected reservoir
-  let hover = null; // index into its readings
+  let hover = null; // index into all(reservoir)
+  // every reading by date: best quality (line, storage, key numbers) and suspect (hollow dots on the level chart)
+  const all = (r) => r._all || (r._all = [...r.readings.map((x) => ({ ...x, q: "best" })),
+    ...(r.suspect || []).map((x) => ({ ...x, q: "suspect", stored_mcm: null }))].sort((a, b) => (a.date < b.date ? -1 : 1)));
   const charts = [
     { el: $("#plot-level"), tip: $("#tip-level"), key: "wse", height: 250, zero: false, digits: 2,
       unit: " m", name: "water level", empty: "" },
@@ -119,7 +122,7 @@
 
   function draw(c) {
     const r = D.reservoirs[cur];
-    const pts = r.readings.map((x, i) => ({ i, t: t(x.date), v: x[c.key] })).filter((p) => p.v !== null);
+    const pts = all(r).map((x, i) => ({ i, t: t(x.date), v: x[c.key], q: x.q })).filter((p) => p.v !== null);
     c.el.replaceChildren();
     c.pts = pts;
     if (!pts.length) {
@@ -162,10 +165,11 @@
       const tx = el("text", { class: "tick", x: x(tt) + 4, y: H - m.b + 18 }, svg);
       tx.textContent = label;
     });
-    // line, broken where SWOT has no reading for a long time
+    // line through the best-quality readings, broken where there is none for a long time
     const runs = [[]];
-    pts.forEach((p, k) => {
-      if (k && (p.t - pts[k - 1].t) / DAY > GAP_DAYS) runs.push([]);
+    const good = pts.filter((p) => p.q === "best");
+    good.forEach((p, k) => {
+      if (k && (p.t - good[k - 1].t) / DAY > GAP_DAYS) runs.push([]);
       runs[runs.length - 1].push(p);
     });
     runs.forEach((run) => {
@@ -175,10 +179,10 @@
       }
       el("path", { class: "line", d }, svg);
     });
-    pts.forEach((p) => el("circle", { class: "dot", cx: x(p.t), cy: y(p.v), r: 4 }, svg));
+    pts.forEach((p) => el("circle", { class: p.q === "best" ? "dot" : "dot hollow", cx: x(p.t), cy: y(p.v), r: 4 }, svg));
     c.cross = el("line", { class: "cross", y1: m.t, y2: H - m.b, visibility: "hidden" }, svg);
     c.focusDot = el("circle", { class: "focus", r: 6, visibility: "hidden" }, svg);
-    c.el.setAttribute("aria-label", `${r.name}, ${c.name}: ${pts.length} readings from ${fmtDate(r.readings[pts[0].i].date)} to ${fmtDate(r.readings[pts[pts.length - 1].i].date)}, between ${fix(Math.min(...pts.map((p) => p.v)), c.digits)} and ${fix(Math.max(...pts.map((p) => p.v)), c.digits)}${c.unit}. Use the left and right arrow keys to read each value.`);
+    c.el.setAttribute("aria-label", `${r.name}, ${c.name}: ${pts.length} readings from ${fmtDate(all(r)[pts[0].i].date)} to ${fmtDate(all(r)[pts[pts.length - 1].i].date)}, between ${fix(Math.min(...pts.map((p) => p.v)), c.digits)} and ${fix(Math.max(...pts.map((p) => p.v)), c.digits)}${c.unit}. Use the left and right arrow keys to read each value.`);
   }
 
   function showHover() {
@@ -191,7 +195,7 @@
         c.tip.hidden = true;
         return;
       }
-      const reading = r.readings[hover];
+      const reading = all(r)[hover];
       const tt = t(reading.date), xx = c.x(tt);
       c.cross.setAttribute("x1", xx); c.cross.setAttribute("x2", xx);
       c.cross.setAttribute("visibility", "visible");
@@ -202,10 +206,11 @@
         c.focusDot.setAttribute("visibility", "visible");
       }
       const strong = document.createElement("strong");
-      strong.textContent = v === null ? "Not given" : fix(v, c.digits) + c.unit;
+      const sus = reading.q === "suspect";
+      strong.textContent = v !== null ? fix(v, c.digits) + c.unit : sus ? "Not used" : "Not given";
       const what = document.createElement("div");
-      const key = document.createElement("span"); key.className = "k";
-      what.append(key, document.createTextNode(c.name));
+      const key = document.createElement("span"); key.className = sus ? "k hollow" : "k";
+      what.append(key, document.createTextNode(sus ? `${c.name} (suspect reading)` : c.name));
       const when = document.createElement("div"); when.className = "d"; when.textContent = fmtDate(reading.date);
       c.tip.replaceChildren(strong, what, when);
       c.tip.hidden = false;
@@ -216,8 +221,8 @@
     });
     const live = $("#live");
     if (hover !== null) {
-      const reading = r.readings[hover];
-      live.textContent = `${fmtDate(reading.date)}: water level ${fix(reading.wse, 2)} m` +
+      const reading = all(r)[hover];
+      live.textContent = `${fmtDate(reading.date)}: water level ${fix(reading.wse, 2)} m${reading.q === "suspect" ? " (suspect reading)" : ""}` +
         (reading.stored_mcm === null ? "" : `, stored above the lowest reading ${fix(reading.stored_mcm, 1)} million m³`);
     }
   }
@@ -252,11 +257,13 @@
 
   // ---- table view -------------------------------------------------------------
   function table(r) {
-    $("#table-title").textContent = `All ${r.readings.length} best-quality readings for ${r.name}`;
+    const n = (r.suspect || []).length;
+    $("#table-title").textContent = `All ${r.readings.length + n} readings for ${r.name}: ${r.readings.length} best quality, ${n} suspect`;
     const body = $("#table-body");
-    body.replaceChildren(...r.readings.map((x) => {
+    body.replaceChildren(...all(r).map((x) => {
       const tr = document.createElement("tr");
-      [fmtDate(x.date), fix(x.wse, 2), fix(x.area_km2, 2), x.stored_mcm === null ? "Not given" : fix(x.stored_mcm, 1)].forEach((v) => {
+      const sus = x.q === "suspect";
+      [fmtDate(x.date), sus ? "Suspect" : "Best", fix(x.wse, 2), fix(x.area_km2, 2), sus ? "Not used" : x.stored_mcm === null ? "Not given" : fix(x.stored_mcm, 1)].forEach((v) => {
         const td = document.createElement("td"); td.textContent = v; tr.appendChild(td);
       });
       return tr;

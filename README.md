@@ -29,7 +29,7 @@ It is plain HTML, CSS and JavaScript, with no build step and no outside librarie
 python tools/prep_data.py
 ```
 
-This gets the latest best-quality readings from NASA's Hydrocron service (no login) and rewrites `site/data/reservoirs.json` and `site/data/reservoirs.js`. It needs only the Python standard library.
+This gets the latest best-quality readings, and the ones SWOT marks suspect (shown as hollow dots), from NASA's Hydrocron service (no login) and rewrites `site/data/reservoirs.json` and `site/data/reservoirs.js`. It needs only the Python standard library.
 
 ## Update the slides
 

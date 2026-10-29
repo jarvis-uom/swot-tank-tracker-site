@@ -177,6 +177,7 @@ section + section { border-top: 1px solid var(--rule); }
 .chart .line { fill: none; stroke: var(--blue); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .chart .area { fill: var(--blue-wash); }
 .chart .dot { fill: var(--blue); stroke: var(--surface); stroke-width: 2; }
+.chart .dot.hollow { fill: var(--surface); stroke: var(--blue); stroke-width: 1.75; }
 .chart .band { fill: var(--orange-wash); }
 .chart .band-label { fill: var(--ink-2); font-size: 12px; font-weight: 600; }
 .chart .cross { stroke: var(--ink-2); stroke-width: 1; }
@@ -184,6 +185,7 @@ section + section { border-top: 1px solid var(--rule); }
 .tip { position: absolute; top: 0; pointer-events: none; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 8px 12px; box-shadow: 0 6px 18px rgba(0, 0, 0, .14); font-size: .88rem; white-space: nowrap; z-index: 2; }
 .tip strong { display: block; font-size: 1.05rem; color: var(--ink); }
 .tip .k { display: inline-block; width: 14px; height: 2px; background: var(--blue); vertical-align: middle; margin-right: 6px; }
+.tip .k.hollow { width: 6px; height: 6px; border-radius: 50%; background: transparent; border: 2px solid var(--blue); margin-left: 3px; margin-right: 9px; }
 .tip .d { color: var(--muted); }
 .empty { padding: 26px 6px 30px; color: var(--ink-2); }
 .tablewrap { margin-top: 22px; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 14px 18px; }

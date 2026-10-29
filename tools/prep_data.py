@@ -3,7 +3,9 @@
     python tools/prep_data.py
 
 Only the Python standard library is used. SWOT data come from NASA PO.DAAC's Hydrocron service (no login).
-Only best-quality readings are kept: quality_f 0, xovr_cal_q 0 or 1, dark_frac 0.1 or less (Köhn and Nielsen, 2026).
+Best-quality readings: quality_f 0, xovr_cal_q 0 or 1, dark_frac 0.1 or less (Köhn and Nielsen, 2026). They give the
+line, the storage and the key numbers. The other readings SWOT does not call bad (quality_f 0 or 1) are kept apart as
+"suspect", for hollow dots on the level chart, unless their height lies more than 1 m outside the best readings' range.
 """
 import csv
 import io
@@ -40,12 +42,14 @@ def fetch(lake_id):
         return list(csv.DictReader(io.StringIO(json.load(r)["results"]["csv"])))
 
 
+def is_best(r):
+    return r["quality_f"] == "0" and float(r["xovr_cal_q"]) <= 1 and float(r["dark_frac"]) <= 0.1
+
+
 def best(rows):
     out = {}
     for r in rows:
-        if r["time_str"] == "no_data" or float(r["wse"]) < -1e10:
-            continue
-        if r["quality_f"] != "0" or float(r["xovr_cal_q"]) > 1 or float(r["dark_frac"]) > 0.1:
+        if r["time_str"] == "no_data" or float(r["wse"]) < -1e10 or not is_best(r):
             continue
         day = r["time_str"][:10]
         ds = float(r["ds1_l"])
@@ -54,10 +58,27 @@ def best(rows):
     return [out[d] for d in sorted(out)]
 
 
+def suspect(rows, readings):
+    """Readings SWOT marks suspect (or with too much dark water) on days with no best-quality reading."""
+    lo, hi = min(r["wse"] for r in readings) - 1, max(r["wse"] for r in readings) + 1
+    taken = {r["date"] for r in readings}
+    out = {}
+    for r in rows:
+        if r["time_str"] == "no_data" or float(r["wse"]) < -1e10 or is_best(r) or r["quality_f"] not in ("0", "1"):
+            continue
+        day = r["time_str"][:10]
+        if day in taken or not lo <= float(r["wse"]) <= hi:
+            continue
+        out[day] = {"date": day, "wse": round(float(r["wse"]), 2), "area_km2": round(float(r["area_total"]), 2)}
+    return [out[d] for d in sorted(out)]
+
+
 def main():
     result = []
     for res in RESERVOIRS:
-        readings = best(fetch(res["lake_id"]))
+        rows = fetch(res["lake_id"])
+        readings = best(rows)
+        doubtful = suspect(rows, readings)
         stored = [r["ds1_mcm"] for r in readings if r["ds1_mcm"] is not None]
         low = min(stored) if stored else None
         for r in readings:  # storage above the lowest best-quality reading
@@ -77,8 +98,9 @@ def main():
             "full_supply_depth_ft": res["fsd_ft"],
             "ditwah": ditwah,
             "readings": readings,
+            "suspect": doubtful,
         })
-        print(f"{res['name']}: {len(readings)} best-quality readings, Ditwah {ditwah}")
+        print(f"{res['name']}: {len(readings)} best-quality and {len(doubtful)} suspect readings, Ditwah {ditwah}")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps({"made": date.today().isoformat(), "source": "NASA PO.DAAC Hydrocron, SWOT LakeSP version D",
                        "reservoirs": result}, separators=(",", ":"))
