@@ -550,3 +550,9 @@ table.ds-matrix td:last-child { color: var(--ink-2); }
 .pg-s2p { fill: var(--pd-s2); fill-opacity: .38; }
 .pg-sw { fill: none; stroke: var(--ink); stroke-width: 1.6; }
 .pg-legend { margin-top: 22px; }
+
+/* Past research: three tabs (all studies, Member A, Member B) */
+.tabs.tabs-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 980px; margin-bottom: 0; }
+.rs-panel[hidden] { display: none; }
+.rs-member { margin-top: 22px; }
+.rs-member .verdict { display: inline-block; }

@@ -47,6 +47,15 @@
   </div>
 </div></section>
 
+<section class="cal-tabs"><div class="wrap">
+  <div class="tabs tabs-3" role="tablist" aria-label="Past research" hidden>
+    <button type="button" role="tab" id="tab-rs-all" aria-controls="all-studies" style="--c:var(--ink-2)"><span class="tt-who">All studies</span><span class="tt-what">By the steps of our method</span></button>
+    <button type="button" role="tab" id="tab-rs-a" aria-controls="member-a-research" style="--c:var(--blue)"><span class="tt-who">Member A</span><span class="tt-what">Water maps: clouds and plants</span></button>
+    <button type="button" role="tab" id="tab-rs-b" aria-controls="member-b-research" style="--c:var(--aqua)"><span class="tt-who">Member B</span><span class="tt-what">SWOT heights and storage</span></button>
+  </div>
+</div></section>
+
+<div class="rs-panel" id="all-studies" role="tabpanel" aria-labelledby="tab-rs-all">
 <section><div class="wrap">
   <div class="section-head">
     <p class="eyebrow">Study by study</p>
@@ -183,10 +192,78 @@
     <li><b>The 705 ha and the Kanhindawewa test</b> are our own checks, not from a paper. The 705 ha check is explained on <a href="steps.html">Step by step</a>.</li>
   </ul>
 </div></section>
+</div>
+
+<!-- member-tabs:start (made by temp/research-check/member_tabs.py) -->
+<div class="rs-panel" id="member-a-research" role="tabpanel" aria-labelledby="tab-rs-a">
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Member A: water maps</p>
+    <h2>Has anyone mapped tank water under clouds and plants?</h2>
+    <p class="lead">Yes under clouds, with radar. Not yet under water plants: that is our research question.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><h3>Clouds: mostly solved.</h3><p>Radar sees through them: 85% overlap worldwide, and it worked on Sri Lankan reservoirs.</p></div>
+    <div class="card"><h3>Plants: not solved by anyone yet.</h3><p>That is our research question 1 (RQ1).</p></div>
+    <div class="card"><h3>We will measure our own accuracy</h3><p>against Kanhindawewa&#x27;s drone survey and the 5 big reservoirs&#x27; daily gauges.</p></div>
+  </div>
+  <table class="rs rs-member">
+    <caption class="sr">Has anyone mapped tank water under clouds and plants?</caption>
+    <thead><tr><th scope="col">Study</th><th scope="col">What they did</th><th scope="col">Result</th><th scope="col">Did it work?</th><th scope="col">What it means for us</th></tr></thead>
+    <tbody>
+      <tr><th scope="row"><a href="https://doi.org/10.1109/JSTARS.2023.3333969">Wieland et al., 2024</a><span>65 areas in 29 countries</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">AI water maps (U-Net) from Sentinel-1 radar and Sentinel-2 photos</td><td data-label="Result">Overlap with the true water: 97% on photos, 85% on radar</td><td data-label="Did it work?"><span class="verdict ok">✓ Yes</span></td><td data-label="What it means for us">Radar maps work under clouds. Member A starts from their training data (S1S2-Water).</td></tr>
+      <tr><th scope="row"><a href="https://archive.cmb.ac.lk/items/84f64851-eaa9-4b8c-babd-5d18f130c1ee">Perera and Jayaweera, 2020</a><span>Kaudulla, Senanayake Samudraya and Lunugamwehera, Sri Lanka</span><span class="rs-chk">Checked: abstract</span></th><td data-label="What they did">Sentinel-1 radar water area, compared with the reported volumes, 2017–2019</td><td data-label="Result">R² 0.73, 0.94 and 0.67. Sentinel-2 photos were mostly lost to cloud</td><td data-label="Did it work?"><span class="verdict ok">✓ Radar yes, photos no</span></td><td data-label="What it means for us">Radar works on Sri Lankan reservoirs in the cloudy seasons.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.48550/arXiv.2310.05682">Rajakaruna et al., 2023</a><span>Sri Lankan reservoirs</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">Sentinel-1 radar water area with a simple threshold (Otsu)</td><td data-label="Result">Called preliminary by its authors; not checked against the ground</td><td data-label="Did it work?"><span class="verdict care">! Partly</span></td><td data-label="What it means for us">Our maps are checked against gauges and a drone survey.</td></tr>
+      <tr><th scope="row"><a href="https://www.ifad.org/en/w/publications/water-surface-maps-to-manage-ancient-tank-cascade-systems-in-sri-lanka">IFAD and ESA, 2026</a><span>Over 10,650 water bodies in 6 districts of Sri Lanka</span><span class="rs-chk">Checked: web page</span></th><td data-label="What they did">Monthly 10 m water maps, 2017 to August 2025</td><td data-label="Result">No accuracy given on the page; water area only, no volume</td><td data-label="Did it work?"><span class="verdict new">… Not stated</span></td><td data-label="What it means for us">The closest Sri Lankan maps. We add accuracy, water under plants and the volume.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1109/JSTARS.2025.3570859">SWOT team, 2025 and Girard et al., 2025</a><span>Lakes worldwide; 16 lakes in West Africa</span><span class="rs-chk">Checked: slides; abstract</span></th><td data-label="What they did">SWOT&#x27;s own water area, and curves made with Sentinel-2 areas instead</td><td data-label="Result">SWOT&#x27;s own area was 19–26% off on small lakes (SWOT team) and 17% too big (Girard). With Sentinel-2 areas, curves were within 28 cm</td><td data-label="Did it work?"><span class="verdict care">! Partly</span></td><td data-label="What it means for us">SWOT&#x27;s own area is not good enough for small tanks, so the area comes from Member A&#x27;s map.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1016/j.jag.2025.104523">Dossou Codjia et al., 2025</a><span>20 reservoirs in Burkina Faso</span><span class="rs-chk">Checked: abstract</span></th><td data-label="What they did">Sentinel-2 photos and a Random Forest for the water area, checked against the gauge level</td><td data-label="Result">R² 0.76–0.97 at 14 of the 20. At the other 6, water plants hid the water</td><td data-label="Did it work?"><span class="verdict care">✗ Not under plants</span></td><td data-label="What it means for us">The plant problem is real. Member A adds a &quot;water under plants&quot; class.</td></tr>
+      <tr><th scope="row"><a href="https://meetingorganizer.copernicus.org/EGU26/EGU26-4154.html">Pruekthikanee, 2026</a><span>Chi River basin, Thailand</span><span class="rs-chk">Checked: conference abstract</span></th><td data-label="What they did">A U-Net on Sentinel-1 radar and Sentinel-2 photos together, to tell open water from floating plants, checked against a gauge</td><td data-label="Result">No accuracy numbers in the abstract yet</td><td data-label="Did it work?"><span class="verdict new">… Not yet known</span></td><td data-label="What it means for us">The idea closest to Member A&#x27;s. Nobody has published results for tanks yet.</td></tr>
+      <tr><th scope="row"><a href="drone.html">Our check at Kanhindawewa, October 2026</a><span>1 Sri Lankan tank, true area from the drone survey</span><span class="rs-chk">Checked: our own test</span></th><td data-label="What they did">Simple rules: a Sentinel-2 water index and scene class, Sentinel-1 thresholds, and SWOT&#x27;s own area</td><td data-label="Result">Median area error from 36% (SWOT&#x27;s area) to 100% (the photo&#x27;s scene class). All of them miss water under plants</td><td data-label="Did it work?"><span class="verdict care">✗ Not with simple rules</span></td><td data-label="What it means for us">Why Member A needs a trained model, not a simple rule.</td></tr>
+    </tbody>
+  </table>
+</div></section>
+</div>
+<div class="rs-panel" id="member-b-research" role="tabpanel" aria-labelledby="tab-rs-b">
+<section><div class="wrap">
+  <div class="section-head">
+    <p class="eyebrow">Member B: SWOT and storage</p>
+    <h2>Has anyone turned satellite heights into stored water?</h2>
+    <p class="lead">Yes for big reservoirs with records. Not yet for small tanks with no records: that is Member B&#x27;s model.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><h3>Heights: solved.</h3><p>SWOT is within 5–20 cm, and satellites match Sri Lankan gauges once a fixed gap is removed.</p></div>
+    <div class="card"><h3>Storage with records: solved.</h3><p>3–10% on big, well-recorded reservoirs.</p></div>
+    <div class="card"><h3>Storage for small tanks with no records: still open.</h3><p>The closest model (GRDL) is about 21% off on its curves. Ours was 6–8% of capacity on reservoirs it never saw, measured differently. This is Member B&#x27;s contribution.</p></div>
+  </div>
+  <table class="rs rs-member">
+    <caption class="sr">Has anyone turned satellite heights into stored water?</caption>
+    <thead><tr><th scope="col">Study</th><th scope="col">What they did</th><th scope="col">Result</th><th scope="col">Did it work?</th><th scope="col">What it means for us</th></tr></thead>
+    <tbody>
+      <tr><th scope="row"><a href="https://doi.org/10.5194/hess-30-6443-2026">Köhn and Nielsen, 2026</a><span>37 lakes in Denmark, 25 ha to 40 km²</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">SWOT heights, cleaned with SWOT&#x27;s quality flags</td><td data-label="Result">Usual error 5–6 cm. But the cleaned lake product kept only about half the dates (60 against 125 per lake)</td><td data-label="Did it work?"><span class="verdict ok">✓ Yes</span></td><td data-label="What it means for us">Heights are good. Member B&#x27;s trust screen starts from their rule and tries to keep more of the dates.</td></tr>
+      <tr><th scope="row"><a href="https://swotst.aviso.altimetry.fr/fileadmin/user_upload/ST2025/Presentations/ST2025HS0_05_PottierFjortoft_LakeProductVal.pdf">SWOT team, 2025</a><span>Lakes worldwide, (250 m)² to 1 km²</span><span class="rs-chk">Checked: slides</span></th><td data-label="What they did">SWOT heights of small lakes, against gauges</td><td data-label="Result">Height within 12–14 cm</td><td data-label="Did it work?"><span class="verdict ok">✓ Yes</span></td><td data-label="What it means for us">Even small lakes get good heights.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.4038/engineer.v58i1.7674">Madumalsha et al., 2025</a><span>9 Sri Lankan reservoirs</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">ICESat-2 laser heights, against the department&#x27;s gauges</td><td data-label="Result">Correlation 0.99, but 37 cm too high on average. Only 3–8 readings per reservoir in 5 years</td><td data-label="Did it work?"><span class="verdict ok">✓ Yes, after a fixed gap</span></td><td data-label="What it means for us">Satellites match Sri Lankan gauges once the fixed gap is removed. Member B does the same with SWOT, which passes far more often.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1016/j.srs.2026.100525">Chauhan et al., 2026</a><span>145 reservoirs in India</span><span class="rs-chk">Checked: abstract</span></th><td data-label="What they did">Early SWOT heights and storage, against ground records</td><td data-label="Result">Large reservoirs: height correlation 0.90, but an unbiased error of 1.87 m. Medium ones: storage correlation 0.83. Only 2 small reservoirs tested</td><td data-label="Did it work?"><span class="verdict care">! Partly</span></td><td data-label="What it means for us">The nearest region. Small reservoirs are still untested: that is our gap.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1029/2024EA004178">Das and Hossain, 2025</a><span>245 reservoirs in 5 countries</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">SWOT heights with Sentinel-1, Sentinel-2 and Landsat areas; curves from SRTM elevation</td><td data-label="Result">SWOT height R² 0.91 (usual miss 92 cm). Storage R² above 0.8. The area method did poorly in monsoon Thailand</td><td data-label="Did it work?"><span class="verdict ok">✓ Mostly</span></td><td data-label="What it means for us">It works on many reservoirs. In the monsoon the area must come from radar.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1029/2025WR041223">Ma et al., 2026</a><span>12 reservoirs in the western USA</span><span class="rs-chk">Checked: abstract</span></th><td data-label="What they did">SWOT height and area from the same pass, and a reservoir model for the gaps</td><td data-label="Result">Height within 20 cm; storage within 10% (median)</td><td data-label="Did it work?"><span class="verdict ok">✓ Yes, big reservoirs</span></td><td data-label="What it means for us">Height and area together work. Their reservoirs are big and well recorded.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.3390/w18192462">Li et al., 2026</a><span>14 reservoirs, mostly in the USA and Mexico</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">SWOT heights with global bed-shape curves (GRDL, REGEOM)</td><td data-label="Result">Storage error 15% of capacity; 3% once tied to each reservoir&#x27;s own records</td><td data-label="Did it work?"><span class="verdict care">! Only with records</span></td><td data-label="What it means for us">Village tanks have no records. Member B&#x27;s model learns from about 100 Sri Lankan reservoirs that do.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1016/j.rse.2020.111831">Li et al., 2020</a><span>347 large reservoirs worldwide</span><span class="rs-chk">Checked: abstract</span></th><td data-label="What they did">Each reservoir&#x27;s own height–area curve, from many satellite heights and Landsat pictures</td><td data-label="Result">Storage error 0.6–4.4% at 16 reservoirs with records</td><td data-label="Did it work?"><span class="verdict ok">✓ Yes, with many readings</span></td><td data-label="What it means for us">A tank&#x27;s own curve works when it has enough dots: the layers idea.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1029/2023WR035781">Hao et al., 2024 (GRDL)</a><span>7,250 reservoirs worldwide</span><span class="rs-chk">Checked: abstract</span></th><td data-label="What they did">A deep-learning model trained on about 160,000 simulated and hundreds of measured reservoirs, then used on reservoirs without records</td><td data-label="Result">Depth off by 7.87 m on average; area–storage curves about 21% off (median)</td><td data-label="Did it work?"><span class="verdict care">! Rough</span></td><td data-label="What it means for us">The closest idea to Member B&#x27;s: learn from many, use on new ones. Member B learns from real daily storage and SWOT heights in Sri Lanka instead. (A different error measure from ours.)</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1029/2017WR022040">Yigzaw et al., 2018</a><span>6,800 reservoirs worldwide</span><span class="rs-chk">Checked: abstract</span></th><td data-label="What they did">One simple shape for each reservoir, from its total storage and area</td><td data-label="Result">Total storage within 5% for 66% of reservoirs, and within 50% for 99%</td><td data-label="Did it work?"><span class="verdict care">! Partly</span></td><td data-label="What it means for us">Like the &quot;one formula for all tanks&quot; that Member B&#x27;s model must beat.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.4038/engineer.v55i2.7508">Imbulana, 2022</a><span>About 150 Sri Lankan village tanks</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">One formula: the full area, depth and capacity give the volume at any level</td><td data-label="Result">Under 5% off when the water is above one-third of the depth. On Kanhindawewa (our test): 4–14% too much, up to 24% near the bottom</td><td data-label="Did it work?"><span class="verdict care">! Partly</span></td><td data-label="What it means for us">Member B&#x27;s main formula to beat (RQ3).</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.1371/journal.pwat.0000260">Pascal et al., 2024</a><span>504 small reservoirs in Telangana, India</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">Sentinel-2 area, and bed maps from photos of the empty tanks</td><td data-label="Result">A 17% area error became a 31% volume error. Global elevation maps were 47–78% off</td><td data-label="Did it work?"><span class="verdict care">✗ Area alone is not enough</span></td><td data-label="What it means for us">Member B uses height and area together, and checks the area errors.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.5194/hess-27-2189-2023">de Fleury et al., 2023 and Zhan et al., 2026</a><span>37 small lakes in the Sahel; 8 reservoirs in China</span><span class="rs-chk">Checked: full paper; abstract</span></th><td data-label="What they did">On picture days, the height is read off the tank&#x27;s area–height curve</td><td data-label="Result">Curves within 2–7 cm on 2 lakes (de Fleury). Error 11–46 cm, with about 121 levels a year (Zhan)</td><td data-label="Did it work?"><span class="verdict ok">✓ Yes</span></td><td data-label="What it means for us">Member B gives every picture day between SWOT passes a height.</td></tr>
+      <tr><th scope="row"><a href="https://doi.org/10.3390/rs15245740">Wu et al., 2023</a><span>7 small reservoirs, 4 of them in California</span><span class="rs-chk">Checked: full paper</span></th><td data-label="What they did">AI (ResNet34) that reads the water level straight from Sentinel-1 and Sentinel-2 images</td><td data-label="Result">Error 19–77 cm; R² 0.62–0.97</td><td data-label="Did it work?"><span class="verdict care">! Only with gauges</span></td><td data-label="What it means for us">It learns from each reservoir&#x27;s own gauge readings, which village tanks don&#x27;t have.</td></tr>
+      <tr><th scope="row"><a href="team.html#member-b">Our model check, 28 October 2026</a><span>83 Sri Lankan reservoirs the model never saw</span><span class="rs-chk">Checked: our own test</span></th><td data-label="What they did">Member B&#x27;s storage model: SWOT height (and water area) to % full</td><td data-label="Result">8% of capacity with height only (one formula: 11%). 6% with height and area (one formula: 10%)</td><td data-label="Did it work?"><span class="verdict ok">✓ Yes, in our test</span></td><td data-label="What it means for us">Evidence that Member B&#x27;s plan works, before the project starts.</td></tr>
+    </tbody>
+  </table>
+</div></section>
+</div>
+<!-- member-tabs:end -->
 </main>
 
 <footer class="foot"><div class="wrap">
   <p>A student project for the IS4990 Comprehensive Group Project, University of Moratuwa. Group 6, JARVIS, October 2026.</p>
 </div></footer>
+<script src="assets/tabs.js"></script>
 </body>
 </html>
