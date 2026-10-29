@@ -97,7 +97,7 @@
       <p class="eyebrow">Member B · SWOT and storage</p>
       <h2>How much water there is</h2>
       <p class="lead tm-q"><a class="pill" href="index.html#rq2">RQ2</a> How accurately does SWOT measure water height on major reservoirs and on village tanks close to its 6.25 ha size limit, compared with gauge readings, and how many &quot;suspect&quot; readings can a learned screen keep, and at what error?</p>
-      <p class="lead tm-q"><a class="pill" href="index.html#rq3">RQ3</a> Can a model trained on about 100 gauged reservoirs turn a tank&#x27;s SWOT height and AI water area into % full, for tanks it has never seen, more accurately than one area–storage formula and Imbulana&#x27;s (2022) equation?</p>
+      <p class="lead tm-q"><a class="pill" href="index.html#rq3">RQ3</a> Can a model trained on about 100 gauged reservoirs turn a tank&#x27;s SWOT height and AI water area into % full, for tanks it has never seen, more accurately than one area–storage formula?</p>
     </div>
     <div class="tp-grid">
       <div class="tp-steps">
@@ -108,7 +108,7 @@
           <li><b>Trust screen <span class="tag model">Model</span></b><p>A small model scores each reading, so "suspect" readings that are fine are kept and the bad ones are dropped.</p></li>
           <li><b>Build the training pairs <span class="tag">Data</span></b><p>Each reservoir's daily storage, matched with its SWOT height and its water area on the same day.</p></li>
           <li><b>Train the storage model <span class="tag model">Model</span></b><p>Gradient boosting in which more height or more area never means less water. It only uses inputs every tank has.</p></li>
-          <li><b>Test it <span class="tag test">Test</span></b><p>On reservoirs it never saw: the error in % of capacity, against one formula for all tanks and Imbulana's equation, with and without the trust screen.</p></li>
+          <li><b>Test it <span class="tag test">Test</span></b><p>On reservoirs it never saw: the error in % of capacity, against one formula for all tanks, with and without the trust screen.</p></li>
           <li><b>Hand over <span class="tag out">Output</span></b><p>How full every tank is, after every SWOT pass.</p></li>
         </ol>
       </div>
@@ -116,7 +116,7 @@
         <div class="glance">
           <div class="gl"><p class="k">Model</p><p class="v">Storage model</p><p class="s">gradient boosting: SWOT height and water area in, % full out</p></div>
           <div class="gl"><p class="k">Learns from</p><p class="v">About 100 gauged reservoirs</p><p class="s">daily storage, paired with SWOT heights and water areas</p></div>
-          <div class="gl"><p class="k">Must beat</p><p class="v">One formula and Imbulana's equation</p><p class="s">on reservoirs the model never saw</p></div>
+          <div class="gl"><p class="k">Must beat</p><p class="v">One formula for all tanks</p><p class="s">on reservoirs the model never saw</p></div>
           <div class="gl"><p class="k">Gets and gives</p><p class="v">Water area in, % full out</p><p class="s">water area from Member A; % full to Member C</p></div>
         </div>
         <div class="tp-data"><p>Datasets</p><ul><li><a href="datasets.html#swot">SWOT lake product</a></li><li><a href="datasets.html#gww">Global Water Watch archive</a></li><li><a href="datasets.html#dept-sheet">Irrigation Department daily storage</a></li><li><a href="datasets.html#dept-layer">Irrigation Department tank map (reservoir layer)</a></li><li><a href="datasets.html#field">Our gauge photos</a></li><li><a href="datasets.html#dem">Elevation map: Copernicus DEM (GLO-30)</a></li><li><a href="datasets.html#swot-pixc">SWOT pixel cloud</a></li><li><a href="datasets.html#icesat2">ICESat-2 laser heights</a></li><li><a href="datasets.html#drone">Kanhindawewa drone survey</a></li><li><a href="datasets.html#mahaweli">Mahaweli reservoir status reports</a></li><li><a href="datasets.html#3d-lakes">3D-LAKES</a></li></ul></div>

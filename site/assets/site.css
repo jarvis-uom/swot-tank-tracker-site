@@ -571,3 +571,5 @@ a.pill { text-decoration: none; }
 .tm-q { display: flex; align-items: flex-start; gap: 10px; }
 .tm-q .pill { flex: none; margin: 3px 0 0; }
 .tm-q + .tm-q { margin-top: 10px; }
+.tabs.tabs-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: none; margin-bottom: 0; }
+.rq-gap { margin: 0 0 8px; font-size: .92rem; color: var(--ink-2); }
