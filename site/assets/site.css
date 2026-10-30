@@ -459,9 +459,10 @@ table.rs .rs-group th { width: auto; padding-top: 20px; font-size: .78rem; font-
 .pw-tags .tag { margin-left: 0; vertical-align: 0; }
 .pw-tags .pill { margin: 0; }
 .pw-uses { font-size: .92rem; }
-.pw-what .pw-uses b { color: var(--ink); }
+.pw-what b { color: var(--ink); }
 .pw-ex { align-self: start; background: var(--surface-2); border-radius: 12px; padding: 12px 16px; }
 .pw-ex .pw-ex-k { margin-bottom: 4px; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.pw-ex p + .pw-ex-k { margin-top: 12px; }
 .pw-ex ul { margin: 0 0 .55em; padding-left: 1.2em; }
 .pw-ex li + li { margin-top: 3px; }
 .pw-ex .pw-res { font-weight: 650; color: var(--ink); }

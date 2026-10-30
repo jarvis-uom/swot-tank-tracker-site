@@ -175,12 +175,15 @@
             <p class="pw-tags"><span class="tag model">Trained model</span><a class="pill" href="index.html#rq2">RQ2</a></p>
             <h4>Trust screen</h4>
             <p>Almost all of SWOT's readings at the village tanks are marked "suspect". This small model looks at each reading and decides whether to keep it or drop it.</p>
+            <p><b>Why not just an average?</b> One bad reading pulls an average off. A rule that drops readings far from the middle value works partly, but it also drops real fast rises after rain, and it keeps bad readings that look normal. So the screen also weighs SWOT's own quality signs for each reading: how well the pass was calibrated, how unsure SWOT is, and how far the tank is from the satellite's track.</p>
             <p class="pw-uses"><b>Learns from:</b> 84 reservoirs with records · <b>Used on:</b> our 13 tanks</p>
           </div>
           <div class="pw-ex">
             <p class="pw-ex-k">Example</p>
             <p>Tank 4 gets 10 readings this season, all "suspect". The screen keeps the 8 that look right and drops the 2 that are metres off.</p>
-            <p class="pw-res">Our test: it kept 85% of the readings with an average error of 15 cm, against 21 cm for SWOT's own flags.</p>
+            <p class="pw-ex-k">Why an average fails</p>
+            <p>Readings of 200, 210, 205, 500 and 215 cm average 266 cm: the one bad reading pulls it up by about 60 cm. The middle value, 210 cm, is safer.</p>
+            <p class="pw-res">Our test: the screen kept 85% of the readings with an average error of 15 cm, against 21 cm for SWOT's own flags. A simple rule reached 15 cm only by keeping fewer readings (66%).</p>
           </div>
         </li>
         <li class="pw-job">
