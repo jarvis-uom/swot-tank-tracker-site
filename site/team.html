@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Team · SWOT Tank Water Tracker</title>
-<meta name="description" content="Who does what in the SWOT Tank Water Tracker: three members and three models in one chain, with each member's work step by step.">
+<meta name="description" content="Who does what in the SWOT Tank Water Tracker: three members and three models in one chain, with each member's work in plain words and step by step.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -66,6 +66,61 @@
       <h2>Where the water is</h2>
       <p class="lead tm-q"><a class="pill" href="index.html#rq1">RQ1</a> How accurately can deep learning map tank water from Sentinel-1 and Sentinel-2, including tanks under cloud or partly covered by water plants?</p>
     </div>
+    <div class="pw">
+      <h3>In plain words</h3>
+      <p class="pw-intro">Member A teaches a computer to find the water in satellite pictures, even under cloud and under floating plants. The examples use made-up round numbers.</p>
+      <ol class="pw-list">
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag">By hand</span></p>
+            <h4>Label the water</h4>
+            <p>On small squares cut from satellite pictures of our tanks, draw three things: open water, water under plants, and land. These drawings are the answers the model learns from.</p>
+            <p class="pw-uses"><b>Made for:</b> our own tanks, including cloudy and plant-covered days</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p>A square of tank 7 in March: the photo shows green plants over most of the tank. Using the tank's outline and photos from our field visit, we mark the plant-covered part as "water under plants", not land.</p>
+          </div>
+        </li>
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag model">Trained model</span><a class="pill" href="index.html#rq1">RQ1</a></p>
+            <h4>Train the water map</h4>
+            <p>A U-Net first learns what water looks like from pictures that others have already labelled: floods and lakes around the world. Then it learns our tanks from our own labels, especially the plant-covered ones. It looks at radar and photos together.</p>
+            <p class="pw-uses"><b>Learns from:</b> S1S2-Water and Sen1Floods11, then our labels · <b>Used on:</b> our 13 tanks</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p><b>First,</b> thousands of labelled squares from around the world teach it open water.</p>
+            <p><b>Then,</b> a few hundred squares of our own tanks teach it Sri Lankan tanks and the water hidden under plants.</p>
+          </div>
+        </li>
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag out">Output</span></p>
+            <h4>Map every tank on every picture day</h4>
+            <p>After every new picture, the model draws the water on each of our 13 tanks and measures its area. Radar sees through cloud. Photos are sharper, but only on clear days.</p>
+            <p class="pw-uses"><b>Gives:</b> the water area of each tank on every picture day, to Members B and C</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p><b>A cloudy day in November:</b> the photo shows only cloud, but the radar still sees tank 4. The map says 25 ha of water.</p>
+            <p><b>A tank under plants:</b> say a tank holds water over 60 ha, but plants cover two thirds of it. A simple rule on the photo finds only the open part, about 20 ha. Member A's map must also find the 40 ha under the plants.</p>
+          </div>
+        </li>
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag test">Test</span></p>
+            <h4>Check it</h4>
+            <p>Compare the map with our own labels, with Kanhindawewa's drone survey (the true area at that day's water height), and with the simple rules on the same days.</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Our test</p>
+            <p class="pw-res">At Kanhindawewa, a plant-covered tank, the simple rules were off by 36–100%. Member A's map must do better than that.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
     <div class="tp-grid">
       <div class="tp-steps">
         <h3>Step by step</h3>
@@ -99,6 +154,76 @@
       <p class="lead tm-q"><a class="pill" href="index.html#rq2">RQ2</a> How accurately does SWOT measure water height on major reservoirs and on village tanks close to its 6.25 ha size limit, compared with gauge readings, and how many &quot;suspect&quot; readings can a learned screen keep, and at what error?</p>
       <p class="lead tm-q"><a class="pill" href="index.html#rq3">RQ3</a> Can a model trained on about 100 gauged reservoirs turn a tank&#x27;s SWOT height and AI water area into % full, for tanks it has never seen, more accurately than one area–storage formula?</p>
     </div>
+    <div class="pw">
+      <h3>In plain words</h3>
+      <p class="pw-intro">Member B turns SWOT's water height, and Member A's water area, into how full each tank is. The examples use made-up round numbers; the test results come from our model check (October 2026).</p>
+      <ol class="pw-list">
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag test">Check</span><a class="pill" href="index.html#rq2">RQ2</a></p>
+            <h4>Check SWOT's heights</h4>
+            <p>At the 5 big reservoirs, compare SWOT's height with the gauge on the same day, to see how many cm it is off.</p>
+            <p class="pw-uses"><b>Uses:</b> SWOT heights and the daily gauges of the 5 big reservoirs</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p>On every pass, SWOT reads about 50 cm above the gauge. That steady gap is only a different zero, so we take it away. What is left, about 10 cm up or down, is SWOT's real error.</p>
+          </div>
+        </li>
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag model">Trained model</span><a class="pill" href="index.html#rq2">RQ2</a></p>
+            <h4>Trust screen</h4>
+            <p>Almost all of SWOT's readings at the village tanks are marked "suspect". This small model looks at each reading and decides whether to keep it or drop it.</p>
+            <p class="pw-uses"><b>Learns from:</b> 84 reservoirs with records · <b>Used on:</b> our 13 tanks</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p>Tank 4 gets 10 readings this season, all "suspect". The screen keeps the 8 that look right and drops the 2 that are metres off.</p>
+            <p class="pw-res">Our test: it kept 85% of the readings with an average error of 15 cm, against 21 cm for SWOT's own flags.</p>
+          </div>
+        </li>
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag model">Trained model: the main one</span><a class="pill" href="index.html#rq3">RQ3</a></p>
+            <h4>Storage model</h4>
+            <p>It learns from big and medium reservoirs that have daily records. Then it is used on the small village tanks that have none. That is RQ3.</p>
+            <p class="pw-uses"><b>Learns from:</b> about 100 reservoirs with records · <b>Used on:</b> the 8 village tanks (and the 5 big ones, as a check)</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p><b>Training,</b> on reservoirs with daily records:</p>
+            <ul>
+              <li>Reservoir P, 1 March: water 3 m above its lowest level, outline 500 ha. The department's sheet says 70% full.</li>
+              <li>Reservoir Q, 1 March: 1 m above its lowest level, outline 100 ha. The sheet says 30% full.</li>
+              <li>About 3,000 rows like these, from about 100 reservoirs. The model learns the pattern.</li>
+            </ul>
+            <p><b>Using it,</b> on a village tank with no records:</p>
+            <ul>
+              <li>Village tank 4, 1 March: 2 m above its lowest level, outline 30 ha. The model says about 50% full.</li>
+            </ul>
+            <p class="pw-res">Our test: on reservoirs it had never seen, it was off by about 8% of capacity (about 11% on the small ones).</p>
+          </div>
+        </li>
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag">No model: arithmetic</span></p>
+            <h4>Slices</h4>
+            <p>Not a model, just arithmetic, done for each of our 13 tanks with its own data. Each picture day gives one dot: the height (from Member B) and the water area (from Member A).</p>
+            <p>Slices give the water gained or lost in m³. They can't give % full, because we don't know the tank's bottom or its total capacity. The storage model gives % full, and the two check each other. More on the <a href="explainer.html">How volume works</a> page.</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p>Dots at 1 m (20 ha), 2 m (40 ha) and 3 m (60 ha):</p>
+            <ul>
+              <li>from 1 to 2 m: middle area 30 ha × 1 m = 300,000 m³;</li>
+              <li>from 2 to 3 m: middle area 50 ha × 1 m = 500,000 m³.</li>
+            </ul>
+            <p class="pw-res">So if the water rose from 1 m to 3 m, the tank gained 800,000 m³.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
     <div class="tp-grid">
       <div class="tp-steps">
         <h3>Step by step</h3>
@@ -130,6 +255,52 @@
       <p class="eyebrow">Member C · forecast and system</p>
       <h2>What comes next</h2>
       <p class="lead tm-q"><a class="pill" href="index.html#rq4">RQ4</a> Can a deep-learning model forecast each tank&#x27;s storage 2–4 weeks ahead, from recent storage, rainfall and evaporation, better than a &quot;no change&quot; forecast?</p>
+    </div>
+    <div class="pw">
+      <h3>In plain words</h3>
+      <p class="pw-intro">Member C turns each tank's % full into a forecast for the coming weeks, and runs the whole chain and the dashboard. The examples use made-up round numbers; the test results come from our model check (October 2026).</p>
+      <ol class="pw-list">
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag">Build</span></p>
+            <h4>Storage line</h4>
+            <p>After every new picture or SWOT pass, run Member B's model. This gives a % full line over time for each of the 13 tanks.</p>
+            <p class="pw-uses"><b>Gets:</b> the water area from Member A and the height from SWOT, through Member B's model</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p>Tank 4: 60% on 1 February, 55% on 13 February, 50% on 1 March. One dot after every pass, joined into a line.</p>
+          </div>
+        </li>
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag model">Trained model</span><a class="pill" href="index.html#rq4">RQ4</a></p>
+            <h4>Forecast</h4>
+            <p>Predict % full 1, 2 and 4 weeks ahead. The inputs are today's % full, the change over the last few weeks, what usually happens at this time of year, and recent rain.</p>
+            <p>Member C trains two kinds of model: a deep-learning model (an LSTM) and gradient boosting. Both must beat "no change", which assumes the tank stays where it is.</p>
+            <p class="pw-uses"><b>Learns from:</b> 117 reservoirs' daily records, 2020–2026 (about 200,000 days) · <b>Used on:</b> our 13 tanks</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p>On 1 March a tank is 50% full. It fell 4% in the last 2 weeks, and in past years it usually falls about 4% in the next 2 weeks of March. Little rain has fallen.</p>
+            <p class="pw-res">Forecast for 15 March: about 46%. "No change" would say 50%.</p>
+            <p>In November, after 100 mm of rain in a week, the same model would predict a rise.</p>
+            <p class="pw-res">Our test: gradient boosting was about 10–20% better than "no change", and the LSTM was close behind.</p>
+          </div>
+        </li>
+        <li class="pw-job">
+          <div class="pw-what">
+            <p class="pw-tags"><span class="tag out">Output</span></p>
+            <h4>Dashboard</h4>
+            <p>A map of the 13 tanks showing today's % full, the trend and the forecast. It updates by itself after every pass.</p>
+          </div>
+          <div class="pw-ex">
+            <p class="pw-ex-k">Example</p>
+            <p>Click tank 4: 50% full today, falling, about 46% in 2 weeks.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="pw-note"><b>It isn't just rain and gauges.</b> In our test, the season and the recent change did most of the work. Past rain helped only a little (1–2%), and knowing the coming rain would help more (6–9%). The model learns that mix by itself; nobody writes a formula.</p>
     </div>
     <div class="tp-grid">
       <div class="tp-steps">
@@ -168,6 +339,20 @@
       <li style="--c:var(--aqua)"><em>Member B</em><b>The tank is 60% full</b><span>from that area and SWOT's height</span></li>
       <li style="--c:var(--orange)"><em>Member C</em><b>About 50% full in 2 weeks</b><span>from the forecast</span></li>
     </ol>
+    <div class="pw">
+      <h3>All the parts in one table</h3>
+      <table class="rs">
+        <thead><tr><th scope="col">Part</th><th scope="col">Trained?</th><th scope="col">Learns from</th><th scope="col">Used on</th><th scope="col">Gives</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Member A: water map</th><td data-label="Trained?">Yes</td><td data-label="Learns from">Labelled pictures from around the world, then our own labels</td><td data-label="Used on">Our 13 tanks, every picture day</td><td data-label="Gives">The water area</td></tr>
+          <tr><th scope="row">Member B: trust screen</th><td data-label="Trained?">Yes</td><td data-label="Learns from">84 reservoirs with records</td><td data-label="Used on">Our 13 tanks</td><td data-label="Gives">Keep or drop each SWOT reading</td></tr>
+          <tr><th scope="row">Member B: storage model</th><td data-label="Trained?">Yes</td><td data-label="Learns from">About 100 reservoirs with records</td><td data-label="Used on">The 8 village tanks (the 5 big ones as a check)</td><td data-label="Gives">% full</td></tr>
+          <tr><th scope="row">Member B: slices</th><td data-label="Trained?">No, arithmetic</td><td data-label="Learns from">Each tank's own height and area dots</td><td data-label="Used on">Each of our 13 tanks</td><td data-label="Gives">m³ gained or lost</td></tr>
+          <tr><th scope="row">Member C: forecast</th><td data-label="Trained?">Yes</td><td data-label="Learns from">117 reservoirs' daily records, 2020–2026</td><td data-label="Used on">Our 13 tanks</td><td data-label="Gives">% full in 1, 2 and 4 weeks</td></tr>
+        </tbody>
+      </table>
+      <p class="pw-note">We can only check the answers properly at the 5 big reservoirs, because they have gauges. At the 8 village tanks, Member B's and Member C's numbers are estimates.</p>
+    </div>
     <div class="tp-grid tp-together">
       <div>
         <h3>Who hands what to whom</h3>
