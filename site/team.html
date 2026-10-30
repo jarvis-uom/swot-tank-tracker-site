@@ -309,7 +309,7 @@
       <div class="tp-steps">
         <h3>Step by step</h3>
         <ol class="path">
-          <li><b>Collect the history <span class="tag">Build</span></b><p>Daily storage for 117 Irrigation Department reservoirs since 2020, with CHIRPS rain and ERA5 evaporation.</p></li>
+          <li><b>Collect the history <span class="tag">Build</span></b><p>Daily storage for 117 Irrigation Department reservoirs since 2020, with IMERG rain (CHIRPS for monthly checks) and ERA5 evaporation.</p></li>
           <li><b>Seasonal average <span class="tag">Data</span></b><p>For each tank, its usual storage on each day of the year, built from past years only.</p></li>
           <li><b>Train the forecast <span class="tag model">Model</span></b><p>An LSTM, and a gradient-boosting model to compare it with, for 1, 2 and 4 weeks ahead.</p></li>
           <li><b>Test it <span class="tag test">Test</span></b><p>On years and reservoirs it never saw, against "no change" and the seasonal average.</p></li>
@@ -321,11 +321,11 @@
       <div class="tp-side">
         <div class="glance">
           <div class="gl"><p class="k">Model</p><p class="v">Storage forecast</p><p class="s">an LSTM, with a gradient-boosting model to compare</p></div>
-          <div class="gl"><p class="k">Learns from</p><p class="v">117 reservoirs, 6 years</p><p class="s">daily storage, CHIRPS rain, ERA5 evaporation</p></div>
+          <div class="gl"><p class="k">Learns from</p><p class="v">117 reservoirs, 6 years</p><p class="s">daily storage, IMERG rain, ERA5 evaporation</p></div>
           <div class="gl"><p class="k">Must beat</p><p class="v">"No change" and the seasonal average</p><p class="s">at 1, 2 and 4 weeks ahead</p></div>
           <div class="gl"><p class="k">Gets and gives</p><p class="v">% full in, the dashboard out</p><p class="s">% full from Member B; the dashboard for everyone</p></div>
         </div>
-        <div class="tp-data"><p>Datasets</p><ul><li><a href="datasets.html#dept-sheet">Irrigation Department daily storage</a></li><li><a href="datasets.html#chirps">CHIRPS rain (and GPM IMERG)</a></li><li><a href="datasets.html#era5">ERA5 weather</a></li><li><a href="datasets.html#field">Our gauge photos</a></li></ul></div>
+        <div class="tp-data"><p>Datasets</p><ul><li><a href="datasets.html#dept-sheet">Irrigation Department daily storage</a></li><li><a href="datasets.html#chirps">Rain: GPM IMERG and CHIRPS</a></li><li><a href="datasets.html#era5">ERA5 weather</a></li><li><a href="datasets.html#field">Our gauge photos</a></li></ul></div>
       </div>
     </div>
     <p class="tm-out"><b>Output:</b> a 2–4 week forecast for every tank, the running chain and the dashboard.</p>

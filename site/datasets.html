@@ -76,7 +76,7 @@
       <tr data-members="A B C"><th scope="row"><a href="#field">Our gauge photos</a><span class="msize">A few MB a visit</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="dot" style="--c:var(--aqua)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="dot ring" style="--c:var(--orange)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td>A few MB a visit</td></tr>
       <tr data-members="A B"><th scope="row"><a href="#dem">Elevation map: Copernicus DEM (GLO-30)</a><span class="msize">47 MB (one tile)</span></th><td class="m"><span class="dot ring" style="--c:var(--blue)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="dot" style="--c:var(--aqua)" title="main use"></span><span class="sr">main use</span></td><td class="m"><span class="sr">not used</span></td><td>47 MB (one tile)</td></tr>
       <tr data-members="B"><th scope="row"><a href="#3d-lakes">3D-LAKES</a><span class="msize">3 GB (all files)</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot ring" style="--c:var(--aqua)" title="for checks or a stretch goal"></span><span class="sr">for checks or a stretch goal</span></td><td class="m"><span class="sr">not used</span></td><td>3 GB (all files)</td></tr>
-      <tr data-members="C"><th scope="row"><a href="#chirps">CHIRPS rain (and GPM IMERG)</a><span class="msize">About 3 MB a day (world)</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot" style="--c:var(--orange)" title="main use"></span><span class="sr">main use</span></td><td>About 3 MB a day (world)</td></tr>
+      <tr data-members="C"><th scope="row"><a href="#chirps">Rain: GPM IMERG and CHIRPS</a><span class="msize">Small: our area, through Earth Engine</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot" style="--c:var(--orange)" title="main use"></span><span class="sr">main use</span></td><td>Small: our area, through Earth Engine</td></tr>
       <tr data-members="C"><th scope="row"><a href="#era5">ERA5 weather</a><span class="msize">9 MB</span></th><td class="m"><span class="sr">not used</span></td><td class="m"><span class="sr">not used</span></td><td class="m"><span class="dot" style="--c:var(--orange)" title="main use"></span><span class="sr">main use</span></td><td>9 MB</td></tr>
     </tbody>
   </table>
@@ -146,7 +146,7 @@
       <div><dt>How others used it</dt><dd><ul><li><a href="https://www.ifad.org/en/w/publications/water-surface-maps-to-manage-ancient-tank-cascade-systems-in-sri-lanka">IFAD and ESA, 2026: monthly 10 m water maps of over 10,650 water bodies in 6 Sri Lankan districts, 2017 to August 2025</a></li><li><a href="https://doi.org/10.1016/j.jag.2025.104523">Dossou Codjia et al., 2025: 20 reservoirs in Burkina Faso; R² 0.76–0.97 at 14, but plants hid the water at 6</a></li><li><a href="https://doi.org/10.1371/journal.pwat.0000260">Pascal et al., 2024: 504 tanks in Telangana, India; a 17% area error became a 31% volume error</a></li></ul></dd></div>
       <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://browser.dataspace.copernicus.eu/?themeId=DEFAULT-THEME&amp;dateMode=SINGLE&amp;zoom=14&amp;lat=8.3868&amp;lng=80.5471&amp;datasetId=S2_L2A_CDAS&amp;fromTime=2024-03-10T00%3A00%3A00.000Z&amp;toTime=2024-03-10T23%3A59%3A59.999Z&amp;layerId=1_TRUE_COLOR">Copernicus Browser (opens on Mahakanadarawa)</a></li><li><a href="https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1">Dynamic World water class</a></li></ul></dd></div>
     </dl>
-    <p class="ds-foot"><a class="ds-open" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">Sentinel-2 in Google Earth Engine</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
+    <p class="ds-foot"><a class="ds-open" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">Sentinel-2 in Google Earth Engine (surface reflectance, from 2017)</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
   </div>
 </article>
 <article class="ds has-fig" id="sentinel-1" data-members="A">
@@ -155,7 +155,7 @@
     <h3>Sentinel-1 radar<span class="ds-prov">Copernicus (ESA) · C-band · 2014 onwards</span></h3>
     <p class="verdict care"><span aria-hidden="true">!</span> Works, with care: plants</p>
     <dl>
-      <div><dt>What it gives</dt><dd>Radar pictures that see through cloud, day and night. Our tanks get 2–3 dates a month (tracks 19 and 27, every 12 days each).</dd></div>
+      <div><dt>What it gives</dt><dd>Radar pictures that see through cloud, day and night. Our tanks get one radar date every 12 days: tracks 19 and 27 pass on the same day, morning and evening. Since June 2026 Sentinel-1D takes these pictures; the new 6-day repeat has not reached our area.</dd></div>
       <div><dt>Size</dt><dd>About 1–2 GB per scene. Ready-made terrain-corrected pieces (OPERA RTC-S1) are about 14 MB each.</dd></div>
       <div><dt>Is it right for us?</dt><dd><ul><li>It sees the water through monsoon cloud, when photos see nothing.</li><li>Thick floating plants look like land to it: at Kanhindawewa a simple −18 dB rule found only about a tenth of the water.</li></ul></dd></div>
       <div><dt>How others used it</dt><dd><ul><li><a href="https://archive.cmb.ac.lk/items/84f64851-eaa9-4b8c-babd-5d18f130c1ee">Perera and Jayaweera, 2020: Sri Lankan reservoirs; radar water area against reported volume, R² 0.67–0.94</a></li><li><a href="https://doi.org/10.1109/JSTARS.2023.3333969">Wieland et al., 2024: a U-Net on radar matched 85% of the true water</a></li></ul></dd></div>
@@ -171,9 +171,9 @@
     <dl>
       <div><dt>What it gives</dt><dd>Longer-wave radar that sees further into plants. NISAR gives about 5 pictures a month here; free ALOS-2 pictures come about 10 times a year.</dd></div>
       <div><dt>Size</dt><dd>NISAR: about 4–5 GB per scene for the map-ready version (GCOV); the raw versions are 15–26 GB. ALOS-2: size not checked.</dd></div>
-      <div><dt>Is it right for us?</dt><dd><ul><li>NISAR already has pictures over our tanks (October 2026).</li><li>It should see water under floating plants better than Sentinel-1. We have not tested it on our tanks yet.</li></ul></dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>NISAR already has pictures over our tanks (October 2026). Its public release covers passes from 17 June 2026; older ones are being released.</li><li>It should see water under floating plants better than Sentinel-1. We have not tested it on our tanks yet.</li><li>The free ALOS-2 copy on AWS covers Africa only, so ours would come from Earth Engine.</li></ul></dd></div>
       <div><dt>How others used it</dt><dd><ul><li>NISAR&#x27;s data only became public in July 2026, so we found no tank study yet.</li></ul></dd></div>
-      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://registry.opendata.aws/jaxa-alos-palsar2-scansar/">JAXA ALOS-2 on AWS (free, no login)</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://developers.google.com/earth-engine/datasets/catalog/JAXA_ALOS_PALSAR-2_Level2_2_ScanSAR">ALOS-2 ScanSAR in Google Earth Engine (25 m)</a></li></ul></dd></div>
     </dl>
     <p class="ds-foot"><a class="ds-open" href="https://asf.alaska.edu/nisar/">ASF: NISAR data</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
   </div>
@@ -183,9 +183,9 @@
     <h3>OPERA water maps<span class="ds-prov">NASA · DSWx · 30 m</span></h3>
     <p class="verdict aux"><span aria-hidden="true">◦</span> For checks</p>
     <dl>
-      <div><dt>What it gives</dt><dd>Ready-made water maps: one from each photo (DSWx-HLS, since 2016) and one from each radar picture (DSWx-S1, since August 2024).</dd></div>
+      <div><dt>What it gives</dt><dd>Ready-made water maps: one from each photo (DSWx-HLS, validated maps since April 2023) and one from each radar picture (DSWx-S1, since August 2024).</dd></div>
       <div><dt>Size</dt><dd>About 48 MB per photo-based map and 1–10 MB per radar-based map, for one tile.</dd></div>
-      <div><dt>Is it right for us?</dt><dd><ul><li>Over our tile: 109 photo-based maps and 26 radar dates in 12 months.</li><li>30 m pixels are coarse for small tanks, and it has no &quot;water under plants&quot;. A ready-made baseline for Member A&#x27;s maps.</li></ul></dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Over our tile: 109 photo-based maps and 26 radar dates in 12 months.</li><li>30 m pixels are coarse for small tanks. The radar version has an &quot;inundated vegetation&quot; (water under plants) class, but only for water bodies over 3 ha and 200 m wide. A ready-made baseline for Member A&#x27;s maps.</li></ul></dd></div>
     </dl>
     <p class="ds-foot"><a class="ds-open" href="https://search.earthdata.nasa.gov/search?q=OPERA_L3_DSWX-S1_V1">NASA Earthdata search</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
   </div>
@@ -200,7 +200,7 @@
       <div><dt>Size</dt><dd>One 527 MB file for every reservoir. Hurulu Wewa&#x27;s record since October 2020 is 147 areas.</dd></div>
       <div><dt>Is it right for us?</dt><dd><ul><li>We matched 69 of the department&#x27;s 117 reservoirs by their outlines (78% overlap on the median), giving 11,484 area–storage pairs to train Member B&#x27;s model.</li><li>Cloud gaps are filled in by its method, not measured. It has no village tanks.</li></ul></dd></div>
       <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1038/s41598-022-17074-6">Donchyts et al., 2022: the method behind it, for small and medium reservoirs worldwide</a></li></ul></dd></div>
-      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://www.globalwaterwatch.earth/">Global Water Watch website</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://www.globalwaterwatch.earth/">Global Water Watch website (offline from November 2026)</a></li></ul></dd></div>
     </dl>
     <p class="ds-foot"><a class="ds-open" href="https://zenodo.org/records/22643338">Zenodo: the archive (CC BY 4.0)</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
   </div>
@@ -253,7 +253,7 @@
     <dl>
       <div><dt>What it gives</dt><dd>Daily storage of 117 reservoirs (74 major since October 2020, 43 medium since April 2023), with capacity, and daily gauge depth for the big ones.</dd></div>
       <div><dt>Size</dt><dd>About 200,000 daily values: a 13 MB table.</dd></div>
-      <div><dt>Is it right for us?</dt><dd><ul><li>The department&#x27;s own public dashboards read this same sheet.</li><li>The Reservoir Status page shows only the latest day, but four tabs of the same sheet keep every day: since October 2020 for the major reservoirs, and since 2023 for the medium ones. The download links are below.</li><li>The value changes on only 34–62% of days at the big reservoirs, so some days are not updated.</li><li>Its &quot;long-term average&quot; column is the average of the seasons in the sheet, including the latest years. It must not be used to test forecasts.</li><li>On 27 October 2026 it differed from the Mahaweli Authority&#x27;s figure for Nachchaduwa by 4%.</li></ul></dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>The department&#x27;s own public dashboards read this same sheet.</li><li>The Reservoir Status page shows only the latest day, but four tabs of the same sheet keep every day: since October 2020 for the major reservoirs, and since 2023 for the medium ones. The download links are below.</li><li>Our logger saves every tab of it three times a day, and the department&#x27;s report as PDF once a week, so nothing is lost if the sheet changes.</li><li>The value changes on only 34–62% of days at the big reservoirs, so some days are not updated.</li><li>Its &quot;long-term average&quot; column is the average of the seasons in the sheet, including the latest years. It must not be used to test forecasts.</li><li>On 27 October 2026 it differed from the Mahaweli Authority&#x27;s figure for Nachchaduwa by 4%.</li></ul></dd></div>
       <div><dt>How others used it</dt><dd><ul><li>It trains Member B&#x27;s storage model and Member C&#x27;s forecast, and labels the trust screen.</li></ul></dd></div>
       <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://irrigation.gov.lk/web/index.php?option=com_content&amp;view=article&amp;id=84&amp;Itemid=201&amp;lang=en">Reservoir Status page</a></li><li><a href="https://www.arcgis.com/home/item.html?id=9b5ee8a0b2744f0d838c12d0d3b47547">The department&#x27;s map: Major Reservoirs Water Level (ArcGIS)</a></li></ul></dd></div>
       <div><dt>Download the daily history (CSV)</dt><dd><ul><li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTcSGhi9RESl7CMCl1TQnrKe07Gx5Q696YiSB9jneIHqIP9lifpqSErgI3D5k9KtQXSdW5JpycIIr5e/pub?gid=673998835&amp;single=true&amp;output=csv">Major reservoirs, Maha seasons, 2020/21 onwards</a></li><li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTcSGhi9RESl7CMCl1TQnrKe07Gx5Q696YiSB9jneIHqIP9lifpqSErgI3D5k9KtQXSdW5JpycIIr5e/pub?gid=1244158041&amp;single=true&amp;output=csv">Major reservoirs, Yala seasons, 2022 onwards</a></li><li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTcSGhi9RESl7CMCl1TQnrKe07Gx5Q696YiSB9jneIHqIP9lifpqSErgI3D5k9KtQXSdW5JpycIIr5e/pub?gid=155979206&amp;single=true&amp;output=csv">Medium reservoirs, Maha seasons, 2024/25 onwards</a></li><li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTcSGhi9RESl7CMCl1TQnrKe07Gx5Q696YiSB9jneIHqIP9lifpqSErgI3D5k9KtQXSdW5JpycIIr5e/pub?gid=1831537855&amp;single=true&amp;output=csv">Medium reservoirs, Yala seasons, 2023 onwards</a></li></ul></dd></div>
@@ -269,7 +269,7 @@
     <dl>
       <div><dt>What it gives</dt><dd>A map layer of 354 irrigation schemes: full-supply outline and area, capacity, dead storage, catchment, flood level and bund top.</dd></div>
       <div><dt>Size</dt><dd>354 outlines: a 6 MB file.</dd></div>
-      <div><dt>Is it right for us?</dt><dd><ul><li>258 tanks have both capacity and area (81 major, 164 medium, 13 minor). 116 of the 117 daily-sheet reservoirs sit on an outline.</li><li>It gives no survey year. Mahakanadarawa&#x27;s spill was raised in 2024–26, so its capacity rose from 45 to 47 million m³, but the layer still shows the old level.</li></ul></dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>258 tanks have both capacity and area (81 major, 164 medium, 13 minor). 116 of the 117 daily-sheet reservoirs sit on an outline.</li><li>It gives no survey year. Mahakanadarawa&#x27;s spill was raised in 2024–26, so its capacity rose from 45 to 47 million m³, but the layer still shows the old level.</li><li>None of our 8 village tanks is in it (checked 30 October 2026), so their outlines come from OpenStreetMap.</li></ul></dd></div>
       <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://irrigation.gov.lk/web/images/Publications/SCHEME_REGISTER_2ND_EDITION_Book__2022.pdf">Scheme Register 2022 (PDF)</a></li></ul></dd></div>
     </dl>
     <p class="ds-foot"><a class="ds-open" href="https://services3.arcgis.com/J7ZFXmR8rSmQ3FGf/ArcGIS/rest/services/Scheme_Data_2/FeatureServer/10">The map layer (ArcGIS)</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a> <a class="mchip" style="--c:var(--blue)" href="team.html#member-a">Member A</a></span></p>
@@ -295,7 +295,7 @@
     <dl>
       <div><dt>What it gives</dt><dd>Water level in metres above sea level, and storage, for Hurulu Wewa, Nachchaduwa and Nuwara Wewa.</dd></div>
       <div><dt>Size</dt><dd>A small PDF each day. Only today&#x27;s is online: it is replaced daily.</dd></div>
-      <div><dt>Is it right for us?</dt><dd><ul><li>Its sea-level readings matched our &quot;gauge zero&quot; sum (full supply level minus full depth) within 11 cm on 27 October 2026.</li><li>It must be saved every day, or the record is lost.</li></ul></dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Its sea-level readings matched our &quot;gauge zero&quot; sum (full supply level minus full depth) within 11 cm on 27 October 2026.</li><li>It must be saved every day, or the record is lost. Our logger keeps every new one, with the Secretariat&#x27;s other PDFs (from 29 October 2026, plus a copy from 27 October).</li></ul></dd></div>
     </dl>
     <p class="ds-foot"><a class="ds-open" href="https://mahaweli.gov.lk/wms.html">Reservoirs status reports</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
   </div>
@@ -340,7 +340,7 @@
     <dl>
       <div><dt>What it gives</dt><dd>Height–area–volume curves for lakes and reservoirs worldwide.</dd></div>
       <div><dt>Size</dt><dd>3 GB in 8 files.</dd></div>
-      <div><dt>Is it right for us?</dt><dd><ul><li>Curves are about 60 cm off (median) against 214 surveyed curves.</li><li>Most lakes under 1 km² have no curve, so it can only check the 5 big reservoirs.</li></ul></dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>Curves are about 60 cm off (median) against 214 surveyed curves.</li><li>It covers 510,530 lakes, but most lakes under 1 km² have no curve. So it may only check the 5 big reservoirs; whether our village tanks have curves is still to check.</li></ul></dd></div>
       <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1038/s41597-025-05911-y">Huang et al., 2025 (Scientific Data): the dataset paper</a></li></ul></dd></div>
     </dl>
     <p class="ds-foot"><a class="ds-open" href="https://zenodo.org/records/13107867">Zenodo: 3D-LAKES</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--aqua)" href="team.html#member-b">Member B</a></span></p>
@@ -354,13 +354,14 @@
   <div class="ds-grid">
 <article class="ds" id="chirps" data-members="C">
   <div class="ds-body">
-    <h3>CHIRPS rain (and GPM IMERG)<span class="ds-prov">UC Santa Barbara (CHIRPS, 1981 onwards) · NASA (IMERG)</span></h3>
+    <h3>Rain: GPM IMERG and CHIRPS<span class="ds-prov">NASA (IMERG, 2000 onwards) · UC Santa Barbara (CHIRPS, 1981 onwards)</span></h3>
     <p class="verdict ok"><span aria-hidden="true">✓</span> Works</p>
     <dl>
-      <div><dt>What it gives</dt><dd>Daily rain on a 5 km grid, from satellites and rain gauges. IMERG is a 10 km backup that is only one day behind.</dd></div>
-      <div><dt>Size</dt><dd>CHIRPS: about 3 MB a day for the whole world. IMERG: about 27 MB a day.</dd></div>
-      <div><dt>Is it right for us?</dt><dd><ul><li>Final CHIRPS data runs about a month behind, with an early version about a week behind.</li><li>We have not yet checked it against Sri Lankan rain gauges.</li></ul></dd></div>
-      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.1038/sdata.2015.66">Funk et al., 2015 (Scientific Data): the CHIRPS paper</a></li></ul></dd></div>
+      <div><dt>What it gives</dt><dd>Daily rain from satellites. As in the proposal, IMERG (10 km, only one day behind) is the daily input, and CHIRPS (5 km, corrected with rain gauges) is for monthly checks.</dd></div>
+      <div><dt>Size</dt><dd>IMERG: about 27 MB a day for the whole world. CHIRPS: about 3 MB a day.</dd></div>
+      <div><dt>Is it right for us?</dt><dd><ul><li>In Sri Lanka, IMERG is better day by day and CHIRPS month by month.</li><li>CHIRPS version 2 ends after December 2026, so we will use version 3 (already out, same grid).</li><li>Final CHIRPS data runs about a month behind, with an early version about a week behind.</li><li>We have not yet checked either against Sri Lankan rain gauges.</li></ul></dd></div>
+      <div><dt>How others used it</dt><dd><ul><li><a href="https://doi.org/10.5194/egusphere-egu26-20641">Perera et al., 2026: IMERG better daily, CHIRPS better monthly, in Sri Lanka</a></li><li><a href="https://doi.org/10.1038/sdata.2015.66">Funk et al., 2015 (Scientific Data): the CHIRPS paper</a></li></ul></dd></div>
+      <div><dt>Ready-made tools</dt><dd><ul><li><a href="https://gpm.nasa.gov/data/imerg">GPM IMERG (NASA)</a></li></ul></dd></div>
     </dl>
     <p class="ds-foot"><a class="ds-open" href="https://www.chc.ucsb.edu/data/chirps">CHIRPS</a><span class="ds-used">Used by: <a class="mchip" style="--c:var(--orange)" href="team.html#member-c">Member C</a></span></p>
   </div>
