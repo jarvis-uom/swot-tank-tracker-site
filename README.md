@@ -16,10 +16,10 @@ A small website for our IS4990 project "SWOT Tank Water Tracker for Sri Lanka" (
 | `calendar.html` | Satellite calendar: real days with data from each satellite since NISAR started (June 2026) and expected days to March 2027, from `assets/calendar-data.js` (made by `temp/calendar/build_calendar_data.py` in the project folder). A second tab, **Picture + gauge days**, shows every day since October 2020 when a satellite picture of a big reservoir and its gauge reading fall on the same day, with the dataset to download (`assets/pair-days-data.js` and `data/picture-gauge-days.csv`, made by `temp/calendar/build_pair_days.py`) |
 | `pictures.html` | Picture days: water pictures only (radar every pass, photos when clear), month by month, the running total and a rough layer thickness; same data file as the calendar |
 | `research.html` | Past research, in three tabs: all studies in one table (what they used, how accurate, the problem for our tanks, our answer), then Member A's and Member B's own lists (what others did for that part, did it work, and what it means for us; made by the project's `temp/research-check/member_tabs.py`). Every number is checked against the study (record in `temp/research-check/checked.md`) |
-| `team.html` | Team: the chain of three models, and one tab per member with their research questions, steps, facts and datasets (the same plan as slides 15–18 of the talk) |
+| `team.html` | Team: the chain of three models, and one tab per member with their research questions, steps, facts and datasets (the same plan as slides 5 to 14 of the talk) |
 | `data.html` | Three years of SWOT water levels and stored water for the five reservoirs, with a table of every reading |
 | `datasets.html` | Datasets: all 19 datasets (what each gives, its size, whether it is right for our tanks, how others used it, ready-made tools, and which member uses it), a member filter and example pictures in `assets/img/datasets/`. Made by `temp/datasets-page/make_datasets_page.py` and `make_images.py` in the project folder |
-| `presentation.html` | Our 21-slide proposal talk in a slide viewer, with the PDF (opens in a new tab) and the PowerPoint to download |
+| `presentation.html` | Our 15-slide proposal talk in a slide viewer, with the PDF (opens in a new tab) and the PowerPoint to download |
 
 It is plain HTML, CSS and JavaScript, with no build step and no outside libraries. The pages also work when opened straight from the disk.
 
